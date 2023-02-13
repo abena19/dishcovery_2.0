@@ -2,7 +2,7 @@ import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { SearchScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen} from "./screens";
+import { SearchScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen, AccountCreationScreen, ContextTutorialScreen, CookingTutorialScreen, ScanTutorialScreen, WelcomeScreen, LoginScreen} from "./screens";
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
@@ -15,6 +15,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import {PopupProvider} from 'react-native-popup-view';
 LogBox.ignoreLogs(['Warning: ...']); // Ignore log notification by message
 LogBox.ignoreAllLogs();//Ignore all log notifications
+
 
 
 const Tab = createBottomTabNavigator()
@@ -54,7 +55,7 @@ const ScanStack = () => {
 const ExploreStack = ({route}) => {
     return (
       // have to change initialRoutname so back button on Recipe works from liked and scan screen
-      <Stack.Navigator initialRoutName="Explore Screen" screenOptions={{
+      <Stack.Navigator initialRoutName="Explore" screenOptions={{
         cardStyle: { backgroundColor: '#fff' },
         headerTitleStyle: {
           color: COLORS.dishcoveryOrange,
@@ -71,12 +72,40 @@ const ExploreStack = ({route}) => {
         headerTintColor:  COLORS.dishcoveryOrange,
       }}>
       {/* <Stack.Navigator initialRoutName="Explore">   */}
+
+         {/* <Stack.Screen name="Login or Sign Up" component={LoginScreen} options={{ headerShown: false}}/> */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Search Results" component={SearchScreen} />
       </Stack.Navigator>
     )
 }
+
+
+
+const OnboardStack = () => {
+    return (
+      <Stack.Navigator
+        screenOptions={{
+          headerTitleStyle: {
+            color: 'black'
+          },
+          headerBackTitleStyle: {
+            color: '#DD6135'
+          },
+          headerTintColor: '#DD6135',
+          tabBarVisible: false
+        }}
+        initialRoutName="Welcome">
+         <Stack.Screen name="Welcome Screen" component={WelcomeScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Scan Tutorial Screen" component={ScanTutorialScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Context Tutorial Screen" component={ContextTutorialScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Cooking Tutorial Screen" component={CookingTutorialScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="Login or Sign Up" component={LoginScreen} options={{ headerShown: false}}/>
+      </Stack.Navigator>
+    )
+}
+
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -91,6 +120,11 @@ export default function App() {
   return (
     <PopupProvider>
     <NavigationContainer>
+
+      <Stack.Navigator initialRouteName="Welcome">
+        <Stack.Screen name="Welcome Screen" component={OnboardStack} />
+      </Stack.Navigator>
+
       <Tab.Navigator
         backBehavior='history'
         screenOptions={({ route, navigation }) => ({
@@ -161,11 +195,9 @@ export default function App() {
             return <Ionicons name={iconName} size={28} color= {color} />;
           } 
         })}>
-        {/* <Tab.Screen name="Search" component={SearchScreen} />           */}
         <Tab.Screen name="Explore" component={ExploreStack}  />
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={LikedScreen} />
-        {/* <Tab.Screen name="Profile" component={ProfileScreen} /> */}
         <Tab.Screen name="Profile" component={ProfileScreen} 
         options={{
         tabBarButton: () => null,

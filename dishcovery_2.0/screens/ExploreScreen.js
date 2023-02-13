@@ -24,7 +24,8 @@ import {
   } from 'react-native-popup-view'; 
   import filterStyles from '../assets/styles/ExploreFilter.style';
 
-console.log(dummyData.trendingRecipes)
+
+// console.log(dummyData.trendingRecipes)
 
 const ExploreScreen = ({ navigation }) => {
 

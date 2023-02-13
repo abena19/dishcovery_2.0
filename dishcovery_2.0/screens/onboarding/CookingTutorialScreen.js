@@ -23,7 +23,7 @@ import { useFonts } from 'expo-font';
 
 
 
-const WelcomeScreen = ({ navigation }) => {
+const CookingTutorialScreen = ({ navigation }) => {
 
 const [fontsLoaded] = useFonts({
     'Inter-SemiBold': require('../../assets/fonts/Inter-SemiBold.ttf'),
@@ -35,21 +35,32 @@ const [fontsLoaded] = useFonts({
               style={CloseButton.closeButtonContainer}
               onPress={() => navigation.goBack()}
             >
-            <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
-        </TouchableOpacity>
-
-        <View style={commonStyles.outerView}>
-            <Text style={styles.onboardingHeader}>Welcome</Text>
-            <Text style={styles.TextStyle}>Let's start Dishcovering new food!</Text>
-            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Tutorial Screen")}>           
-                <Text style={styles.ButtonTextStyle}> Next -&gt; </Text>
+              <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
             </TouchableOpacity>
-        </View>
+          <View style={commonStyles.outerView}>
+            <View>
+                <Image source={require('../../assets/images/onboardingimages/cookingtutorial.png')} />
+            </View>
+
+            <View>
+                <Text style={styles.onboardingHeader}>Have fun dishcovering!</Text>
+                <Text style={styles.TextStyle}>Follow any of our authentic recipes to that dream dish. Yum!</Text>
+            </View>
+
+            <View style={{ alignSelf: "center" }}>
+                <Text style={{ fontSize: 30, color: "#D9D9D9" }}>..</Text>
+                <Text style={{ fontSize: 30, color: "#DD6135" }}>.</Text>
+            </View>
+
+            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Login or Sign Up")}>
+              <Text style={styles.ButtonTextStyle}> Let's go! -&gt; </Text>
+            </TouchableOpacity>
+          </View>
     </SafeAreaView>
   );
 };
 
-export default WelcomeScreen;
+export default CookingTutorialScreen;
 
 const styles = StyleSheet.create({
     container: {
@@ -63,18 +74,12 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         backgroundColor:'#DD6135',
         borderRadius:20,
-        flexDirection:'column',
-        
+        flexDirection:'column'
       },
       TextStyle: {
         fontSize: 15,
         textAlign: 'center',
         fontFamily: 'Inter-Regular'
-      },
-      onboardingHeader: {
-        fontSize: 28,
-        textAlign: 'center',
-        fontFamily: 'Inter-Bold',
       },
       ButtonTextStyle: {
         fontSize: 15,
