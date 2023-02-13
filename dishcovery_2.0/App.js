@@ -85,7 +85,7 @@ const ExploreStack = ({route}) => {
 
 const OnboardStack = () => {
     return (
-      <Stack.Navigator
+      <Stack.Navigator initialRoutName="Welcome"
         screenOptions={{
           headerTitleStyle: {
             color: 'black'
@@ -94,14 +94,17 @@ const OnboardStack = () => {
             color: '#DD6135'
           },
           headerTintColor: '#DD6135',
-          tabBarVisible: false
+          tabBarVisible: false,
+          tabBarStyle: {
+            tabBarVisible: false
+          }
         }}
-        initialRoutName="Welcome">
-         <Stack.Screen name="Welcome Screen" component={WelcomeScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Scan Tutorial Screen" component={ScanTutorialScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Context Tutorial Screen" component={ContextTutorialScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Cooking Tutorial Screen" component={CookingTutorialScreen} options={{ headerShown: false }}/>
-         <Stack.Screen name="Login or Sign Up" component={LoginScreen} options={{ headerShown: false}}/>
+        >
+         <Stack.Screen name="Welcome Screen" component={WelcomeScreen} options={{ headerShown: false, tabBarVisible:false}}/>
+         <Stack.Screen name="Scan Tutorial Screen" component={ScanTutorialScreen} options={{ headerShown: false, tabBarVisible:false }}/>
+         <Stack.Screen name="Context Tutorial Screen" component={ContextTutorialScreen} options={{ headerShown: false, tabBarVisible:false }}/>
+         <Stack.Screen name="Cooking Tutorial Screen" component={CookingTutorialScreen} options={{ headerShown: false, tabBarVisible:false }}/>
+         <Stack.Screen name="Login or Sign Up" component={LoginScreen} options={{ headerShown: false, tabBarVisible:false}}/>
       </Stack.Navigator>
     )
 }
@@ -121,9 +124,11 @@ export default function App() {
     <PopupProvider>
     <NavigationContainer>
 
-      <Stack.Navigator initialRouteName="Welcome">
+      {/* <Stack.Navigator initialRouteName="Welcome">
         <Stack.Screen name="Welcome Screen" component={OnboardStack} />
-      </Stack.Navigator>
+        </Stack.Navigator> */}
+
+      {/* <OnboardStack/>   */}
 
       <Tab.Navigator
         backBehavior='history'
@@ -195,6 +200,11 @@ export default function App() {
             return <Ionicons name={iconName} size={28} color= {color} />;
           } 
         })}>
+        <Tab.Screen name="Onboard Screen" component={OnboardStack}
+          options={{
+            tabBarButton: () => null,
+            tabBarVisible:false //hide tab bar on this screen
+          }} />
         <Tab.Screen name="Explore" component={ExploreStack}  />
         <Tab.Screen name="Scan" component={ScanStack} />
         <Tab.Screen name="Liked" component={LikedScreen} />
@@ -205,11 +215,13 @@ export default function App() {
         }}
         />
         <Tab.Screen name="Search Results" component={SearchScreen} 
-        options={{
-        tabBarButton: () => null,
-        tabBarVisible:false //hide tab bar on this screen
-        }} />
+          options={{
+            tabBarButton: () => null,
+            tabBarVisible:false //hide tab bar on this screen
+          }} />
+        
       </Tab.Navigator>
+     
     </NavigationContainer>
     </PopupProvider>
   );

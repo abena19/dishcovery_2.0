@@ -1,4 +1,5 @@
-// import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
+
+import {useState} from "react"// import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
 // import AppLoading from 'expo-app-loading';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -115,7 +116,7 @@ export default function LoginScreen({ navigation }) {
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                    onPress={() => {}}
+                    onPress={() => navigation.navigate("Explore")}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>Next  →</Text>
@@ -169,7 +170,8 @@ const styles = StyleSheet.create({
         width: '90%',
         justifyContent: 'center',
         flexDirection: 'row',
-        alignItems: 'flex-end'
+        alignItems: 'flex-end',
+        marginBottom:100
     },
     button: {
         backgroundColor: '#DD6135', 

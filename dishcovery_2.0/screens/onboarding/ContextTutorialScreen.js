@@ -38,7 +38,7 @@ const [fontsLoaded] = useFonts({
               <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
             </TouchableOpacity>
           <View style={commonStyles.outerView}>
-            <View>
+            <View style={styles.imageContainer}>
                 <Image source={require('../../assets/images/onboardingimages/contexttutorial.png')} />
             </View>
 
@@ -71,12 +71,23 @@ const styles = StyleSheet.create({
       },
       buttonContainer:{
         height:55,
-        marginBottom:0,
+        // marginBottom:0,
+        marginBottom:100,
         padding:0,
         justifyContent:'center',
         backgroundColor:'#DD6135',
         borderRadius:20,
         flexDirection:'column'
+      },
+      imageContainer: {
+        flex:1,
+      },
+      imageStyle: {
+        flex: 1,
+        width: 120,
+        height:120,
+        // borderTopRightRadius:20,
+        // borderTopLeftRadius:20,
       },
       TextStyle: {
         fontSize: 15,
