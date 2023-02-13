@@ -97,11 +97,12 @@ export default class App extends React.Component {
     } 
   };
   renderProgress = async () => {
-    return 
+    return (
       <View>
         <Text>Searching for item</Text>
         <ProgressBar progress={100} height={7} backgroundColor="orange" /> 
       </View>
+    );
   }
 
 
