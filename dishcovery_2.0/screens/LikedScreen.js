@@ -58,19 +58,22 @@ const LikedScreen = ({ navigation }) => {
                           <View style = {{position:'absolute', right:0}}>
                               <View style = {styles.heartButton}><Ionicons name="heart" size={17} color= {COLORS.dishcoveryOrange} /></View>
                           </View>
-                        </View>
-                      </ImageBackground>
 
-                      
-                      <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+
+
+                        </View>
+
+                        <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center', marginTop:50, textAlign:'left'}}>
                           <Text style={{        
                               fontSize: 11,
                               textTransform:'uppercase',
                               fontFamily: 'Inter-SemiBold',
-                              textAlign: 'center',
-                              color: '#444444',
+                              textAlign: 'left',
+                              color: COLORS.dishcoveryLightGrey,
                               // marginTop: 3,
-                              marginHorizontal: 5,marginVertical:2}}>{item.name}</Text>
+                              marginHorizontal: 5,marginVertical:2}}>
+                                {item.name}
+                          </Text>
                           <View style={{ flexDirection:'row'}}>
                               <Ionicons name="cellular" size={10} color= {COLORS.dishcoveryOrange} />
                               <Text style={styles.category}> {item.difficulty} </Text>
@@ -79,7 +82,13 @@ const LikedScreen = ({ navigation }) => {
                               {/* <Ionicons name="location" size={10} color= {COLORS.dishcoveryOrange} />
                               <Text style={styles.category}> {item.country}</Text> */}
                           </View>
-                        </View>
+                      </View>
+
+                      </ImageBackground>
+
+                      
+                      
+                      
                     </View>
                   </TouchableHighlight>
                 )
@@ -97,8 +106,8 @@ export default LikedScreen
 
 const SCREEN_WIDTH = 330
 const recipeNumColums = 2
-const RECIPE_ITEM_MARGIN = 0
-const RECIPE_ITEM_HEIGHT = 130
+const RECIPE_ITEM_MARGIN = 0.8
+const RECIPE_ITEM_HEIGHT = 150
 
 const styles = StyleSheet.create({
   container: {
@@ -107,7 +116,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     margin: 3,
     width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
-    height: RECIPE_ITEM_HEIGHT + 55,
+    height: RECIPE_ITEM_HEIGHT,
     borderColor: '#cccccc',
     borderWidth: 0.5,
     borderRadius: SIZES.padding,
@@ -134,9 +143,9 @@ const styles = StyleSheet.create({
     resizeMode:'cover'
   },
   imagephoto:{
-    borderRadius: SIZES.padding,
-    borderBottomLeftRadius: 0,
-    borderBottomRightRadius: 0
+    borderRadius: SIZES.padding - 10,
+    // borderBottomLeftRadius: 0,
+    // borderBottomRightRadius: 0
   },
   heartButton:{
     fles:1,
@@ -157,7 +166,8 @@ const styles = StyleSheet.create({
   },
   category: {
     fontSize: 11,
-    color:COLORS.dishcoveryNearBlack,
+    // color:COLORS.dishcoveryNearBlack,
+    color: COLORS.dishcoveryLightGrey,
     marginBottom: 3
   }
 })

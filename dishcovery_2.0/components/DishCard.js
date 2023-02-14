@@ -13,11 +13,11 @@ import { SIZES, COLORS, FONTS, icons } from "../constants";
 import { Ionicons } from '@expo/vector-icons';
 import CountryFlag from "react-native-country-flag";
 
-const gallerywidth = 280
-const containerheight = 320
-const galleryheight = 200
+const gallerywidth = 203
+const containerheight = 300
+const galleryheight = 210
 const infoboxheight = 85
-const marginInfoBox = 200
+const marginInfoBox = 100
 
 
 const DishCard = ({containerStyle, recipeItem, onPress}) => {
@@ -34,45 +34,33 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
         }}
         onPress={onPress}
         >
-        <View style={{flexDirection:'column',        
-        justifyContent: 'center',
-        alignItems: 'center',marginLeft:-13}}>
+
+        <View 
+            style={{flexDirection:'column',        
+                justifyContent: 'center',
+                alignItems: 'center',
+                marginLeft:-13
+                }}>
              {/* Background Image   */}
             <ImageBackground source={recipeItem.image} resizeMode="cover" style={{flex:1,width: gallerywidth, height: galleryheight}}
-                imageStyle={{ borderTopRightRadius: SIZES.radius,
-                    borderTopLeftRadius: SIZES.radius}}>
-            {/* Like icon */}
-            <View style = {{flex:1,flexDirection: 'row-reverse',justifyContent: 'space-between'}}>
-                {/* <Image source={recipeItem.isBookmarked ? icons.bookmarkFilled : icons.bookmark}
-                style={{width: 20,height: 20,marginRight: SIZES.base,tintColor: COLORS.darkGreen}}/> */}
-                <View style = {styles.heartButton}><Ionicons name="heart" size={25} color= {COLORS.dishcoveryOrange} /></View>
-            </View>
-            {/* Country */}
-            {/* <View
-                style={{
-                    position: 'absolute',
-                    margin:15,
-                    paddingHorizontal: SIZES.radiussmall,
-                    paddingVertical: 5,
-                    backgroundColor: "white",
-                    borderRadius: SIZES.radius,
-                    flexDirection:'row',
-                    alignItems:'center'
-                }}>
-                <CountryFlag isoCode={recipeItem.countryicon} size={10} />
-                <Text style={{ color: "black", ...FONTS.h4 }}>  {recipeItem.country}</Text>
-            </View> */}
-            </ImageBackground>
-            <View
+                imageStyle={{ borderRadius: SIZES.radius - 10}}>
+                {/* Like icon */}
+                <View style = {{flex:1,flexDirection: 'row-reverse',justifyContent: 'space-between'}}>
+                    {/* <Image source={recipeItem.isBookmarked ? icons.bookmarkFilled : icons.bookmark}
+                    style={{width: 20,height: 20,marginRight: SIZES.base,tintColor: COLORS.darkGreen}}/> */}
+                    <View style = {styles.heartButton}><Ionicons name="heart" size={25} color= {COLORS.dishcoveryOrange} /></View>
+                </View>
+                
+                <View
                 style={{
                     marginTop:marginInfoBox,
-                    marginBottom:20,
+                    // marginBottom:20,
                     paddingHorizontal:22,
                     height:infoboxheight,
                     width:gallerywidth,
-                    backgroundColor: "white",
-                    borderBottomRightRadius: SIZES.radius,
-                    borderBottomLeftRadius: SIZES.radius,
+                    // backgroundColor: "white",
+                    // borderBottomRightRadius: SIZES.radius,
+                    // borderBottomLeftRadius: SIZES.radius,
                     shadowColor: "#000",
                     shadowOffset: {
                       width: 0,
@@ -83,15 +71,18 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                 }}>
                     <Text style={styles.title}>{recipeItem.name}</Text>
                     <View style={{ flex:1, flexDirection:'row',justifyContent:'center'}}>
-                        <Ionicons name="cellular" size={14} color= {COLORS.dishcoveryOrange} />
+                        {/* <Ionicons name="cellular" size={14} color= {COLORS.dishcoveryOrange} /> */}
                         <Text style={styles.info}> {recipeItem.difficulty}   </Text>
-                        <Ionicons name="time" size={14} color= {COLORS.dishcoveryOrange} />
+                        {/* <Ionicons name="time" size={14} color= {COLORS.dishcoveryOrange} /> */}
                         <Text style={styles.info}> {recipeItem.duration}   </Text>
                         {/* <Ionicons name="location" size={13} color= {COLORS.dishcoveryOrange} /> */}
                         <CountryFlag isoCode={recipeItem.countryicon} size={10} style = {{marginTop:3, borderWidth:0.5,borderColor: "light-grey"}}/>
                         <Text style={styles.info}> {recipeItem.country}</Text>
                     </View>
             </View>
+
+            </ImageBackground>
+            
         </View>
         </TouchableOpacity>
     )
@@ -124,22 +115,24 @@ const styles= StyleSheet.create({
         },
         shadowOpacity: 0.5,
         shadowRadius: 10,
-},
-title: {
-    fontSize: 15,
-    letterSpacing: 1,
-    textTransform:'uppercase',
-    fontFamily: 'Inter-Bold',
-    textAlign: 'center',
-    color:COLORS.dishcoveryNearBlack,
-    marginRight: 5,
-    marginLeft: 5,
-    marginVertical:13,
-  },
-  info: {
-    fontSize: 13,
-    color:COLORS.dishcoveryNearBlack,
-    marginBottom: 5
-  }})
+    },
+    title: {
+        fontSize: 15,
+        letterSpacing: 1,
+        textTransform:'uppercase',
+        fontFamily: 'Inter-Bold',
+        textAlign: 'left',
+        // color:COLORS.dishcoveryNearBlack,
+        color: COLORS.dishcoveryLightGrey,
+        marginRight: 5,
+        marginLeft: 5,
+        marginVertical:13,
+    },
+    info: {
+        fontSize: 13,
+        // color:COLORS.dishcoveryNearBlack,
+        color: COLORS.dishcoveryLightGrey,
+        marginBottom: 5
+    }})
 
 export default DishCard;
