@@ -39,17 +39,17 @@ const [fontsLoaded] = useFonts({
             </TouchableOpacity>
           <View style={commonStyles.outerView}>
             <View style={styles.imageContainer}>
-                <Image source={require('../../assets/images/onboardingimages/cookingtutorial.png')} />
+                <Image source={require('../../assets/images/onboardingimages/cookingtutorial.png')} style={styles.imageStyle}/>
             </View>
 
-            <View>
-                <Text style={styles.onboardingHeader}>Have fun dishcovering!</Text>
-                <Text style={styles.TextStyle}>Follow any of our authentic recipes to that dream dish. Yum!</Text>
+            <View style={{marginTop:20 }}>
+                <Text style={styles.onboardingHeading}>Have fun dishcovering!</Text>
+                <Text style={styles.TextStyle}>Follow our authentic recipes to your dream dish. Yum!</Text>
             </View>
 
-            <View style={{ alignSelf: "center" }}>
-                <Text style={{ fontSize: 30, color: "#D9D9D9" }}>..</Text>
-                <Text style={{ fontSize: 30, color: "#DD6135" }}>.</Text>
+            <View style={{ alignSelf: "center", flexDirection: "row", marginTop:-50 }}>
+                <Text style={{ fontSize: 100, color: "#D9D9D9" }}>..</Text>
+                <Text style={{ fontSize: 100, color: "#DD6135" }}>.</Text>
             </View>
 
             <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Login or Sign Up")}>
@@ -79,13 +79,24 @@ const styles = StyleSheet.create({
       },
       imageContainer: {
         flex:1,
+        height: 300,
+        // width: 300,
+        alignItems: 'center',
+        // display:'inline',
+        flexDirection: 'column',
       },
       imageStyle: {
         flex: 1,
-        width: 120,
-        height:120,
+        width: 300,
+        // height: 100,
+        resizeMode:'contain',
         // borderTopRightRadius:20,
         // borderTopLeftRadius:20,
+      },
+      onboardingHeading: {
+        fontSize: 28,
+        textAlign: 'center',
+        fontFamily: 'Inter-Bold',
       },
       TextStyle: {
         fontSize: 15,

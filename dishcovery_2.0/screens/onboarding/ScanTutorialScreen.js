@@ -42,28 +42,30 @@ const ScanTutorialScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={commonStyles.whiteBackground}>
-          <View style={commonStyles.outerView}>
-            
-            <TouchableOpacity
+      <TouchableOpacity
               style={CloseButton.closeButtonContainer}
               onPress={() => navigation.goBack()}
             >
               <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
             </TouchableOpacity>
-
-            <View style={styles.imageContainer}>
+          <View style={commonStyles.outerView}>
+            <View style={styles.container}>
+              <View style={styles.imageContainer}>
                 <Image source={image} style={styles.imageStyle}/>
-                <Text style={styles.TextStyle}>{text}</Text>
+              </View>
+              <View  style={{ flex: 1 }}>
+                <Text style={{fontSize: 15,textAlign: 'center',fontFamily: 'Inter-Regular', color: "#DD6135"}}>{text}</Text>
+              </View>  
             </View>
 
-            <View>
-                <Text style={styles.onboardingHeader}>Scan an ingredient</Text>
+            <View style={{marginTop:20 }}>
+                <Text style={styles.onboardingHeading}>Scan an ingredient</Text>
                 <Text style={styles.TextStyle}>Use our AI recognition feature to identify your food ingredient!</Text>
             </View>
 
-            <View style={{ alignSelf: "center" }}>
-                <Text style={{ fontSize: 30, color: "#DD6135" }}>.</Text>
-                <Text style={{ fontSize: 30, color: "#D9D9D9" }}>..</Text>
+            <View style={{ alignSelf: "center", flexDirection: "row", marginTop:-50 }}>
+                <Text style={{ fontSize: 100, color: "#DD6135" }}>.</Text>
+                <Text style={{ fontSize: 100, color: "#D9D9D9" }}>..</Text>
             </View>
 
             <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Context Tutorial Screen")}>
@@ -78,9 +80,10 @@ export default ScanTutorialScreen;
 
 const styles = StyleSheet.create({
     container: {
-        flex:1,
-        flexDirection:'column'
-      },
+      flex: 1,
+      flexDirection: 'row',
+      alignItems: 'center',
+    },
       buttonContainer:{
         height:55,
         // marginBottom:0,
@@ -93,28 +96,23 @@ const styles = StyleSheet.create({
       },
       imageContainer: {
         flex:1,
+        height:'90%',
+        display:'inline',
+        flexDirection: 'column',
+        alignContent: 'center',
+        // paddingBottom: 50,
       },
       imageStyle: {
         flex: 1,
-        width: 120,
-        height:120,
-        // borderTopRightRadius:20,
-        // borderTopLeftRadius:20,
-      },
-      imageStyle: {
-        flex: 1,
-        width: 60,
-        height:60,
-        borderTopRightRadius:20,
-        borderTopLeftRadius:20,
+        width: 190,
       },
       TextStyle: {
         fontSize: 15,
         textAlign: 'center',
         fontFamily: 'Inter-Regular',
-        color: "#DD6135",
+        // color: "#DD6135",
       },
-      onboardingHeader: {
+      onboardingHeading: {
         fontSize: 28,
         textAlign: 'center',
         fontFamily: 'Inter-Bold',

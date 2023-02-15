@@ -39,18 +39,18 @@ const [fontsLoaded] = useFonts({
             </TouchableOpacity>
           <View style={commonStyles.outerView}>
             <View style={styles.imageContainer}>
-                <Image source={require('../../assets/images/onboardingimages/contexttutorial.png')} />
+                <Image source={require('../../assets/images/onboardingimages/contexttutorial.png')} style={styles.imageStyle} />
             </View>
 
-            <View>
-                <Text style={styles.onboardingHeader}>Learn about ingredient</Text>
+            <View style={{marginTop:20 }}>
+                <Text style={styles.onboardingHeading}>Learn about ingredient</Text>
                 <Text style={styles.TextStyle}>Explore the various contexts within which the dish is used!</Text>
             </View>
 
-            <View style={{ alignSelf: "center" }}>
-                <Text style={{ fontSize: 30, color: "#DD6135" }}>.</Text>
-                <Text style={{ fontSize: 30, color: "#D9D9D9" }}>.</Text>
-                <Text style={{ fontSize: 30, color: "#DD6135" }}>.</Text>
+            <View style={{alignSelf: "center", flexDirection: "row", marginTop:-50}}>
+                <Text style={{ fontSize: 100, color: "#D9D9D9" }}>.</Text>
+                <Text style={{ fontSize: 100, color: "#DD6135" }}>.</Text>
+                <Text style={{ fontSize: 100, color: "#D9D9D9" }}>.</Text>
             </View>
 
 
@@ -81,18 +81,32 @@ const styles = StyleSheet.create({
       },
       imageContainer: {
         flex:1,
+        height: 300,
+        // width: 300,
+        alignItems: 'center',
+        // display:'inline',
+        flexDirection: 'column',
       },
       imageStyle: {
         flex: 1,
-        width: 120,
-        height:120,
+        width: 300,
+        resizeMode:'contain',
+        
+        // width: 120,
+        // height:120,
         // borderTopRightRadius:20,
         // borderTopLeftRadius:20,
+      },
+      onboardingHeading: {
+        fontSize: 28,
+        textAlign: 'center',
+        fontFamily: 'Inter-Bold',
       },
       TextStyle: {
         fontSize: 15,
         textAlign: 'center',
-        fontFamily: 'Inter-Regular'
+        fontFamily: 'Inter-Regular',
+        // color: "#DD6135",
       },
       ButtonTextStyle: {
         fontSize: 15,

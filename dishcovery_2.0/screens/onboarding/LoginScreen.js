@@ -1,23 +1,10 @@
 
-import {useState} from "react"// import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
-// import AppLoading from 'expo-app-loading';
+import {useState} from "react"
+import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
-
-// createUserWithEmailAndPassword(auth, email, password)
-//   .then((userCredential) => {
-//     // Signed in 
-//     const user = userCredential.user;
-//     // ...
-//   })
-//   .catch((error) => {
-//     const errorCode = error.code;
-//     const errorMessage = error.message;
-//     // ..
-//   });
-
 import React from 'react'
-import { Alert, KeyboardAvoidingView, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import { KeyboardAvoidingView, TouchableOpacity } from 'react-native'
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import * as ImagePicker from 'expo-image-picker';
 
@@ -42,7 +29,7 @@ export default function LoginScreen({ navigation }) {
     const [username, onChangeUID] = useState("");
 
     const signUpUser = async () => {
-        const auth = getAuth();
+        //const auth = getAuth();
         if (email.length === 0 || password.length === 0) {
             return;
         } try {
@@ -52,8 +39,10 @@ export default function LoginScreen({ navigation }) {
                 email: userCredential.user.email,
                 picture: image
             })
+            console.log(email);
             userCredential.user.displayName = username;
             userCredential.user.photoURL = image;
+            
             navigation.navigate('Home Screen');
         } catch(err) {
             Alert.alert(
@@ -85,21 +74,21 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.caption}>Username</Text>
                 <TextInput 
                     placeholder="E.g. dishlover123..."
-                    // value={}
-                    // onChangeText={text => }
+                     value={username}
+                     onChangeText={text => onChangeUID(text)}
                     style={styles.input}
                 />
                 <Text style={styles.caption}>Email</Text>
                 <TextInput 
                     placeholder="E.g. dishlover@dish.com"
-                    // value={}
-                    // onChangeText={text => }
+                     value={email}
+                     onChangeText={text => onChangeEmail(text)}
                     style={styles.input}
                 />
                 <Text style={styles.caption}>Password</Text>
                 <TextInput 
                     placeholder="Enter your password here."
-                    // value={}
+                     //value={}
                     // onChangeText={text => }
                     style={styles.input}
                     secureTextEntry
@@ -107,8 +96,8 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.caption}>Confirm Password</Text>
                 <TextInput 
                     placeholder="Enter your password here."
-                    // value={}
-                    // onChangeText={text => }
+                     value={password}
+                     onChangeText={text => onChangePassword(text)}
                     style={styles.input}
                     secureTextEntry
                 />
@@ -116,7 +105,8 @@ export default function LoginScreen({ navigation }) {
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("Explore")}
+                    onPress={() => navigation.navigate("Explore") }
+                    onPressIn={signUpUser}
                     style={styles.button}
                 >
                     <Text style={styles.buttonText}>Next  →</Text>
@@ -190,40 +180,3 @@ const styles = StyleSheet.create({
     },
     buttonOutlineText: {}
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

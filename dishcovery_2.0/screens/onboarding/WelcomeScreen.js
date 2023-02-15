@@ -38,13 +38,17 @@ const [fontsLoaded] = useFonts({
             <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
         </TouchableOpacity>
 
-        <View style={commonStyles.outerView}>
+        <View style={styles.container}>
+          <View style={styles.textContainer}>
             <Text style={styles.onboardingHeader}>Welcome</Text>
             <Text style={styles.TextStyle}>Let's start Dishcovering new food!</Text>
-            <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Tutorial Screen")}>           
-                <Text style={styles.ButtonTextStyle}> Next -&gt; </Text>
-            </TouchableOpacity>
+          </View>
+            
+          
         </View>
+        <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Tutorial Screen")}>           
+              <Text style={styles.ButtonTextStyle}> Next -&gt; </Text>
+          </TouchableOpacity>
     </SafeAreaView>
   );
 };
@@ -54,18 +58,28 @@ export default WelcomeScreen;
 const styles = StyleSheet.create({
     container: {
         flex:1,
-        flexDirection:'column'
+        flexDirection:'column',
+        justifyContent:'center',
+        // padding:50,
+      },
+      textContainer: {
+        flex:1,
+        flexDirection:'column',
+        // justifyContent:'center',
+        // padding:50,
+        marginTop:300,
       },
       buttonContainer:{
         height:55,
-        marginBottom:0,
+        marginBottom:100,
         padding:0,
         justifyContent:'center',
         backgroundColor:'#DD6135',
         borderRadius:20,
-        flexDirection:'column',
-        
+        // flex:1,
+        flexDirection:'column',       
       },
+      
       TextStyle: {
         fontSize: 15,
         textAlign: 'center',
