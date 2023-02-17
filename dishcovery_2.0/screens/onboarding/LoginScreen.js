@@ -92,8 +92,8 @@ export default function LoginScreen({ navigation }) {
             <View style={styles.inputContainer}>
                 {image && <Image style={styles.image} source={{uri : image}}/>}
                 <Pressable  style={styles.button} onPress={pickImage}>
-                            <Text style={styles.caption}>upload a profile picture</Text>
-                        </Pressable> 
+                    <Text style={styles.caption}>upload a profile picture</Text>
+                </Pressable> 
                 <Text style={styles.caption}>Username</Text>
                 <TextInput 
                     placeholder="E.g. dishlover123..."
