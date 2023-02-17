@@ -63,10 +63,11 @@ const LikedScreen = ({ navigation }) => {
 
                         </View>
 
-                        <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center', marginTop:50, textAlign:'left'}}>
+                        <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center', marginTop:50, backgroundColor:"rgba(0, 0, 0, 0.5)", textAlign:'left', borderBottomRightRadius: SIZES.radius - 20,
+                    borderBottomLeftRadius: SIZES.radius - 20}}>
                           <Text style={{        
                               fontSize: 11,
-                              textTransform:'uppercase',
+                              textTransform:'capitalise',
                               fontFamily: 'Inter-SemiBold',
                               textAlign: 'left',
                               color: COLORS.dishcoveryLightGrey,
@@ -107,7 +108,7 @@ export default LikedScreen
 const SCREEN_WIDTH = 330
 const recipeNumColums = 2
 const RECIPE_ITEM_MARGIN = 0.8
-const RECIPE_ITEM_HEIGHT = 150
+const RECIPE_ITEM_HEIGHT = 170
 
 const styles = StyleSheet.create({
   container: {
@@ -132,7 +133,8 @@ const styles = StyleSheet.create({
   subheading:{
     textAlign:'center',
     marginBottom:10,
-    color: COLORS.dishcoveryOrange,
+    // color: COLORS.dishcoveryOrange,
+    color: 'white',
     fontFamily:'Inter-SemiBold',
     textTransform:'uppercase',
     fontSize:13
@@ -167,7 +169,8 @@ const styles = StyleSheet.create({
   category: {
     fontSize: 11,
     // color:COLORS.dishcoveryNearBlack,
-    color: COLORS.dishcoveryLightGrey,
+    // color: COLORS.dishcoveryLightGrey,
+    color: 'white',
     marginBottom: 3
   }
 })

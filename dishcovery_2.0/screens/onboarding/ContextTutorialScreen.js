@@ -71,7 +71,6 @@ const styles = StyleSheet.create({
       },
       buttonContainer:{
         height:55,
-        // marginBottom:0,
         marginBottom:100,
         padding:0,
         justifyContent:'center',
@@ -82,20 +81,13 @@ const styles = StyleSheet.create({
       imageContainer: {
         flex:1,
         height: 300,
-        // width: 300,
-        alignItems: 'center',
-        // display:'inline',
+              alignItems: 'center',
         flexDirection: 'column',
       },
       imageStyle: {
         flex: 1,
         width: 300,
         resizeMode:'contain',
-        
-        // width: 120,
-        // height:120,
-        // borderTopRightRadius:20,
-        // borderTopLeftRadius:20,
       },
       onboardingHeading: {
         fontSize: 28,
@@ -106,7 +98,6 @@ const styles = StyleSheet.create({
         fontSize: 15,
         textAlign: 'center',
         fontFamily: 'Inter-Regular',
-        // color: "#DD6135",
       },
       ButtonTextStyle: {
         fontSize: 15,

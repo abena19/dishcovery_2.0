@@ -14,10 +14,10 @@ import { Ionicons } from '@expo/vector-icons';
 import CountryFlag from "react-native-country-flag";
 
 const gallerywidth = 203
-const containerheight = 300
-const galleryheight = 210
-const infoboxheight = 85
-const marginInfoBox = 100
+const containerheight = 280
+const galleryheight = 225
+const infoboxheight = 95
+const marginInfoBox = 105
 
 
 const DishCard = ({containerStyle, recipeItem, onPress}) => {
@@ -39,12 +39,14 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
             style={{flexDirection:'column',        
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:-13
+                marginLeft:-13,
+                position:'relative',
                 }}>
              {/* Background Image   */}
             <ImageBackground source={recipeItem.image} resizeMode="cover" style={{flex:1,width: gallerywidth, height: galleryheight}}
                 imageStyle={{ borderRadius: SIZES.radius - 10}}>
                 {/* Like icon */}
+                {/* <View style={{ osition: "absolute", top: 0, left: 0, bottom: 0, right: 0, backgroundColor: "rgba(0, 0, 0, 0.5)" }} /> */}
                 <View style = {{flex:1,flexDirection: 'row-reverse',justifyContent: 'space-between'}}>
                     {/* <Image source={recipeItem.isBookmarked ? icons.bookmarkFilled : icons.bookmark}
                     style={{width: 20,height: 20,marginRight: SIZES.base,tintColor: COLORS.darkGreen}}/> */}
@@ -53,15 +55,18 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                 
                 <View
                 style={{
-                    marginTop:marginInfoBox,
-                    // marginBottom:20,
-                    paddingHorizontal:22,
+                    marginTop:marginInfoBox + 25,
+                    // flex: 1,
+                    // justifyContent: 'flex-end',
+                    // marginBottom:80,
+                    paddingHorizontal:15,
                     height:infoboxheight,
                     width:gallerywidth,
-                    // backgroundColor: "white",
-                    // borderBottomRightRadius: SIZES.radius,
-                    // borderBottomLeftRadius: SIZES.radius,
+                    backgroundColor:"rgba(0, 0, 0, 0.5)",
+                    borderBottomRightRadius: SIZES.radius - 10,
+                    borderBottomLeftRadius: SIZES.radius - 10,
                     shadowColor: "#000",
+                    textAlign: 'left',
                     shadowOffset: {
                       width: 0,
                       height: 0,
@@ -72,16 +77,18 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                     <Text style={styles.title}>{recipeItem.name}</Text>
                     <View style={{ flex:1, flexDirection:'row',justifyContent:'center'}}>
                         {/* <Ionicons name="cellular" size={14} color= {COLORS.dishcoveryOrange} /> */}
+                        <Text style={styles.info}> {recipeItem.duration}   </Text>
                         <Text style={styles.info}> {recipeItem.difficulty}   </Text>
                         {/* <Ionicons name="time" size={14} color= {COLORS.dishcoveryOrange} /> */}
-                        <Text style={styles.info}> {recipeItem.duration}   </Text>
+                        
                         {/* <Ionicons name="location" size={13} color= {COLORS.dishcoveryOrange} /> */}
-                        <CountryFlag isoCode={recipeItem.countryicon} size={10} style = {{marginTop:3, borderWidth:0.5,borderColor: "light-grey"}}/>
-                        <Text style={styles.info}> {recipeItem.country}</Text>
+                        {/* <CountryFlag isoCode={recipeItem.countryicon} size={10} style = {{marginTop:3, borderWidth:0.5,borderColor: "light-grey"}}/>
+                        <Text style={styles.info}> {recipeItem.country}</Text> */}
                     </View>
             </View>
 
             </ImageBackground>
+            
             
         </View>
         </TouchableOpacity>
@@ -119,20 +126,21 @@ const styles= StyleSheet.create({
     title: {
         fontSize: 15,
         letterSpacing: 1,
-        textTransform:'uppercase',
+        textTransform:'capitalise',
         fontFamily: 'Inter-Bold',
         textAlign: 'left',
         // color:COLORS.dishcoveryNearBlack,
-        color: COLORS.dishcoveryLightGrey,
+        color: 'white',
         marginRight: 5,
-        marginLeft: 5,
-        marginVertical:13,
+        // marginLeft: 5,
+        marginVertical:8,
     },
     info: {
         fontSize: 13,
+        fontWeight:"bold",
         // color:COLORS.dishcoveryNearBlack,
-        color: COLORS.dishcoveryLightGrey,
-        marginBottom: 5
+        color: 'white',
+        // marginBottom: 5
     }})
 
 export default DishCard;

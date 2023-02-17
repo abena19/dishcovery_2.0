@@ -1,5 +1,5 @@
 
-import {useState} from "react"
+import { useState } from "react"
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
@@ -30,21 +30,35 @@ export default function LoginScreen({ navigation }) {
 
     const signUpUser = async () => {
         //const auth = getAuth();
+        const [image, setImage] = useState("../assets/profile.png");
+        const pickImage = async () => {
+            let result = await ImagePicker.launchImageLibraryAsync({
+                mediaTypes: ImagePicker.MediaTypeOptions.All,
+                allowsEditing: true,
+                aspect: [1, 1],
+                quality: 1
+            });
+            if (!result.cancelled) {
+                setImage(result.uri);
+            }
+        };
+
+
         if (email.length === 0 || password.length === 0) {
             return;
         } try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
             await addDoc(collection(db, 'users'), {
-                name: username, 
+                name: username,
                 email: userCredential.user.email,
                 picture: image
             })
             console.log(email);
             userCredential.user.displayName = username;
             userCredential.user.photoURL = image;
-            
+
             navigation.navigate('Home Screen');
-        } catch(err) {
+        } catch (err) {
             Alert.alert(
                 "Error",
                 err.code,
@@ -70,34 +84,56 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.pageTitle}>Account Information</Text>
                 <Text style={styles.pageCaption}>Let's create your unique login.</Text>
             </View>
+
+
+            {/* <View>
+                <TouchableOpacity>
+                <ImagePicker>
+                     source={{uri: image}} 
+                    style={styles.images}
+                    onPress={() => pickImage}
+                        
+                    
+                </ImagePicker>
+                </TouchableOpacity>
+            </View> */}
+
+            {/* KAYLA 147 image picker styling & code 
+            
+            {image && <Image style={styles.image} source={{uri : image}}/>}
+                        <Pressable  style={styles.button} onPress={pickImage}>
+                            <Text style={styles.caption}>upload a profile picture</Text>
+                        </Pressable>  */}
+
+
             <View style={styles.inputContainer}>
                 <Text style={styles.caption}>Username</Text>
-                <TextInput 
+                <TextInput
                     placeholder="E.g. dishlover123..."
-                     value={username}
-                     onChangeText={text => onChangeUID(text)}
+                    value={username}
+                    onChangeText={text => onChangeUID(text)}
                     style={styles.input}
                 />
                 <Text style={styles.caption}>Email</Text>
-                <TextInput 
+                <TextInput
                     placeholder="E.g. dishlover@dish.com"
-                     value={email}
-                     onChangeText={text => onChangeEmail(text)}
+                    value={email}
+                    onChangeText={text => onChangeEmail(text)}
                     style={styles.input}
                 />
                 <Text style={styles.caption}>Password</Text>
-                <TextInput 
+                <TextInput
                     placeholder="Enter your password here."
-                     //value={}
+                    //value={}
                     // onChangeText={text => }
                     style={styles.input}
                     secureTextEntry
                 />
                 <Text style={styles.caption}>Confirm Password</Text>
-                <TextInput 
+                <TextInput
                     placeholder="Enter your password here."
-                     value={password}
-                     onChangeText={text => onChangePassword(text)}
+                    value={password}
+                    onChangeText={text => onChangePassword(text)}
                     style={styles.input}
                     secureTextEntry
                 />
@@ -105,7 +141,7 @@ export default function LoginScreen({ navigation }) {
 
             <View style={styles.buttonContainer}>
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("Explore") }
+                    onPress={() => navigation.navigate("Explore")}
                     onPressIn={signUpUser}
                     style={styles.button}
                 >
@@ -161,11 +197,11 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'flex-end',
-        marginBottom:100
+        marginBottom: 100
     },
     button: {
-        backgroundColor: '#DD6135', 
-        width: '100%', 
+        backgroundColor: '#DD6135',
+        width: '100%',
         padding: 15,
         borderRadius: 10,
         alignItems: 'center',
