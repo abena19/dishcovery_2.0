@@ -15,7 +15,7 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 const ingredientContexttest = ingredientContext
 const clarifai = new Clarifai.App({
   //apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",
-  apiKey: "272798102f5e47df84a6486ee9078eed",
+  apiKey: "d93652649bfe45c486abb48b88e930d5",
 });
 process.nextTick = setImmediate;
 
@@ -127,7 +127,7 @@ export default class App extends React.Component {
               type={this.state.type}
             >
               <View style={commonStyles.outerView}>
-                {CloseButton({onPress: (() => this.props.navigation.navigate("Scan Intro Screen")), color: 'gray'})}
+                {CloseButton({onPress: (() => this.props.navigation.goBack()), color: 'gray'})}
                 <View style={styles.messageContainer}>
                   {this.state.scanPressed ? 
                         <View style={styles.progressBarContainer}>

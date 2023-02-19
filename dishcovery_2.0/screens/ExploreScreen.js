@@ -227,6 +227,7 @@ const ExploreScreen = ({ navigation }) => {
                     return (
                         <DishCard
                         containerStyle = {{
+                            // activeOpacity: 0.2,
                             marginLeft: index == 0 ? 30 : 6
                         }}
                         recipeItem={item}

@@ -1,6 +1,6 @@
 
 import {useState} from "react"
-import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
@@ -49,7 +49,6 @@ export default function LoginScreen({ navigation }) {
             console.log(email);
             userCredential.user.displayName = username;
             userCredential.user.photoURL = image;
-            
             navigation.navigate('Home Screen');
         } catch(err) {
             Alert.alert(
@@ -91,9 +90,10 @@ export default function LoginScreen({ navigation }) {
             </View>
             <View style={styles.inputContainer}>
                 {image && <Image style={styles.image} source={{uri : image}}/>}
+                {/* {image && <Image source={{uri : image}}/>} */}
                 <Pressable  style={styles.button} onPress={pickImage}>
                     <Text style={styles.caption}>upload a profile picture</Text>
-                </Pressable> 
+                </Pressable>
                 <Text style={styles.caption}>Username</Text>
                 <TextInput 
                     placeholder="E.g. dishlover123..."

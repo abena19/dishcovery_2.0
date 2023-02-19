@@ -13,11 +13,11 @@ import { SIZES, COLORS, FONTS, icons } from "../constants";
 import { Ionicons } from '@expo/vector-icons';
 import CountryFlag from "react-native-country-flag";
 
-const gallerywidth = 203
+const gallerywidth = 240
 const containerheight = 280
-const galleryheight = 225
-const infoboxheight = 95
-const marginInfoBox = 105
+const galleryheight = 240
+const infoboxheight = galleryheight/ 2.52
+const marginInfoBox = galleryheight / 1.66
 
 
 const DishCard = ({containerStyle, recipeItem, onPress}) => {
@@ -27,10 +27,11 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
             height: containerheight,
             width: gallerywidth,
             marginTop: SIZES.paddingsmall,
-            marginRight: 20,
-            marginLeft: SIZES.paddingsmall,
+            marginRight: gallerywidth / 20,
+            marginLeft: gallerywidth / 20,
             borderRadius: SIZES.radius,
-            ...containerStyle
+            ...containerStyle,
+            activeOpacity: 0.9
         }}
         onPress={onPress}
         >
@@ -39,7 +40,7 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
             style={{flexDirection:'column',        
                 justifyContent: 'center',
                 alignItems: 'center',
-                marginLeft:-13,
+                marginHorizontal:30,
                 position:'relative',
                 }}>
              {/* Background Image   */}
@@ -55,11 +56,11 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                 
                 <View
                 style={{
-                    marginTop:marginInfoBox + 25,
-                    // flex: 1,
-                    // justifyContent: 'flex-end',
-                    // marginBottom:80,
-                    paddingHorizontal:15,
+                    marginTop:marginInfoBox,
+                    flexDirection:'center',        
+                    justifyContent: 'center',
+                    paddingHorizontal:marginInfoBox / 10,
+                    paddingVertical: infoboxheight / 12,
                     height:infoboxheight,
                     width:gallerywidth,
                     backgroundColor:"rgba(0, 0, 0, 0.5)",
@@ -71,11 +72,11 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
                       width: 0,
                       height: 0,
                     },
-                    shadowOpacity: 0.2,
+                    shadowOpacity: 0.05,
                     shadowRadius: 15,
                 }}>
                     <Text style={styles.title}>{recipeItem.name}</Text>
-                    <View style={{ flex:1, flexDirection:'row',justifyContent:'center'}}>
+                    <View style={{ flex:1, flexDirection:'row', paddingHorizontal:marginInfoBox / 50}}>
                         {/* <Ionicons name="cellular" size={14} color= {COLORS.dishcoveryOrange} /> */}
                         <Text style={styles.info}> {recipeItem.duration}   </Text>
                         <Text style={styles.info}> {recipeItem.difficulty}   </Text>
