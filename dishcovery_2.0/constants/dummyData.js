@@ -2,6 +2,7 @@ import images from "./images"
 import icons from "./icons"
 
 const trendingRecipes = [
+   
     {
         id: 1001,
         name: "Spaghetti With Shrimp Sauce",
@@ -202,8 +203,70 @@ const trendingRecipes = [
     },
 
 ]
+const scannedIngredientRecipes = [
+    
+        {
+            id: 1,
+            name: "Tzatziki",
+            image: images.tzatziki,
+            duration: "15 mins",
+            difficulty: "Easy",
+            country: "Mediterranean",
+            countryicon: "gr",
+            culturalContext: "Tzatziki is a traditional Greek sauce that has been around for centuries. It was originally made with strained sheep's milk yogurt, but now most versions use cow's milk yogurt. The sauce is typically served as an accompaniment to grilled meats, pita bread, or vegetables.",
+            serving: 5,
+            isBookmark: true,
+            category: "Local",
+            ingredients: [
+                {
+                    id: 1,
+                    description: "Greek yogurt",
+                    quantity: "2 cups"
+
+                },
+                {
+                    id: 2,
+                    description: "Medium cucumber, grated and drained",
+                    quantity: "1"
+
+                },
+                {
+                    id: 3,
+                    description: "Garlic cloves, minced",
+                    quantity: "2-3"
+
+                },
+                {
+                    id: 4,
+                    description: "Extra virgin olive oil",
+                    quantity: "2 tbsp"
+
+                },
+                {
+                    id: 5,
+                    description: "Red Wine Vinegar",
+                    quantity: "1 tbsp"
+
+                },
+                {
+                    id: 6,
+                    description: "Chopped fresh dill",
+                    quantity: "1 tbsp"
+
+                },
+                {
+                    id: 7,
+                    description: "Salt and pepper to taste",
+                    quantity: "1 tbsp"
+
+                },
+            ]
+        },
+    
+]
 
 const bitterMelonRecipes = [
+   
     {
         id: 1,
         name: "Ginisang Ampalaya (Sauteed Bitter Melon)",
@@ -1013,6 +1076,7 @@ const likedRecipes = [
 
 export default {
     trendingRecipes,
+    scannedIngredientRecipes,
     bitterMelonRecipes,
     christmasRecipes,
     likedRecipes

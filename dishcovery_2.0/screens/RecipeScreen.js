@@ -90,7 +90,14 @@ const RecipeScreen = ({ navigation, route }) => {
                 {showIngredients ? (
                 <Text style={{marginTop: SIZES.padding}}>  
                     <Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup vegetable oil
-                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup sugar
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 medium cucumber, grated and drained
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 2-3 garlic cloves, minced
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 2 tbsp extra virgin olive oil
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 tbsp chopped fresh dill
+                    {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> Salt and pepper to taste
+                   
+                    
+                    {/* {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup sugar
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup orange juice
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup honey
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 tablespoon baking powder
@@ -117,12 +124,22 @@ const RecipeScreen = ({ navigation, route }) => {
                     {"\n"}
                     {"\n"}
                     {"\n"}
-                    {"\n"}
+                    {"\n"} */}
                 </Text>): null}
                 {showRecipe ? (
                 <Text style={{marginTop: SIZES.padding}}>
                     <Icon name="numeric-1-circle" color={COLORS.dishcoveryOrange} size={17}/> In a large mixing bowl, combine the oil, sugar, orange juice, honey, baking powder, baking soda, cinnamon, cloves, nutmeg, and vanilla extract. Mix well.
                     {"\n"}
+                    {"\n"}<Icon name="numeric-2-circle" color={COLORS.dishcoveryOrange} size={17} /> Mix the ingredients until they are fully combined and the texture is smooth.
+                    {"\n"}
+                    {"\n"}<Icon name="numeric-3-circle" color={COLORS.dishcoveryOrange} size={17} /> Adjust the seasoning to taste, if needed.
+                    {"\n"}
+                    {"\n"}<Icon name="numeric-4-circle" color={COLORS.dishcoveryOrange} size={17} /> Cover the tzatziki and refrigerate it for at least an hour to let the flavors meld.
+                    {"\n"}
+                    {"\n"}<Icon name="numeric-5-circle" color={COLORS.dishcoveryOrange} size={17} /> Serve the tzatziki cold as a dip or condiment.
+                    {"\n"}
+                   
+                    {/* {"\n"}
                     {"\n"}<Icon name="numeric-2-circle" color={COLORS.dishcoveryOrange} size={17} /> Gradually add the flour to the wet ingredients, mixing well until the dough comes together.
                     {"\n"}
                     {"\n"}<Icon name="numeric-3-circle" color={COLORS.dishcoveryOrange} size={17} /> Preheat your oven to 350°F (180°C).
@@ -144,7 +161,7 @@ const RecipeScreen = ({ navigation, route }) => {
                     {"\n"}
                     {"\n"}
                     {"\n"}
-                    {"\n"}
+                    {"\n"} */}
                     </Text>): null}
                 {showContext ? (<Text style={{marginTop: SIZES.padding}}>{selectedRecipe?.culturalContext}</Text>) : null}
 

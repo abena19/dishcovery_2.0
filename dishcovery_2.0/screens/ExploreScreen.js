@@ -191,7 +191,7 @@ const ExploreScreen = ({ navigation }) => {
                             Based On Your Scans
                         </Text>
                         <FlatList 
-                        data={dummyData.bitterMelonRecipes}
+                        data={dummyData.scannedIngredientRecipes}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={item => `${item.id}`}
