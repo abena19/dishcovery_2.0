@@ -14,7 +14,7 @@ import ingredientContext from '../../assets/ingredientContext';
 import { SafeAreaView } from 'react-native-safe-area-context';
 const ingredientContexttest = ingredientContext
 const clarifai = new Clarifai.App({
-  //apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",
+  // apiKey: "0b4d4f4f0a604f5da3889f2139e48efc",
   apiKey: "d93652649bfe45c486abb48b88e930d5",
 });
 process.nextTick = setImmediate;
@@ -43,12 +43,14 @@ export default class App extends React.Component {
     const { status } = await Camera.requestCameraPermissionsAsync();
     this.setState({ hasCameraPermission: status === 'granted' });
   }
+
   capturePhoto = async () => {
     if (this.camera) {
       let photo = await this.camera.takePictureAsync();
       return photo.uri;
     }
   };
+  
   resize = async photo => {
     let manipulatedImage = await ImageManipulator.manipulateAsync(
       photo,
@@ -57,6 +59,7 @@ export default class App extends React.Component {
     );
     return manipulatedImage.base64;
   };
+
   predict = async image => {
     let predictions = await clarifai.models.predict(
       Clarifai.FOOD_MODEL,
@@ -64,6 +67,8 @@ export default class App extends React.Component {
     );
     return predictions;
   };
+
+
   objectDetection = async () => {
     let photo = await this.capturePhoto();
     let resized = await this.resize(photo);
@@ -99,8 +104,8 @@ export default class App extends React.Component {
   renderProgress = async () => {
     return (
       <View>
-        <Text>Searching for item</Text>
-        <ProgressBar progress={100} height={7} backgroundColor="orange" /> 
+        {/* <Text>Searching for item</Text> */}
+        <ProgressBar progress={100} height={10} backgroundColor="orange" /> 
       </View>
     );
   }
@@ -132,7 +137,7 @@ export default class App extends React.Component {
                   {this.state.scanPressed ? 
                         <View style={styles.progressBarContainer}>
                           {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? <Text style = {styles.messageText}>Scan successful.</Text> : <Text style = {styles.messageText}>Scan failed!</Text>) : <Text style = {styles.messageText}>Searching for item</Text>}
-                          <ProgressBar progress={this.state.scanComplete ? 100: 50} height={7} 
+                          <ProgressBar progress={this.state.scanComplete ? 100: 40} height={10} 
                           backgroundColor={(this.state.ingredientNotRecognized || this.state.ingredientRecognized) ? (this.state.ingredientRecognized ? "green" : "firebrick") : "white"} />
                         </View> 
                   : <Text style = {styles.messageText}>Place item within the frame and scan </Text>}

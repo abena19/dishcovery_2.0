@@ -43,7 +43,7 @@ const ScanTutorialScreen = ({ navigation }) => {
   return (
     <SafeAreaView style={commonStyles.whiteBackground}>
       <TouchableOpacity
-              style={CloseButton.closeButtonContainer}
+              style={[CloseButton.closeButtonContainer, { marginTop: 20, marginLeft: 20 }]}
               onPress={() => navigation.goBack()}
             >
               <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
@@ -53,8 +53,8 @@ const ScanTutorialScreen = ({ navigation }) => {
               <View style={styles.imageContainer}>
                 <Image source={image} style={styles.imageStyle}/>
               </View>
-              <View  style={{ flex: 1 }}>
-                <Text style={{fontSize: 15,textAlign: 'center',fontFamily: 'Inter-Regular', color: "#DD6135"}}>{text}</Text>
+              <View  style={{ flex: 1,  marginLeft:50 }}>
+                <Text style={{fontSize: 15,textAlign: 'center',fontFamily: 'Inter-Regular', color: "#DD6135",}}>{text}</Text>
               </View>  
             </View>
 

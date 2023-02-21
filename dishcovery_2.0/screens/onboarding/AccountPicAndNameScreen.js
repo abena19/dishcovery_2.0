@@ -148,6 +148,8 @@ const styles = StyleSheet.create({
         // justifyContent:'flex-start',
         alignItems:'flex-start',
         width: '100%',
+        marginTop:10,
+        marginLeft: 15,
     },
     button: {
         height:55,

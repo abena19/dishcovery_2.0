@@ -186,13 +186,14 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'flex-end',
-        marginBottom:30
+        marginBottom:30,
     },
     backButtonContainer: {
         // justifyContent:'flex-start',
         alignItems:'flex-start',
         width: '100%',
-        marginLeft:20,
+        marginLeft:15,
+        marginTop:10,
     },
     button: {
         height:55,

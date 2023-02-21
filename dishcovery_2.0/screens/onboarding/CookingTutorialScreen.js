@@ -32,7 +32,7 @@ const [fontsLoaded] = useFonts({
   return (
     <SafeAreaView style={commonStyles.whiteBackground}>
         <TouchableOpacity
-              style={CloseButton.closeButtonContainer}
+              style={[CloseButton.closeButtonContainer, { marginTop: 20, marginLeft: 20 }]}
               onPress={() => navigation.goBack()}
             >
               <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
