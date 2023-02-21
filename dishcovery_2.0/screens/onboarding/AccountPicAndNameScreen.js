@@ -1,7 +1,7 @@
 
 
 import {useState} from "react"
-import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
@@ -21,7 +21,7 @@ const storage = getStorage();
 
 const AccountPicAndNameScreen = ({ navigation }) => {
 
-    const [image, setImage] = useState("blank image");
+    const [image, setImage] = useState(null);
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
             mediaTypes: ImagePicker.MediaTypeOptions.All,
@@ -29,7 +29,7 @@ const AccountPicAndNameScreen = ({ navigation }) => {
             aspect: [1, 1],
             quality: 1
         });
-        if (!result.cancelled) {
+        if (!result.canceled) {
             setImage(result.uri);
         }
     };
@@ -53,11 +53,22 @@ return (
               <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
             </TouchableOpacity>
           </View>
+
+           
+
       {/* </SafeAreaView> */}
         <View style={styles.title}>
             <Text style={styles.pageTitle}>Account Information</Text>
             <Text style={styles.pageCaption}>Let's create your unique login.</Text>
         </View>
+
+        <View style={styles.imageStyle}>
+                {image && <Image style={{width:'80%', height:'50%'}} source={{uri : image}}/>}
+                <Pressable  style={styles.button} onPress={pickImage}>
+                    <Text style={styles.caption}>{image ? 'Edit' : 'Upload'} profile picture</Text>
+                </Pressable>
+        </View>
+
         <View style={styles.inputContainer}>
             <Text style={styles.caption}>Your name</Text>
             <TextInput 
@@ -101,8 +112,8 @@ const styles = StyleSheet.create({
     pageTitle: {
         alignSelf: 'center',
         fontSize: 36,
-        marginBottom: 12,
-        marginTop: 40
+        // marginBottom: 12,
+        // marginTop: 40
     },
     pageCaption: {
         fontSize: 18,
@@ -158,6 +169,11 @@ const styles = StyleSheet.create({
         marginBottom: 0.1,
     },
     buttonOutlineText: {},
-
+    imageStyle: {
+        flex: 1,
+        width:'80%',
+        height: '70%',
+        marginTop: '20%',
+    },
 })
 

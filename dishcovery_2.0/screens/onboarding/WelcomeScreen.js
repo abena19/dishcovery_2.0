@@ -48,7 +48,7 @@ const [fontsLoaded] = useFonts({
         </View>
         <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Tutorial Screen")}>           
               <Text style={styles.ButtonTextStyle}> Next -&gt; </Text>
-          </TouchableOpacity>
+        </TouchableOpacity>
     </SafeAreaView>
   );
 };

@@ -18,18 +18,18 @@ import commonStyles from "../../assets/styles/CommonStyles.styles";
 const storage = getStorage();
 
 export default function LoginScreen({ navigation }) {
-    const [image, setImage] = useState("blank image");
-    const pickImage = async () => {
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.All,
-            allowsEditing: true,
-            aspect: [1, 1],
-            quality: 1
-        });
-        if (!result.canceled) {
-            setImage(result.uri);
-        }
-    };
+    // const [image, setImage] = useState(null);
+    // const pickImage = async () => {
+    //     let result = await ImagePicker.launchImageLibraryAsync({
+    //         mediaTypes: ImagePicker.MediaTypeOptions.All,
+    //         allowsEditing: true,
+    //         aspect: [1, 1],
+    //         quality: 1
+    //     });
+    //     if (!result.canceled) {
+    //         setImage(result.uri);
+    //     }
+    // };
 
     const [email, onChangeEmail] = useState("");
     const [password, onChangePassword] = useState("");
@@ -63,9 +63,7 @@ export default function LoginScreen({ navigation }) {
             )
         }
     }
-
-
-
+    
 
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
@@ -89,19 +87,14 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.pageCaption}>Let's create your unique login.</Text>
             </View>
             <View style={styles.inputContainer}>
-                {/* {image && <Image style={styles.imageStyle} source={{uri : image}}/>}
-                <Pressable  style={styles.button} onPress={pickImage}>
-                    <Text style={styles.caption}>upload a profile picture</Text>
-                </Pressable> */}
-                <View style={styles.container}>
-      {image ? (
-        <Image style={styles.image} source={{ uri: image }} />
-      ) : (
-        <Pressable style={styles.button} onPress={pickImage}>
-          <Text style={styles.caption}>Upload a Profile Picture</Text>
-        </Pressable>
-      )}
-    </View>
+                {/* moved to account screen name */}
+                {/* <View style={styles.imageStyle}>
+                    {image && <Image style={styles.imageStyle} source={{uri : image}}/>}
+                    <Pressable  style={styles.button} onPress={pickImage}>
+                        <Text style={styles.caption}>upload a profile picture</Text>
+                    </Pressable>
+                </View> */}
+                
                 <Text style={styles.caption}>Username</Text>
                 <TextInput 
                     placeholder="E.g. dishlover123..."
@@ -225,7 +218,7 @@ const styles = StyleSheet.create({
     buttonOutlineText: {},
     imageStyle: {
         width:'100%',
-        height: '100%',
+        height: '70%',
     },
 
 })
