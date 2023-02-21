@@ -45,15 +45,15 @@ return (
         behavior="padding"
     >
         {/* <SafeAreaView style={styles.backButton}> */}
-      <View>
-      <TouchableOpacity
-          style={CloseButton.closeButtonContainer}
-          onPress={() => navigation.goBack()}
+    <View style={styles.backButtonContainer}>
+        <TouchableOpacity
+            style={styles.backButtonContainer}
+            onPress={() => navigation.goBack()}
         >
         
-          <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
+            <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
         </TouchableOpacity>
-      </View>
+        </View>
       {/* </SafeAreaView> */}
         <View style={styles.title}>
             <Text style={styles.pageTitle}>Looking Good {name}!</Text>
@@ -221,6 +221,11 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'flex-end',
         marginBottom:20
+    },
+    backButtonContainer: {
+        // justifyContent:'flex-start',
+        alignItems:'flex-start',
+        width: '100%',
     },
     button: {
         backgroundColor: '#DD6135', 

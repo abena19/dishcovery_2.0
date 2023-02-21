@@ -26,7 +26,7 @@ export default function LoginScreen({ navigation }) {
             aspect: [1, 1],
             quality: 1
         });
-        if (!result.cancelled) {
+        if (!result.canceled) {
             setImage(result.uri);
         }
     };
@@ -74,9 +74,9 @@ export default function LoginScreen({ navigation }) {
             behavior="padding"
         >
             {/* <SafeAreaView style={styles.backButton}> */}
-          <View>
+          <View style={styles.backButtonContainer}>
           <TouchableOpacity
-              style={CloseButton.closeButtonContainer}
+              style={styles.backButtonContainer}
               onPress={() => navigation.goBack()}
             >
             
@@ -89,11 +89,19 @@ export default function LoginScreen({ navigation }) {
                 <Text style={styles.pageCaption}>Let's create your unique login.</Text>
             </View>
             <View style={styles.inputContainer}>
-                {image && <Image style={styles.image} source={{uri : image}}/>}
-                {/* {image && <Image source={{uri : image}}/>} */}
+                {/* {image && <Image style={styles.imageStyle} source={{uri : image}}/>}
                 <Pressable  style={styles.button} onPress={pickImage}>
                     <Text style={styles.caption}>upload a profile picture</Text>
-                </Pressable>
+                </Pressable> */}
+                <View style={styles.container}>
+      {image ? (
+        <Image style={styles.image} source={{ uri: image }} />
+      ) : (
+        <Pressable style={styles.button} onPress={pickImage}>
+          <Text style={styles.caption}>Upload a Profile Picture</Text>
+        </Pressable>
+      )}
+    </View>
                 <Text style={styles.caption}>Username</Text>
                 <TextInput 
                     placeholder="E.g. dishlover123..."
@@ -153,13 +161,13 @@ const styles = StyleSheet.create({
         flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 35
+        marginTop: 15
     },
     pageTitle: {
         alignSelf: 'center',
         fontSize: 36,
-        marginBottom: 12,
-        marginTop: 40
+        // marginBottom: 12,
+        // marginTop: 40
     },
     pageCaption: {
         fontSize: 18,
@@ -187,6 +195,11 @@ const styles = StyleSheet.create({
         alignItems: 'flex-end',
         marginBottom:100
     },
+    backButtonContainer: {
+        // justifyContent:'flex-start',
+        alignItems:'flex-start',
+        width: '100%',
+    },
     button: {
         backgroundColor: '#DD6135', 
         width: '100%', 
@@ -210,6 +223,10 @@ const styles = StyleSheet.create({
         marginBottom: 0.1,
     },
     buttonOutlineText: {},
+    imageStyle: {
+        width:'100%',
+        height: '100%',
+    },
 
 })
 
