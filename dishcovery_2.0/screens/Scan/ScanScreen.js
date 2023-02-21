@@ -112,7 +112,6 @@ export default class App extends React.Component {
 
 
   render() {
-
     const { hasCameraPermission, predictions, filteredPredictions } = this.state;
     let wanttokeep = Object.keys(ingredientContexttest)
     var imageName = this.state.imageName
