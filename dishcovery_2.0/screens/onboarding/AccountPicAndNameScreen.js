@@ -30,7 +30,7 @@ const AccountPicAndNameScreen = ({ navigation }) => {
             quality: 1
         });
         if (!result.canceled) {
-            setImage(result.uri);
+            setImage(result.assets[0].uri);
         }
     };
     
@@ -63,10 +63,12 @@ return (
         </View>
 
         <View style={styles.imageStyle}>
-                {image && <Image style={{width:'80%', height:'50%'}} source={{uri : image}}/>}
-                <Pressable  style={styles.button} onPress={pickImage}>
-                    <Text style={styles.caption}>{image ? 'Edit' : 'Upload'} profile picture</Text>
-                </Pressable>
+                 {image && <Image style={{width: 200, height: 200, backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image}}/>}
+                <View>
+                    <Pressable style={styles.editButton} onPress={pickImage}>
+                        <Text style={styles.buttonText}>{image ? 'Edit' : 'Upload'} profile picture</Text>
+                    </Pressable>
+                </View>        
         </View>
 
         <View style={styles.inputContainer}>
@@ -82,7 +84,7 @@ return (
 
         <View style={styles.buttonContainer}>
             <TouchableOpacity
-                onPress={() => navigation.navigate("Dietary Preferences") }
+                onPress={() => navigation.navigate("Dietary Preferences", {passedImage:image}) }
                 
                 style={styles.button}
             >
@@ -107,7 +109,8 @@ const styles = StyleSheet.create({
         flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 35
+        marginTop: '13%',
+        marginBottom:'0.5%',
     },
     pageTitle: {
         alignSelf: 'center',
@@ -121,7 +124,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         width: '90%',
-        marginTop: 30
+        marginTop: '5%',
     },
     input: {
         backgroundColor: 'white',
@@ -138,8 +141,8 @@ const styles = StyleSheet.create({
         width: '90%',
         justifyContent: 'center',
         flexDirection: 'row',
-        alignItems: 'flex-end',
-        marginBottom:100
+        alignItems: 'center',
+        marginBottom:10,
     },
     backButtonContainer: {
         // justifyContent:'flex-start',
@@ -147,16 +150,39 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     button: {
+        height:55,
+        // marginBottom:0,
+        
+        borderRadius:20,
+        flexDirection:'column',
         backgroundColor: '#DD6135', 
         width: '100%', 
         padding: 15,
-        borderRadius: 10,
+        justifyContent:'center',
+        // borderRadius: 10,
         alignItems: 'center',
-        marginBottom: 20
+        // marginBottom: 20
+    },
+    editButton: {
+        height:55,
+        // marginBottom:0,
+        
+        borderRadius:20,
+        flexDirection:'column',
+        backgroundColor: '#DD6135', 
+        width: 200, 
+        padding: 15,
+        justifyContent:'center',
+        // borderRadius: 10,
+        alignItems: 'center',
+        marginBottom: 20,
+        bottom: 0,
     },
     buttonText: {
+        fontSize: 15,
+        textAlign: 'center',
         color: 'white',
-        fontSize: 26
+        fontFamily: 'Inter-Regular',
     },
     buttonOutline: {
         backgroundColor: 'white'
@@ -172,8 +198,9 @@ const styles = StyleSheet.create({
     imageStyle: {
         flex: 1,
         width:'80%',
-        height: '70%',
-        marginTop: '20%',
+        height: '100%',
+        marginTop: '10%',
+        alignItems: 'center',
     },
 })
 

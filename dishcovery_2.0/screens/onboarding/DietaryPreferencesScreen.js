@@ -1,7 +1,7 @@
 
 
 import {useState} from "react"
-import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert } from 'react-native';
+import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
@@ -13,6 +13,7 @@ import { Ionicons } from '@expo/vector-icons';
 import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
 import { AccountPicAndNameScreen } from "./AccountPicAndNameScreen";
+import { useRoute } from '@react-navigation/native';
 
 
 
@@ -20,7 +21,7 @@ import { AccountPicAndNameScreen } from "./AccountPicAndNameScreen";
 const storage = getStorage();
 
 
-export default function DietaryPreferencesScreen({ navigation }) {
+export default function DietaryPreferencesScreen({ navigation}) {
 
     const [image, setImage] = useState("blank image");
     const pickImage = async () => {
@@ -37,6 +38,8 @@ export default function DietaryPreferencesScreen({ navigation }) {
 
     const [name, onChangeName] = useState("");
 
+    const route = useRoute();
+    const passedImage = route.params.passedImage;
 
 return (
     <SafeAreaView style={commonStyles.whiteBackground}>
@@ -57,10 +60,11 @@ return (
       {/* </SafeAreaView> */}
         <View style={styles.title}>
             <Text style={styles.pageTitle}>Looking Good {name}!</Text>
-            <Text style={styles.pageCaption}>Now to food</Text>
+            {/* <Text style={styles.pageCaption}>Now to food</Text> */}
         </View>
         <View style={styles.title}>
-            <Text style={styles.pageCaption}>Image around here</Text>
+        <Image style={{width: 200, height: 200, backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : passedImage}}/>
+                
         </View>
         <View style={styles.title}>
             <Text style={styles.pageCaption}>Do you have any dietary preferences?</Text>
@@ -121,13 +125,13 @@ return (
                 <Text style= {styles.unselectedButtonText}>Shellfish</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity style={styles.unselectedButton}>
+            {/* <TouchableOpacity style={styles.unselectedButton}>
                 <Text style= {styles.unselectedButtonText}>Garlic</Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>  */}
 
-            <TouchableOpacity style={styles.unselectedButton}>
+            {/* <TouchableOpacity style={styles.unselectedButton}>
                 <Text style= {styles.unselectedButtonText}>Banana</Text>
-            </TouchableOpacity> 
+            </TouchableOpacity>  */}
 
             <TouchableOpacity style={styles.unselectedButton}>
                 <Text style= {styles.unselectedButtonText}>Peanuts</Text>
@@ -137,9 +141,9 @@ return (
                 <Text style= {styles.unselectedButtonText}>Strawberries</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.unselectedButton}>
+            {/* <TouchableOpacity style={styles.unselectedButton}>
                 <Text style= {styles.unselectedButtonText}>Apple</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             
             <TouchableOpacity style={styles.unselectedButton}>
                 <Text style= {styles.unselectedButtonText}>Soy</Text>
@@ -153,9 +157,9 @@ return (
                 <Text style= {styles.unselectedButtonText}>Fish</Text>
             </TouchableOpacity>
             
-            <TouchableOpacity style={styles.unselectedButton}>
+            {/* <TouchableOpacity style={styles.unselectedButton}>
                 <Text style= {styles.unselectedButtonText}>Sesame</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             
             
         </View>
@@ -185,24 +189,24 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     title: {
-        flex: 0.35,
+        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 35
+        marginTop: 15
     },
     pageTitle: {
         alignSelf: 'center',
         fontSize: 36,
         marginBottom: 12,
-        marginTop: 40
+        marginTop: 10
     },
     pageCaption: {
-        fontSize: 18,
+        fontSize: 15,
         color: '#BBBBBB',
     },
     inputContainer: {
         width: '90%',
-        marginTop: 30
+        marginTop: 3,
     },
     input: {
         backgroundColor: 'white',
@@ -211,8 +215,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 15,
         borderRadius: 10,
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: 5,
+        marginBottom: 5
     },
     buttonContainer: {
         flex: 0.6,
@@ -228,16 +232,24 @@ const styles = StyleSheet.create({
         width: '100%',
     },
     button: {
+        height:55,
+        // marginBottom:0,
+        
+        borderRadius:20,
+        flexDirection:'column',
         backgroundColor: '#DD6135', 
         width: '100%', 
         padding: 15,
-        borderRadius: 10,
+        justifyContent:'center',
+        // borderRadius: 10,
         alignItems: 'center',
-        marginBottom: 0
+        marginBottom: 20
     },
     buttonText: {
+        fontSize: 15,
+        textAlign: 'center',
         color: 'white',
-        fontSize: 26
+        fontFamily: 'Inter-Regular',
     },
     buttonOutline: {
         backgroundColor: 'white'
@@ -251,14 +263,14 @@ const styles = StyleSheet.create({
     },
     buttonOutlineText: {},
     dietarySelectioncontainer:{
-        flex: 0.5,
+        flex: 1,
         //width: '90%',
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-evenly',
         justifyContent: 'left',
         alignItems: 'flex-start',
-        padding: 10,
+        padding:5,
         //marginBottom:100
     },
     unselectedButton: {
@@ -268,17 +280,17 @@ const styles = StyleSheet.create({
         padding: 10,
         borderRadius: 20,
         alignItems: 'flex-end',
-        marginBottom: 7,
-        marginRight: 4,
+        marginBottom: 5,
+        marginRight: 2,
     },
     unselectedButtonText: {
         color: '#DD6135',
-        fontSize: 15,
+        fontSize: 13,
         fontWeight: 'bold'
     },
 
     preferenceText: {
-        fontSize: 25,
+        fontSize: 15,
     }
 
 })

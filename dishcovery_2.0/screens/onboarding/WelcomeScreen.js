@@ -45,10 +45,13 @@ const [fontsLoaded] = useFonts({
           </View>
             
           
-        </View>
-        <TouchableOpacity style={styles.buttonContainer} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Tutorial Screen")}>           
-              <Text style={styles.ButtonTextStyle}> Next -&gt; </Text>
-        </TouchableOpacity>
+        
+        {/* <View style={styles.buttonContainer}> */}
+          <TouchableOpacity style={styles.button} activeOpacity = { .5 } onPress={ () => navigation.navigate("Scan Tutorial Screen")}>           
+            <Text style={styles.ButtonTextStyle}> Next -&gt; </Text>
+          </TouchableOpacity>
+        {/* </View> */}
+      </View>
     </SafeAreaView>
   );
 };
@@ -69,17 +72,24 @@ const styles = StyleSheet.create({
         // padding:50,
         marginTop:300,
       },
-      buttonContainer:{
-        height:55,
-        marginBottom:100,
-        padding:0,
-        justifyContent:'center',
-        backgroundColor:'#DD6135',
-        borderRadius:20,
-        // flex:1,
-        flexDirection:'column',       
-      },
-      
+    //   buttonContainer: {
+    //     flex: 0.6,
+    //     width: '90%',
+    //     justifyContent: 'center',
+    //     flexDirection: 'column',
+    //     // alignItems: 'center',
+    //     marginBottom:0,
+    // },
+    button: {
+      height:55,
+      borderRadius:20,
+      flexDirection:'column',
+      backgroundColor: '#DD6135', 
+      width: '90%', 
+      justifyContent:'center',
+      alignSelf: 'center',
+      marginBottom: 60,
+  },
       TextStyle: {
         fontSize: 15,
         textAlign: 'center',

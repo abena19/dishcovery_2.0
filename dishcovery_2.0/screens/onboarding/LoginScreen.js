@@ -154,7 +154,7 @@ const styles = StyleSheet.create({
         flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: 15
+        marginTop: '10%',
     },
     pageTitle: {
         alignSelf: 'center',
@@ -186,24 +186,33 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'flex-end',
-        marginBottom:100
+        marginBottom:30
     },
     backButtonContainer: {
         // justifyContent:'flex-start',
         alignItems:'flex-start',
         width: '100%',
+        marginLeft:20,
     },
     button: {
+        height:55,
+        // marginBottom:0,
+        
+        borderRadius:20,
+        flexDirection:'column',
         backgroundColor: '#DD6135', 
         width: '100%', 
         padding: 15,
-        borderRadius: 10,
+        justifyContent:'center',
+        // borderRadius: 10,
         alignItems: 'center',
         marginBottom: 20
     },
     buttonText: {
+        fontSize: 15,
+        textAlign: 'center',
         color: 'white',
-        fontSize: 26
+        fontFamily: 'Inter-Regular',
     },
     buttonOutline: {
         backgroundColor: 'white'
