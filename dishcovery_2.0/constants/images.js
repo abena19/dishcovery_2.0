@@ -18,7 +18,7 @@ const bacalao = require("../assets/images/recipes/bacalao.jpg")
 const kaarage = require("../assets/images/recipes/kaarage.jpg")
 const kolivo = require("../assets/images/recipes/kolivo.jpg")
 const tamales = require("../assets/images/recipes/tamales.jpg")
-const tzatziki = require("../assets/images/recipes/tzatziki-sauce-1.jpeg")
+const tzatziki = require("../assets/images/recipes/tzatziki-sauce-1.jpg")
 
 const profile = require("../assets/images/dummy_profiles/profile.png")
 const UserProfile1 = require("../assets/images/dummy_profiles/profile-pic-1.png")
