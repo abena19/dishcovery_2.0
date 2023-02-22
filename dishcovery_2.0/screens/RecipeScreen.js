@@ -89,7 +89,7 @@ const RecipeScreen = ({ navigation, route }) => {
 
                 {showIngredients ? (
                 <Text style={{marginTop: SIZES.padding}}>  
-                    <Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup vegetable oil
+                    {/* <Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 cup vegetable oil */}
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 1 medium cucumber, grated and drained
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 2-3 garlic cloves, minced
                     {"\n"}<Ionicons name="ellipse" size={8} style={{height:10}} color= {COLORS.dishcoveryOrange} /> 2 tbsp extra virgin olive oil
@@ -128,7 +128,7 @@ const RecipeScreen = ({ navigation, route }) => {
                 </Text>): null}
                 {showRecipe ? (
                 <Text style={{marginTop: SIZES.padding}}>
-                    <Icon name="numeric-1-circle" color={COLORS.dishcoveryOrange} size={17}/> In a large mixing bowl, combine the oil, sugar, orange juice, honey, baking powder, baking soda, cinnamon, cloves, nutmeg, and vanilla extract. Mix well.
+                    <Icon name="numeric-1-circle" color={COLORS.dishcoveryOrange} size={17}/> In a mixing bowl, combine the Greek yogurt, grated and drained cucumber, minced garlic, extra virgin olive oil, red wine vinegar, chopped fresh dill, salt, and pepper.
                     {"\n"}
                     {"\n"}<Icon name="numeric-2-circle" color={COLORS.dishcoveryOrange} size={17} /> Mix the ingredients until they are fully combined and the texture is smooth.
                     {"\n"}
