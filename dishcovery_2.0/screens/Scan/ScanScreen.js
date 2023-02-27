@@ -28,6 +28,7 @@ export default class App extends React.Component {
     ingredientRecognized: false,
     ingredientNotRecognized: false,
     scanComplete: false,
+    photoTaken: false,
     filteredPredictions: [],
     ingredientName: '',
     imageName: bittermelonSquare,
@@ -70,9 +71,12 @@ export default class App extends React.Component {
 
 
   objectDetection = async () => {
-    let photo = await this.capturePhoto();
+    let photo = await this.capturePhoto();  
     let resized = await this.resize(photo);
     let predictionsInitial = await this.predict(resized);
+    this.setState({photoTaken: true});
+    console.log("photo predicted"); 
+    console.log(this.state.photoTaken); 
     let wanttokeep = Object.keys(ingredientContexttest);
     let predictions = predictionsInitial.outputs[0].data.concepts;
     let filteredPredictionsMap =  Object.values(Object.fromEntries(Object.entries(predictions).filter(([k, pred]) => wanttokeep.some(culturalIngred => culturalIngred == pred.name))));
@@ -135,7 +139,8 @@ export default class App extends React.Component {
                 <View style={styles.messageContainer}>
                   {this.state.scanPressed ? 
                         <View style={styles.progressBarContainer}>
-                          {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? <Text style = {styles.messageText}>Scan successful.</Text> : <Text style = {styles.messageText}>Scan failed!</Text>) : <Text style = {styles.messageText}>Searching for item</Text>}
+                          {(this.state.ingredientRecognized || this.state.ingredientNotRecognized) ? (this.state.ingredientRecognized ? 
+                            <Text style = {styles.messageText}>Scan successful.</Text> : <Text style = {styles.messageText}>Scan failed!</Text>) : <Text style = {styles.messageText}>Searching for item</Text>}
                           <ProgressBar progress={this.state.scanComplete ? 100: 40} height={10} 
                           backgroundColor={(this.state.ingredientNotRecognized || this.state.ingredientRecognized) ? (this.state.ingredientRecognized ? "green" : "firebrick") : "white"} />
                         </View> 

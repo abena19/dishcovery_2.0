@@ -215,14 +215,14 @@ return (
                 <Text style= {selected6 ? styles.selectedButtonText : styles.unselectedButtonText}>
                     {selected6 ?  'Dairy Free ✓' : 'Dairy Free'} </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
             style={selected7 ? styles.selectedButton : styles.unselectedButton}
             onPress= {onPressHandler7}
             >
                 <Text style= {selected7 ? styles.selectedButtonText : styles.unselectedButtonText}>
                     {selected7 ?  'Meatless Mondays ✓' : 'Meatless Mondays'} </Text>
             </TouchableOpacity>
-  
+   */}
             
         </View>
 
@@ -265,21 +265,21 @@ return (
                       {selected11 ?  'Shellfish ✓' : 'Shellfish'} </Text>
             </TouchableOpacity>
            
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
                 style={selected12 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler12}
                 >
                   <Text style= {selected12 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected12 ?  'Garlic ✓' : 'Garlic'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
                 style={selected13 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler13}
                 >
                   <Text style= {selected13 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected13 ?  'Banana ✓' : 'Banana'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity 
                 style={selected14 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler14}
@@ -287,21 +287,21 @@ return (
                   <Text style= {selected14 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected14 ?  'Peanuts ✓' : 'Peanuts'} </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
                 style={selected15 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler15}
                 >
                   <Text style= {selected15 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected15 ?  'Strawberries ✓' : 'Strawberries'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
                 style={selected16 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler16}
                 >
                   <Text style= {selected16 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected16 ?  'Apple ✓' : 'Apple'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             <TouchableOpacity 
                 style={selected17 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler17}
@@ -311,13 +311,13 @@ return (
             </TouchableOpacity>
         
             
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
                 style={selected18 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler18}
                 >
                   <Text style= {selected18 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected18 ?  'Tree nuts ✓' : 'Tree nuts'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
 
             <TouchableOpacity 
                 style={selected19 ? styles.selectedButton : styles.unselectedButton}
@@ -326,13 +326,13 @@ return (
                   <Text style= {selected19 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected19 ?  'Fish ✓' : 'Fish'} </Text>
             </TouchableOpacity>
-            <TouchableOpacity 
+            {/* <TouchableOpacity 
                 style={selected20 ? styles.selectedButton : styles.unselectedButton}
                 onPress= {onPressHandler20}
                 >
                   <Text style= {selected20 ? styles.selectedButtonText : styles.unselectedButtonText}>
                       {selected20 ?  'Sesame ✓' : 'Sesame'} </Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
             
         </View>
 
@@ -451,7 +451,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderColor: '#DD6135',
         borderWidth: 2.8, 
-        padding: 10,
+        padding: 5,
         borderRadius: 20,
         alignItems: 'flex-end',
         marginBottom: 5,
@@ -470,11 +470,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#DD6135',
         borderColor: '#DD6135',
         borderWidth: 2.8, 
-        padding: 10,
+        padding: 5,
         borderRadius: 20,
         alignItems: 'flex-end',
-        marginBottom: 7,
-        marginRight: 4,
+        marginBottom: 5,
+        marginRight: 2,
     },
     selectedButtonText: {
         color: 'white',
