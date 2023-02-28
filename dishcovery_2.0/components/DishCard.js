@@ -31,7 +31,7 @@ const DishCard = ({containerStyle, recipeItem, onPress}) => {
             marginLeft: gallerywidth / 20,
             borderRadius: SIZES.radius,
             ...containerStyle,
-            activeOpacity: 0.9
+            activeOpacity: 0.7
         }}
         onPress={onPress}
         >
