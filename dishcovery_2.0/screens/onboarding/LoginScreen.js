@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Imag
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
-import { KeyboardAvoidingView, TouchableOpacity } from 'react-native'
+import { KeyboardAvoidingView, TouchableOpacity, ScrollView} from 'react-native'
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import * as ImagePicker from 'expo-image-picker';
 import CloseButton from '../../assets/styles/CloseButton.style';
@@ -18,18 +18,7 @@ import commonStyles from "../../assets/styles/CommonStyles.styles";
 const storage = getStorage();
 
 export default function LoginScreen({ navigation }) {
-    // const [image, setImage] = useState(null);
-    // const pickImage = async () => {
-    //     let result = await ImagePicker.launchImageLibraryAsync({
-    //         mediaTypes: ImagePicker.MediaTypeOptions.All,
-    //         allowsEditing: true,
-    //         aspect: [1, 1],
-    //         quality: 1
-    //     });
-    //     if (!result.canceled) {
-    //         setImage(result.uri);
-    //     }
-    // };
+    
 
     const [email, onChangeEmail] = useState("");
     const [password, onChangePassword] = useState("");
@@ -63,16 +52,15 @@ export default function LoginScreen({ navigation }) {
             )
         }
     }
-    
-
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
-        <KeyboardAvoidingView
+            <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
+            <KeyboardAvoidingView
             style={styles.container}
             behavior="padding"
+            // keyboardVerticalOffset={100}
         >
-            {/* <SafeAreaView style={styles.backButton}> */}
-          <View style={styles.backButtonContainer}>
+          {/* <View style={styles.backButtonContainer}> */}
           <TouchableOpacity
               style={styles.backButtonContainer}
               onPress={() => navigation.goBack()}
@@ -80,54 +68,53 @@ export default function LoginScreen({ navigation }) {
             
               <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
             </TouchableOpacity>
-          </View>
-          {/* </SafeAreaView> */}
-            <View style={styles.title}>
+          {/* </View> */}
+
+            {/* <View style={styles.title}> */}
                 <Text style={styles.pageTitle}>Account Information</Text>
                 <Text style={styles.pageCaption}>Let's create your unique login.</Text>
-            </View>
-            <View style={styles.inputContainer}>
-                {/* moved to account screen name */}
-                {/* <View style={styles.imageStyle}>
-                    {image && <Image style={styles.imageStyle} source={{uri : image}}/>}
-                    <Pressable  style={styles.button} onPress={pickImage}>
-                        <Text style={styles.caption}>upload a profile picture</Text>
-                    </Pressable>
-                </View> */}
-                
-                <Text style={styles.caption}>Username</Text>
-                <TextInput 
-                    placeholder="E.g. dishlover123..."
-                     value={username}
-                     onChangeText={text => onChangeUID(text)}
-                    style={styles.input}
-                />
-                <Text style={styles.caption}>Email</Text>
-                <TextInput 
-                    placeholder="E.g. dishlover@dish.com"
-                     value={email}
-                     onChangeText={text => onChangeEmail(text)}
-                    style={styles.input}
-                />
-                <Text style={styles.caption}>Password</Text>
-                <TextInput 
-                    placeholder="Enter your password here."
-                     //value={}
-                    // onChangeText={text => }
-                    style={styles.input}
-                    secureTextEntry
-                />
-                <Text style={styles.caption}>Confirm Password</Text>
-                <TextInput 
-                    placeholder="Enter your password here."
-                     value={password}
-                     onChangeText={text => onChangePassword(text)}
-                    style={styles.input}
-                    secureTextEntry
-                />
-            </View>
+            {/* </View> */}
 
-            <View style={styles.buttonContainer}>
+        
+            {/* <View style={styles.inputContainer}> */}
+
+                    <Text style={styles.caption}>Username</Text>
+                    <TextInput 
+                        placeholder="E.g. dishlover123..."
+                        value={username}
+                        onChangeText={text => onChangeUID(text)}
+                        style={styles.input}
+                    />
+          
+                    <Text style={styles.caption}>Email</Text>
+                    <TextInput 
+                        placeholder="E.g. dishlover@dish.com"
+                        value={email}
+                        onChangeText={text => onChangeEmail(text)}
+                        style={styles.input}
+                    />         
+            
+                    <Text style={styles.caption}>Password</Text>
+                    <TextInput 
+                        placeholder="Enter your password here."
+                        //value={}
+                        // onChangeText={text => }
+                        style={styles.input}
+                        secureTextEntry
+                    />
+    
+                    <Text style={styles.caption}>Confirm Password</Text>
+                    <TextInput 
+                        placeholder="Enter your password here."
+                        value={password}
+                        onChangeText={text => onChangePassword(text)}
+                        style={styles.input}
+                        secureTextEntry
+                    />
+                {/* </KeyboardAwareScrollView> */}
+            {/* </View> */}
+
+            {/* <View style={styles.buttonContainer}> */}
                 <TouchableOpacity
                     onPress={() => navigation.navigate("Account Picture and Name") }
                     onPressIn={signUpUser}
@@ -135,8 +122,10 @@ export default function LoginScreen({ navigation }) {
                 >
                     <Text style={styles.buttonText}>Next  →</Text>
                 </TouchableOpacity>
-            </View>
+            {/* </View> */}
+  
         </KeyboardAvoidingView>
+        </ScrollView>
         </SafeAreaView>
     )
 }
@@ -146,15 +135,17 @@ export default function LoginScreen({ navigation }) {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: 'row',
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'white'
+        // backgroundColor: 'black'
+        // padding: 20,
     },
     title: {
-        flex: 0.35,
+        // flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
         marginTop: '10%',
+        // position: "fixed",
     },
     pageTitle: {
         alignSelf: 'center',
@@ -168,7 +159,7 @@ const styles = StyleSheet.create({
     },
     inputContainer: {
         width: '90%',
-        marginTop: 30
+        marginTop: '5%',
     },
     input: {
         backgroundColor: 'white',
@@ -177,24 +168,28 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 15,
         borderRadius: 10,
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: '4%',
+        marginBottom: '5%',
+        // position: 'fixed',
     },
     buttonContainer: {
-        flex: 0.6,
+        flex: 1,
         width: '90%',
         justifyContent: 'center',
         flexDirection: 'row',
         alignItems: 'flex-end',
-        marginBottom:30,
+        bottom: 0,
+        // marginBottom:60,
+        marginBottom: '15%',
+        flexGrow: 1,
     },
-    backButtonContainer: {
-        // justifyContent:'flex-start',
-        alignItems:'flex-start',
-        width: '100%',
-        marginLeft:15,
-        marginTop:10,
-    },
+    // backButtonContainer: {
+    //     // justifyContent:'flex-start',
+    //     alignItems:'flex-start',
+    //     width: '100%',
+    //     marginLeft:15,
+    //     marginTop:10,
+    // },
     button: {
         height:55,
         // marginBottom:0,
@@ -207,7 +202,9 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         // borderRadius: 10,
         alignItems: 'center',
-        marginBottom: 20
+        // marginBottom: 30,
+        marginBottom: '10%',
+        // position: 'absolute',
     },
     buttonText: {
         fontSize: 15,
@@ -223,7 +220,7 @@ const styles = StyleSheet.create({
         alignItems: 'left',
         justifyContent: 'left',
         flex: 1,
-        marginBottom: 0.1,
+        // marginBottom: 0.1,
     },
     buttonOutlineText: {},
     imageStyle: {
