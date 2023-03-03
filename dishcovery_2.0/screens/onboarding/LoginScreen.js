@@ -2,6 +2,7 @@
 import {useState} from "react"
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
 import { auth } from '../../constants/Firebase';
+import { db } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
 import { KeyboardAvoidingView, TouchableOpacity, ScrollView} from 'react-native'
@@ -11,6 +12,7 @@ import CloseButton from '../../assets/styles/CloseButton.style';
 import { Ionicons } from '@expo/vector-icons';
 import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 
 
@@ -30,15 +32,23 @@ export default function LoginScreen({ navigation }) {
             return;
         } try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            // await addDoc(collection(db, 'users'), {
+            //     name: username, 
+            //     email: userCredential.user.email,
+            //     picture: image
+            // })
             await addDoc(collection(db, 'users'), {
+                uid: username,
+
                 name: username, 
-                email: userCredential.user.email,
-                picture: image
+                email: email,
+                password: password,
+                //picture: image
             })
             console.log(email);
-            userCredential.user.displayName = username;
-            userCredential.user.photoURL = image;
-            navigation.navigate('Home Screen');
+            //userCredential.user.displayName = username;
+            //userCredential.user.photoURL = image;
+            navigation.navigate('Account Picture and Name');
         } catch(err) {
             Alert.alert(
                 "Error",
