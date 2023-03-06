@@ -418,11 +418,12 @@ const styles = StyleSheet.create({
         alignSelf: 'center',
         fontSize: 36,
         marginBottom: 12,
-        marginTop: 10
+        marginTop: '-15%',
     },
     pageCaption: {
         fontSize: 15,
         color: '#BBBBBB',
+        marginTop: '12%',
     },
     caption: {
         fontSize: '15%',

@@ -65,7 +65,7 @@ return (
         <View style={styles.imageStyle}>
                  {/* {image && <Image style={{width: '60%', height: '60%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image}}/>} */}
                 
-                 <Image style={{width: '60%', height: '60%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/>
+                 <Image style={{width: '80%', height: '80%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/>
                 <View>
                     <Pressable style={styles.editButton} onPress={pickImage}>
                         <Text style={styles.buttonText}>{image ? 'Edit' : 'Upload'} profile picture</Text>
@@ -188,7 +188,8 @@ const styles = StyleSheet.create({
         justifyContent:'center',
         // borderRadius: 10,
         alignItems: 'center',
-        marginBottom: 20,
+        marginTop: '5%',
+        marginBottom: '8%',
         bottom: 0,
     },
     buttonText: {
@@ -211,8 +212,9 @@ const styles = StyleSheet.create({
     imageStyle: {
         flex: 1,
         width:'80%',
-        height: '100%',
-        marginTop: '10%',
+        height: '90%',
+        marginTop: '5%',
+        marginBottom: '5%',
         alignItems: 'center',
     },
 })
