@@ -12,9 +12,6 @@ import CloseButton from '../../assets/styles/CloseButton.style';
 import { Ionicons } from '@expo/vector-icons';
 import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
-import { db } from '../../constants/Firebase';
-import { addDoc, collection, getFirestore } from "firebase/firestore";
-
 
 
 
@@ -23,7 +20,7 @@ const storage = getStorage();
 
 
 const AccountPicAndNameScreen = ({ navigation }) => {
-    //let imageuri; 
+
     const [image, setImage] = useState(null);
     const pickImage = async () => {
         let result = await ImagePicker.launchImageLibraryAsync({
@@ -39,14 +36,6 @@ const AccountPicAndNameScreen = ({ navigation }) => {
     
     const [name, onChangeName] = useState("");
 
-    // const setPicAndName = async => {
-    //     if (name.length === 0 || image.length === 0) {
-    //         return;
-    //     } try{
-    //         const usersRef = db.collection
-
-    //     }
-//}
 
 return (
     <SafeAreaView style={commonStyles.whiteBackground}>
