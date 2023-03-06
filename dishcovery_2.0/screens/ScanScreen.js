@@ -64,7 +64,7 @@ export default class App extends React.Component {
     predictions ? console.log(filteredPredictions.length.toString()) : console.log("no");
     this.setState({ predictions: predictionsInitial.outputs[0].data.concepts });
     this.setState({ scanComplete: true });
-    console.log("agggghhhh");
+    // console.log("agggghhhh");
     this.setState({ ingredientRecognized: filteredPredictions.length > 0});
     this.setState({ ingredientNotRecognized: filteredPredictions.length <= 0});
     console.log(this.state.ingredientRecognized, this.state.ingredientNotRecognized)

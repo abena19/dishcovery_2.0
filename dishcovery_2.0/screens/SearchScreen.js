@@ -18,6 +18,7 @@ import { Ionicons } from '@expo/vector-icons';
 import CountryFlag from "react-native-country-flag";
 import commonStyles from "../assets/styles/CommonStyles.styles";
 import textStyles from "../assets/styles/TextStyles.style";
+import { DishCard } from "../components";
 // This is same gallery as liked page. one should make these gallery things into a component
 
 
@@ -48,52 +49,60 @@ export default class App extends React.Component {
                   <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={dummyData.bitterMelonRecipes} 
                   renderItem={({ item, index }) => {
                       return (
-                          <TouchableHighlight onPress={() => this.props.navigation.navigate("Recipe Screen", { recipe: item})}>
+                  //         <TouchableHighlight onPress={() => this.props.navigation.navigate("Recipe Screen", { recipe: item})}>
       
-                          <View style={[styles.container, {
-                                    marginLeft: index == 0 || index == 2 ? 25 : 10
-                                }]}>
-                            <ImageBackground style={styles.photo} imageStyle={styles.imagephoto} resizeMode="cover" source={item.image} >
-                            <View
-                      style={{
-                          position: 'absolute',
-                          margin:7,
-                          paddingHorizontal: SIZES.radiussmall,
-                          paddingVertical: 5,
-                          backgroundColor: "white",
-                          borderRadius: SIZES.radius,
-                          flexDirection:'row',
-                          alignItems:'center'
-                      }}>
-                      <CountryFlag isoCode={item.countryicon} size={8} />
-                      <Text style={{ color: COLORS.dishcoveryNearBlack, fontFamily:'Inter-SemiBold', fontSize:11 }}>  {item.country}</Text>
-                  </View>
+                  //         <View style={[styles.container, {
+                  //                   marginLeft: index == 0 || index == 2 ? 25 : 10
+                  //               }]}>
+                  //           <ImageBackground style={styles.photo} imageStyle={styles.imagephoto} resizeMode="cover" source={item.image} >
+                  //           <View
+                  //     style={{
+                  //         position: 'absolute',
+                  //         margin:7,
+                  //         paddingHorizontal: SIZES.radiussmall,
+                  //         paddingVertical: 5,
+                  //         backgroundColor: "white",
+                  //         borderRadius: SIZES.radius,
+                  //         flexDirection:'row',
+                  //         alignItems:'center'
+                  //     }}>
+                  //     <CountryFlag isoCode={item.countryicon} size={8} />
+                  //     <Text style={{ color: COLORS.dishcoveryNearBlack, fontFamily:'Inter-SemiBold', fontSize:11 }}>  {item.country}</Text>
+                  // </View>
       
-                            <View style = {{flexDirection:'row-reverse'}}>
-                            <View style = {styles.heartButton}><Ionicons name="heart" size={17} color= {COLORS.dishcoveryOrange} /></View>
-                            </View>
-                            </ImageBackground>
+                  //           <View style = {{flexDirection:'row-reverse'}}>
+                  //           <View style = {styles.heartButton}><Ionicons name="heart" size={17} color= {COLORS.dishcoveryOrange} /></View>
+                  //           </View>
+                  //           </ImageBackground>
       
-                              <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
-                              <Text style={{        
-                                  fontSize: 11,
-                                  textTransform:'uppercase',
-                                  fontFamily: 'Inter-SemiBold',
-                                  textAlign: 'center',
-                                  color: '#444444',
-                                  // marginTop: 3,
-                                  marginHorizontal: 5,marginVertical:2}}>{item.name}</Text>
-                                  <View style={{ flexDirection:'row'}}>
-                                      <Ionicons name="cellular" size={10} color= {COLORS.dishcoveryOrange} />
-                                      <Text style={styles.category}> {item.difficulty} </Text>
-                                      <Ionicons name="time" size={10} color= {COLORS.dishcoveryOrange} />
-                                      <Text style={styles.category}> {item.duration} </Text>
-                                      {/* <Ionicons name="location" size={10} color= {COLORS.dishcoveryOrange} />
-                                      <Text style={styles.category}> {item.country}</Text> */}
-                                  </View>
-                              </View>
-                          </View>
-                        </TouchableHighlight>
+                  //             <View style={{flex:1,flexDirection:'column',justifyContent:'center',alignItems:'center'}}>
+                  //             <Text style={{        
+                  //                 fontSize: 11,
+                  //                 textTransform:'uppercase',
+                  //                 fontFamily: 'Inter-SemiBold',
+                  //                 textAlign: 'center',
+                  //                 color: '#444444',
+                  //                 // marginTop: 3,
+                  //                 marginHorizontal: 5,marginVertical:2}}>{item.name}</Text>
+                  //                 <View style={{ flexDirection:'row'}}>
+                  //                     <Ionicons name="cellular" size={10} color= {COLORS.dishcoveryOrange} />
+                  //                     <Text style={styles.category}> {item.difficulty} </Text>
+                  //                     <Ionicons name="time" size={10} color= {COLORS.dishcoveryOrange} />
+                  //                     <Text style={styles.category}> {item.duration} </Text>
+                  //                     {/* <Ionicons name="location" size={10} color= {COLORS.dishcoveryOrange} />
+                  //                     <Text style={styles.category}> {item.country}</Text> */}
+                  //                 </View>
+                  //             </View>
+                  //         </View>
+                  //       </TouchableHighlight>
+                  <DishCard
+                      containerStyle = {{
+                          ...styles.container
+                      }}
+                      recipeItem={item}
+                      onPress={() => this.props.navigation.navigate("Recipe Screen", { recipe: item})}
+                      likeCard={true}
+                    />
                       )
                   }}
                   keyExtractor={item => `${item.id}` } />
@@ -109,26 +118,29 @@ export default class App extends React.Component {
     
     const styles = StyleSheet.create({
         container: {
+            // flex: 1,
+            // justifyContent: 'center',
+            // alignItems: 'center',
+            // //margin: 6,
+            // //marginRight: 12,
+            // marginLeft: '6%',
+            marginBottom: '5%',
+            // width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
+            // height: RECIPE_ITEM_HEIGHT + 55,
+            // borderColor: '#cccccc',
+            // borderWidth: 0.5,
+            // borderRadius: SIZES.padding,
+            // backgroundColor: 'white',
+            // shadowColor: "#000",
+            // shadowOffset: {
+            //   width: 0,
+            //   height: 0,
+            // },
+            // shadowOpacity: 0.2,
+            // shadowRadius: 10,
             flex: 1,
-            justifyContent: 'center',
             alignItems: 'center',
-            //margin: 6,
-            //marginRight: 12,
-            marginLeft: '6%',
-            marginBottom: 6,
-            width: (SCREEN_WIDTH - (recipeNumColums + 1) * RECIPE_ITEM_MARGIN) / recipeNumColums,
-            height: RECIPE_ITEM_HEIGHT + 55,
-            borderColor: '#cccccc',
-            borderWidth: 0.5,
-            borderRadius: SIZES.padding,
-            backgroundColor: 'white',
-            shadowColor: "#000",
-            shadowOffset: {
-              width: 0,
-              height: 0,
-            },
-            shadowOpacity: 0.2,
-            shadowRadius: 10,
+            marginLeft: '5%',
           },
           buttonContainer:{
             flexDirection:'row-reverse',
