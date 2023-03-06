@@ -29,12 +29,13 @@ export default function LoginScreen({ navigation }) {
             return;
         } try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            await addDoc(collection(db, 'users'), {
+            let docRef = await addDoc(collection(db, 'users'), {
                 name: username, 
                 email: userCredential.user.email,
-                picture: image
+                // picture: image,
+                password: password
             })
-            console.log(email);
+            console.log("user added to firestore: ", docRef);
             userCredential.user.displayName = username;
             userCredential.user.photoURL = image;
             navigation.navigate('Home Screen');
