@@ -24,12 +24,7 @@ import { getDocs, collection, query, where } from 'firebase/firestore';
 // TODO back button from recipe does not come back here because it is in a different stack navigator. need to fix
 const countriesvisited = [...new Set(dummyData.likedRecipes.map(recipe => recipe.countryicon))];
 
-
-
-
-
 const LikedScreen = ({ navigation }) => {
-
 
     const [userLikes, setUserLikes] = useState([]);
 
