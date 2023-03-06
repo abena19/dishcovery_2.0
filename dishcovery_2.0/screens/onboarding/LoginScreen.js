@@ -2,6 +2,7 @@
 import {useState} from "react"
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
 import { auth } from '../../constants/Firebase';
+import { db } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
 import { KeyboardAvoidingView, TouchableOpacity, ScrollView} from 'react-native'
@@ -11,6 +12,7 @@ import CloseButton from '../../assets/styles/CloseButton.style';
 import { Ionicons } from '@expo/vector-icons';
 import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 
 
@@ -24,21 +26,30 @@ export default function LoginScreen({ navigation }) {
     const [password, onChangePassword] = useState("");
     const [username, onChangeUID] = useState("");
 
+    
     const signUpUser = async () => {
+        //const auth = getAuth();
         if (email.length === 0 || password.length === 0) {
             return;
         } try {
             let userCredential = await createUserWithEmailAndPassword(auth, email, password);
-            let docRef = await addDoc(collection(db, 'users'), {
+            // await addDoc(collection(db, 'users'), {
+            //     name: username, 
+            //     email: userCredential.user.email,
+            //     picture: image
+            // })
+            await addDoc(collection(db, 'users'), {
+                uid: username,
+
                 name: username, 
-                email: userCredential.user.email,
-                // picture: image,
-                password: password
+                email: email,
+                password: password,
+                //picture: image
             })
-            console.log("user added to firestore: ", docRef);
-            userCredential.user.displayName = username;
-            userCredential.user.photoURL = image;
-            navigation.navigate('Home Screen');
+            console.log(email);
+            //userCredential.user.displayName = username;
+            //userCredential.user.photoURL = image;
+            navigation.navigate('Account Picture and Name');
         } catch(err) {
             Alert.alert(
                 "Error",
@@ -54,13 +65,6 @@ export default function LoginScreen({ navigation }) {
     }
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
-             <TouchableOpacity
-              style={styles.backButtonContainer}
-              onPress={() => navigation.goBack()}
-            >
-            
-              <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
-            </TouchableOpacity>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <KeyboardAvoidingView
             style={styles.container}
@@ -68,7 +72,13 @@ export default function LoginScreen({ navigation }) {
             // keyboardVerticalOffset={100}
         >
           {/* <View style={styles.backButtonContainer}> */}
-         
+          <TouchableOpacity
+              style={styles.backButtonContainer}
+              onPress={() => navigation.goBack()}
+            >
+            
+              <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
+            </TouchableOpacity>
           {/* </View> */}
 
             {/* <View style={styles.title}> */}
@@ -145,30 +155,22 @@ const styles = StyleSheet.create({
         // flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '6%',
+        marginTop: '10%',
         // position: "fixed",
     },
     pageTitle: {
         alignSelf: 'center',
-        fontSize: '36%',
+        fontSize: 36,
         // marginBottom: 12,
-        marginTop: '-10%'
+        // marginTop: 40
     },
     pageCaption: {
-        fontSize: '18%',
+        fontSize: 18,
         color: '#BBBBBB',
-        marginBottom: '8%'
-    },
-    caption: {
-        fontSize: '15%',
-        // color: '#BBBBBB',
-        marginBottom: '0.5%',
-        alignSelf: "left",
-        marginLeft: '9%'
     },
     inputContainer: {
         width: '90%',
-        marginTop: '2%',
+        marginTop: '5%',
     },
     input: {
         backgroundColor: 'white',
@@ -177,9 +179,8 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 15,
         borderRadius: 10,
-        marginTop: '3%',
+        marginTop: '4%',
         marginBottom: '5%',
-        width: '85%',
         // position: 'fixed',
     },
     buttonContainer: {
@@ -193,22 +194,22 @@ const styles = StyleSheet.create({
         marginBottom: '15%',
         flexGrow: 1,
     },
-    backButtonContainer: {
-        // justifyContent:'flex-start',
-        alignItems:'flex-start',
-        width: '100%',
-        marginLeft:15,
-        marginTop:10,
-    },
+    // backButtonContainer: {
+    //     // justifyContent:'flex-start',
+    //     alignItems:'flex-start',
+    //     width: '100%',
+    //     marginLeft:15,
+    //     marginTop:10,
+    // },
     button: {
-        height:'7.5%',
+        height:55,
         // marginBottom:0,
         
-        borderRadius: '17%',
+        borderRadius:20,
         flexDirection:'column',
         backgroundColor: '#DD6135', 
-        width: '86%', 
-        // padding: 15,
+        width: '100%', 
+        padding: 15,
         justifyContent:'center',
         // borderRadius: 10,
         alignItems: 'center',
@@ -239,4 +240,5 @@ const styles = StyleSheet.create({
     },
 
 })
+
 
