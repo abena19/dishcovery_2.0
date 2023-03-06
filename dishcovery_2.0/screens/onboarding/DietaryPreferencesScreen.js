@@ -2,7 +2,7 @@
 
 import {useState} from "react"
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
-import { auth } from '../../constants/Firebase';
+import { auth, db } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
 import { KeyboardAvoidingView, TouchableOpacity } from 'react-native'
@@ -14,8 +14,7 @@ import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
 import { AccountPicAndNameScreen } from "./AccountPicAndNameScreen";
 import { useRoute } from '@react-navigation/native';
-
-
+import { getDocs, where, query, collection } from 'firebase/firestore'
 
 
 const storage = getStorage();
@@ -35,6 +34,55 @@ export default function DietaryPreferencesScreen({ navigation}) {
             setImage(result.uri);
         }
     };
+
+    const getRecipes  = async () => {
+        const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
+        const querySnapshot = await getDocs(q);
+        if (querySnapshot.length > 0) {
+            querySnapshot.forEach((doc) => {
+
+            })
+        }
+
+
+
+
+
+
+        //const db = firebase.firestore();
+
+        console.log("before");
+        const recRef = doc(db, "Recipes", "Chiles en Nogada");
+        const docSnap = await getDoc(recRef);
+        //const recipeRef = db.collection('Recipes').doc('Chiles en Nogada');
+        console.log("after")
+        //const doc = await recipeRef.get();
+        if (!docSnap.exists) {
+        console.log('No such document!');
+        } else {
+        console.log('Document data:', docSnap.data());
+
+
+        console.log("Mediterranean");
+        const recipeRef = db.collection('Recipes').get();
+        const Snapshot = await recipeRef.where('region', '==', 'Mediterranean').get();
+
+        if (snapshot.empty) {
+            console.log('No matching documents.');
+            return;
+          }  
+          
+          snapshot.forEach(doc => {
+            console.log(doc.id, '=>', doc.data());
+          });
+
+        }   
+
+        //navigation.navigate("Explore");
+        // const recipes = await firestore().collection('Recipes').doc('Origins').collection('Greece').get();
+        // console.log(recipes);
+        }
+
 
     const [name, onChangeName] = useState("");
 
@@ -215,14 +263,14 @@ return (
                 <Text style= {selected6 ? styles.selectedButtonText : styles.unselectedButtonText}>
                     {selected6 ?  'Dairy Free ✓' : 'Dairy Free'} </Text>
             </TouchableOpacity>
-            {/* <TouchableOpacity 
+            <TouchableOpacity 
             style={selected7 ? styles.selectedButton : styles.unselectedButton}
             onPress= {onPressHandler7}
             >
                 <Text style= {selected7 ? styles.selectedButtonText : styles.unselectedButtonText}>
                     {selected7 ?  'Meatless Mondays ✓' : 'Meatless Mondays'} </Text>
             </TouchableOpacity>
-   */}
+  
             
         </View>
 
@@ -376,6 +424,13 @@ const styles = StyleSheet.create({
         fontSize: 15,
         color: '#BBBBBB',
     },
+    caption: {
+        fontSize: '15%',
+        // color: '#BBBBBB',
+        marginBottom: '0.5%',
+        alignSelf: "left",
+        marginLeft: '3%'
+    },
     inputContainer: {
         width: '90%',
         marginTop: 3,
@@ -445,7 +500,8 @@ const styles = StyleSheet.create({
         justifyContent: 'left',
         alignItems: 'flex-start',
         padding:5,
-        //marginBottom:100
+        marginLeft: '5%',
+        marginBottom:'13%',
     },
     unselectedButton: {
         backgroundColor: 'white',
@@ -454,8 +510,8 @@ const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 20,
         alignItems: 'flex-end',
-        marginBottom: 5,
-        marginRight: 2,
+        marginBottom: '3%',
+        marginRight: '1%',
     },
     unselectedButtonText: {
         color: '#DD6135',
@@ -473,8 +529,8 @@ const styles = StyleSheet.create({
         padding: 5,
         borderRadius: 20,
         alignItems: 'flex-end',
-        marginBottom: 5,
-        marginRight: 2,
+        marginBottom: '2%',
+        marginRight: '1.5%',
     },
     selectedButtonText: {
         color: 'white',

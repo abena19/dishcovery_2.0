@@ -53,6 +53,13 @@ export default function LoginScreen({ navigation }) {
     }
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
+             <TouchableOpacity
+              style={styles.backButtonContainer}
+              onPress={() => navigation.goBack()}
+            >
+            
+              <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
+            </TouchableOpacity>
             <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
             <KeyboardAvoidingView
             style={styles.container}
@@ -60,13 +67,7 @@ export default function LoginScreen({ navigation }) {
             // keyboardVerticalOffset={100}
         >
           {/* <View style={styles.backButtonContainer}> */}
-          <TouchableOpacity
-              style={styles.backButtonContainer}
-              onPress={() => navigation.goBack()}
-            >
-            
-              <Ionicons name="ios-arrow-back" size={30} color="#DD6135" />
-            </TouchableOpacity>
+         
           {/* </View> */}
 
             {/* <View style={styles.title}> */}
@@ -143,22 +144,30 @@ const styles = StyleSheet.create({
         // flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '10%',
+        marginTop: '6%',
         // position: "fixed",
     },
     pageTitle: {
         alignSelf: 'center',
-        fontSize: 36,
+        fontSize: '36%',
         // marginBottom: 12,
-        // marginTop: 40
+        marginTop: '-10%'
     },
     pageCaption: {
-        fontSize: 18,
+        fontSize: '18%',
         color: '#BBBBBB',
+        marginBottom: '8%'
+    },
+    caption: {
+        fontSize: '15%',
+        // color: '#BBBBBB',
+        marginBottom: '0.5%',
+        alignSelf: "left",
+        marginLeft: '9%'
     },
     inputContainer: {
         width: '90%',
-        marginTop: '5%',
+        marginTop: '2%',
     },
     input: {
         backgroundColor: 'white',
@@ -167,8 +176,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 15,
         borderRadius: 10,
-        marginTop: '4%',
+        marginTop: '3%',
         marginBottom: '5%',
+        width: '85%',
         // position: 'fixed',
     },
     buttonContainer: {
@@ -182,22 +192,22 @@ const styles = StyleSheet.create({
         marginBottom: '15%',
         flexGrow: 1,
     },
-    // backButtonContainer: {
-    //     // justifyContent:'flex-start',
-    //     alignItems:'flex-start',
-    //     width: '100%',
-    //     marginLeft:15,
-    //     marginTop:10,
-    // },
+    backButtonContainer: {
+        // justifyContent:'flex-start',
+        alignItems:'flex-start',
+        width: '100%',
+        marginLeft:15,
+        marginTop:10,
+    },
     button: {
-        height:55,
+        height:'7.5%',
         // marginBottom:0,
         
-        borderRadius:20,
+        borderRadius: '17%',
         flexDirection:'column',
         backgroundColor: '#DD6135', 
-        width: '100%', 
-        padding: 15,
+        width: '86%', 
+        // padding: 15,
         justifyContent:'center',
         // borderRadius: 10,
         alignItems: 'center',

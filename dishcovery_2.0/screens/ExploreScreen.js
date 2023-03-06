@@ -232,6 +232,7 @@ const ExploreScreen = ({ navigation }) => {
                         }}
                         recipeItem={item}
                         onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}
+                        likeCard={false}
                         />
                     )
                 }}

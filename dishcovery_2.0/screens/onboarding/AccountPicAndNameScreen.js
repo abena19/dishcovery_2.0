@@ -63,7 +63,9 @@ return (
         </View>
 
         <View style={styles.imageStyle}>
-                 {image && <Image style={{width: 200, height: 200, backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image}}/>}
+                 {/* {image && <Image style={{width: '60%', height: '60%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image}}/>} */}
+                
+                 <Image style={{width: '60%', height: '60%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/>
                 <View>
                     <Pressable style={styles.editButton} onPress={pickImage}>
                         <Text style={styles.buttonText}>{image ? 'Edit' : 'Upload'} profile picture</Text>
@@ -72,7 +74,7 @@ return (
         </View>
 
         <View style={styles.inputContainer}>
-            <Text style={styles.caption}>Your name</Text>
+            <Text style={styles.caption}>Your first name</Text>
             <TextInput 
                 placeholder="E.g. James"
                  value={name}
@@ -122,9 +124,17 @@ const styles = StyleSheet.create({
         fontSize: 18,
         color: '#BBBBBB',
     },
+    caption: {
+        fontSize: '15%',
+        // color: '#BBBBBB',
+        marginBottom: '0.5%',
+        alignSelf: "left",
+        marginLeft: '5%'
+    },
     inputContainer: {
         width: '90%',
         marginTop: '5%',
+        alignItems: 'center',
     },
     input: {
         backgroundColor: 'white',
@@ -133,8 +143,9 @@ const styles = StyleSheet.create({
         paddingHorizontal: 15,
         paddingVertical: 15,
         borderRadius: 10,
-        marginTop: 10,
-        marginBottom: 10
+        marginTop: '3%',
+        marginBottom: '5%',
+        width: '90%',
     },
     buttonContainer: {
         flex: 0.6,
@@ -158,7 +169,7 @@ const styles = StyleSheet.create({
         borderRadius:20,
         flexDirection:'column',
         backgroundColor: '#DD6135', 
-        width: '100%', 
+        width: '93%', 
         padding: 15,
         justifyContent:'center',
         // borderRadius: 10,

@@ -3,7 +3,6 @@ import React, { useState, useRef } from "react";
 import IngredientCard from ".././components/IngredientCard";
 //import AboutScreen from "./AboutScreen";
 //import RecipeCard from "./RecipeCard";
-
 import {
   View,
   Image,
@@ -23,10 +22,14 @@ import { Ionicons } from "@expo/vector-icons";
 import commonStyles from "../assets/styles/CommonStyles.styles";
 import CountryFlag from "react-native-country-flag";
 import Icon from "react-native-vector-icons/MaterialCommunityIcons";
+import { db, auth } from '../constants/Firebase';
+import { updateDoc, where, query, collection, getDocs, arrayUnion } from 'firebase/firestore';
 
 const marginInfoBox = 200;
 const gallerywidth = 280;
 const infoboxheight = 85;
+
+
 
 const RecipeScreen = ({ navigation, route }) => {
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
@@ -77,7 +80,19 @@ const RecipeScreen = ({ navigation, route }) => {
     </Text>
   </TouchableOpacity>;
 
+
   const [isLiked, setIsLiked] = useState(true);
+
+  const addLike = async (recipe) => {
+    setIsLiked(true);
+    let curUser = auth.currentUser.email;
+    let q = query(collection(db, "users"), where("email", "==", curUser));
+    const querySnapshot = await getDocs(q);
+    let doc = querySnapshot.docs[0];
+    await updateDoc(doc, {
+      likes: arrayUnion(recipe)
+    });
+  }
 
   return (
     <SafeAreaView style={commonStyles.whiteBackground}>
@@ -97,7 +112,7 @@ const RecipeScreen = ({ navigation, route }) => {
         {/* INGREDIENT BUTTON */}
         <Pressable
           style={styles.heartButton}
-          onPress={() => setIsLiked(!isLiked)}
+          onPress={() => {addLike(selectedRecipe)}}
         >
           <Ionicons
             name={isLiked ? "heart" : "heart-outline"}

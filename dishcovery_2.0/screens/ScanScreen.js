@@ -7,6 +7,7 @@ import CloseButton from '../../assets/styles/CloseButton.style';
 import styles from '../../assets/styles/ScanFlow.style';
 const Clarifai = require('clarifai');
 import ingredientContext from '../../assets/ingredientContext';
+import ScanDialog from '../components/ScanDialog';
 const ingredientContexttest = ingredientContext
 const clarifai = new Clarifai.App({
   apiKey: "d93652649bfe45c486abb48b88e930d5",
@@ -127,6 +128,7 @@ export default class App extends React.Component {
                   onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
                 >
                   <Text style={{ fontSize: 30, color: 'white', padding: 15 }}>Scan</Text>
+                  <ScanDialog />
                 </TouchableOpacity> 
               }
               {this.state.ingredientRecognized ?

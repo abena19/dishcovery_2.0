@@ -17,15 +17,20 @@ import {
 import { SIZES, COLORS, FONTS, icons } from "../constants";
 import { Ionicons } from "@expo/vector-icons";
 
-// Defining constants used for styling
-const galleryWidth = 240;
-const containerHeight = 280;
-const galleryHeight = 240;
-const infoBoxHeight = galleryHeight / 2.52;
-const marginInfoBox = galleryHeight / 1.66;
+let likeCardBool;
 
 // Declaring a new functional component called DishCard that receives props and returns JSX elements
-const DishCard = ({ containerStyle, recipeItem, onPress }) => {
+const DishCard = ({ containerStyle, recipeItem, onPress, likeCard }) => {
+  likeCardBool = likeCard;
+
+  // Defining constants used for styling
+  const galleryWidth = likeCard ? 150 : 240;
+  const containerHeight = likeCard ? 150 : 280;
+  const galleryHeight = likeCard ? 150 : 240;
+  const infoBoxHeight = likeCard ? (galleryHeight / 2.12) : (galleryHeight / 2.52);
+  const marginInfoBox = likeCard ? (galleryHeight / 1.76) : (galleryHeight / 1.66);
+
+
   // Setting up an animation to trigger when the user presses the card
   const [scaleValue] = useState(new Animated.Value(1));
 
@@ -65,7 +70,7 @@ const DishCard = ({ containerStyle, recipeItem, onPress }) => {
           ...containerStyle,
           activeOpacity: 0.7,
           transform: [{ scale: scaleValue }],
-          paddingBottom: 40,
+          paddingBottom: likeCard ? '0.1%' : 40,
         }}
         onPress={onPress}
       >
@@ -84,7 +89,7 @@ const DishCard = ({ containerStyle, recipeItem, onPress }) => {
               bottom: 0,
               left: 0,
               right: 0,
-              height: "100%",
+              height: likeCard ? "90%" : "100%",
               borderBottomRightRadius: SIZES.radius - 10,
               borderBottomLeftRadius: SIZES.radius - 10,
             }}
@@ -95,12 +100,13 @@ const DishCard = ({ containerStyle, recipeItem, onPress }) => {
               flex: 1,
               flexDirection: "row-reverse",
               justifyContent: "space-between",
+              width: '100%',
             }}
           >
             <View style={styles.heartButton}>
               <Ionicons
                 name="heart"
-                size={25}
+                size={likeCardBool ? 13 : 25}
                 color={COLORS.dishcoveryOrange}
               />
             </View>
@@ -122,7 +128,7 @@ const DishCard = ({ containerStyle, recipeItem, onPress }) => {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: recipeItem.name.length > 12 ? 20 : 25,
+                fontSize: likeCard ? (recipeItem.name.length > 12 ? 15 : 16): (recipeItem.name.length > 12 ? 20 : 25),
                 lineHeight: recipeItem.name.length > 12 ? 20 : 25,
                 color: "white",
                 // Move text up by 30.
@@ -133,12 +139,12 @@ const DishCard = ({ containerStyle, recipeItem, onPress }) => {
               {recipeItem.name}
             </Text>
 
-            <View style={{ height: 6 }} />
+            <View style={{ height: '8%' }} />
 
             <Text
               style={{
                 fontFamily: "Inter-Medium",
-                fontSize: 16,
+                fontSize: likeCard ? '12%' : '16%',
                 lineHeight: 16,
                 marginLeft: 5,
                 marginBottom: 10,
@@ -157,16 +163,16 @@ const DishCard = ({ containerStyle, recipeItem, onPress }) => {
 // Defining styles used for the component
 const styles = StyleSheet.create({
   heartButton: {
-    width: 40,
-    height: 40,
+    width: likeCardBool ? 10: 40,
+    height: likeCardBool ? 15: 40,
     backgroundColor: COLORS.white,
-    borderRadius: 20,
+    borderRadius: likeCardBool ? 5: 20,
     alignItems: "center",
     justifyContent: "center",
-    marginRight: SIZES.base + 15,
-    marginTop: SIZES.base + 15,
+    marginRight: likeCardBool ? (SIZES.base) : (SIZES.base + 15),
+    marginTop: likeCardBool ? (SIZES.base) : (SIZES.base + 15),
     opacity: 0.7,
-    transform: [{ scale: 1.5 }],
+    transform: [{ scale: likeCardBool ? 0.7 : 1.5 }],
   },
 });
 

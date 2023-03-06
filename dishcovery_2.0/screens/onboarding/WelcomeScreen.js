@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
       borderRadius:20,
       flexDirection:'column',
       backgroundColor: '#DD6135', 
-      width: '90%', 
+      width: '86%', 
       justifyContent:'center',
       alignSelf: 'center',
       marginBottom: 60,
