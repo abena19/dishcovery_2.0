@@ -151,7 +151,7 @@ const DishCard = ({ containerStyle, recipeItem, onPress, likeCard }) => {
                 color: "rgba(255, 255, 255, 0.7)",
               }}
             >
-              {"40 min   Greece"}
+              {recipeItem.duration + "     " + recipeItem.country}
             </Text>
           </View>
         </ImageBackground>
