@@ -1,6 +1,7 @@
 
 import {useState} from "react"
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
+import { db } from '../../constants/Firebase';
 import { auth } from '../../constants/Firebase';
 import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
@@ -11,6 +12,7 @@ import CloseButton from '../../assets/styles/CloseButton.style';
 import { Ionicons } from '@expo/vector-icons';
 import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
 
 
