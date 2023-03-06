@@ -26,18 +26,17 @@ const countriesvisited = [...new Set(dummyData.likedRecipes.map(recipe => recipe
 
 const LikedScreen = ({ navigation }) => {
 
-    const [userLikes, setUserLikes] = useState([]);
+  const [userLikes, setUserLikes] = useState([]);
 
-    const getLiked = async () => {
-      const user = auth.currentUser.email;
-      const q = query(collection(db, "users"), where("email", "==", user));
-      const querySnapshot = await getDocs(q);
-      let liked;
-      querySnapshot.forEach((doc) => {
-        liked = doc.data["likes"];
-      })
-      setUserLikes(liked);
-    }
+  const getLiked = async () => {
+    const user = auth.currentUser.email;
+    const q = query(collection(db, "users"), where("email", "==", user));
+    const querySnapshot = await getDocs(q);
+    let doc = querySnapshot.docs[0];
+    setUserLikes(doc.get("likes"));
+  }
+
+  getLiked();
   
     return (
         <SafeAreaView style={commonStyles.whiteBackground}>
@@ -50,7 +49,7 @@ const LikedScreen = ({ navigation }) => {
             {countriesvisited.map(isocode => <CountryFlag isoCode={isocode} size={13} style={{margin:3,borderWidth:0.5,borderColor: "light-grey"}}/>)}
             </View> */}
             
-            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={dummyData.likedRecipes} 
+            <FlatList vertical showsVerticalScrollIndicator={false} numColumns={2} data={userLikes} 
               renderItem={({ item }) => {
                 return (
                   // <TouchableHighlight onPress={() => navigation.navigate("Recipe Screen", { recipe: item})}>
