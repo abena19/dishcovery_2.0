@@ -1,0 +1,118 @@
+import React from "react";
+import { View, Text, StyleSheet } from "react-native";
+import { COLORS, SIZES } from "your-styles-file-path";
+import Icon from "your-icon-library-path";
+
+const tzatzikiInstructions = [
+    "In a mixing bowl, combine the Greek yogurt, grated and drained cucumber, minced garlic, extra virgin olive oil, red wine vinegar, chopped fresh dill, salt, and pepper.",
+    "Mix the ingredients until they are fully combined and the texture is smooth.",
+    "Adjust the seasoning to taste, if needed.",
+    "Cover the tzatziki and refrigerate it for at least an hour to let the flavors meld.",
+    "Serve the tzatziki cold as a dip or condiment."
+  ];
+
+  
+const recipe = tzatzikiInstructions;
+const recipeSteps = tzatzikiInstructions.length;
+
+const RecipeCard = ({ recipe, currentPage }) => {
+  const numSteps = recipeSteps.length;
+
+  return (
+    <View style={[styles.card, { width: 313, height: 249 }]}>
+      <Text style={[styles.title, { color: COLORS.black }]}>
+        {recipe.name}
+      </Text>
+      <View style={styles.ingredients}>
+        <Text style={[styles.ingredientsTitle, { color: COLORS.black }]}>
+          Ingredients
+        </Text>
+        <View style={styles.ingredientsList}>
+          {recipe.ingredients.map((ingredient, index) => (
+            <Text key={index} style={styles.ingredient}>
+              {ingredient}
+            </Text>
+          ))}
+        </View>
+      </View>
+      <View style={styles.steps}>
+        {recipe.steps.map((step, index) => (
+          <View
+            key={index}
+            style={[
+              styles.step,
+              {
+                backgroundColor:
+                  currentPage === index ? COLORS.dishcoveryOrange : COLORS.lightGray,
+              },
+            ]}
+          >
+            <View style={styles.icon}>
+              <Icon
+                name={`numeric-${index + 1}-circle`}
+                color={COLORS.white}
+                size={35}
+              />
+            </View>
+            <Text style={[styles.stepText, { color: COLORS.black }]}>
+              {step}
+            </Text>
+          </View>
+        ))}
+      </View>
+    </View>
+  );
+};
+
+const styles = StyleSheet.create({
+  card: {
+    backgroundColor: "#FFE7DF",
+    borderRadius: 20,
+    padding: SIZES.padding,
+  },
+  title: {
+    fontFamily: "Inter",
+    fontWeight: "bold",
+    fontSize: 18.51,
+    marginBottom: SIZES.padding,
+  },
+  ingredients: {
+    marginBottom: SIZES.padding,
+  },
+  ingredientsTitle: {
+    fontFamily: "Inter",
+    fontWeight: "bold",
+    fontSize: 16,
+    marginBottom: SIZES.base,
+  },
+  ingredientsList: {
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  ingredient: {
+    width: "50%",
+    marginBottom: SIZES.base,
+  },
+  steps: {
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  step: {
+    flexDirection: "row",
+    alignItems: "center",
+    backgroundColor: COLORS.lightGray,
+    borderRadius: 20,
+    padding: SIZES.base,
+    flex: 1,
+  },
+  icon: {
+    marginRight: SIZES.base,
+  },
+  stepText: {
+    fontFamily: "Inter",
+    fontSize: 16,
+    flex: 1,
+  },
+});
+
+export default RecipeCard;

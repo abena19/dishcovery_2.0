@@ -1,5 +1,9 @@
+RecipeScreen
 import React, { useState, useRef } from "react";
 import IngredientCard from ".././components/IngredientCard";
+//import AboutScreen from "./AboutScreen";
+//import RecipeCard from "./RecipeCard";
+
 import {
   View,
   Image,
@@ -82,7 +86,6 @@ const RecipeScreen = ({ navigation, route }) => {
         resizeMode={"cover"}
         source={selectedRecipe?.image}
       >
-        
         {/* Back button TODO - doesn't go to right page if from Liked or Scan screen */}
         <TouchableOpacity
           style={styles.backbuttoncircle}
@@ -145,11 +148,17 @@ const RecipeScreen = ({ navigation, route }) => {
               <Text style={styles.recipeInfoButtonText}>Recipe</Text>
             </TouchableOpacity>
           </View>
-        
+
           {showIngredients ? (
-            <IngredientCard ingredients={selectedRecipe?.ingredients} />
+            <>
+              <View style={{ marginVertical: 10 }}>
+                <IngredientCard ingredients={selectedRecipe?.ingredients} />
+              </View>
+            </>
           ) : null}
+
           {showRecipe ? (
+          
             <Text style={{ marginTop: SIZES.padding }}>
               <Icon
                 name="numeric-1-circle"
@@ -206,7 +215,7 @@ const RecipeScreen = ({ navigation, route }) => {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              onPress={() => navigation.navigate("About")}
+              onPress={() => navigation.navigate(AboutScreen)}
             >
               <Text
                 style={{
@@ -228,157 +237,155 @@ const RecipeScreen = ({ navigation, route }) => {
 export default RecipeScreen;
 
 const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      flexDirection: "column",
+  container: {
+    flex: 1,
+    flexDirection: "column",
+  },
+  title: {
+    fontSize: 15,
+    letterSpacing: 1,
+    textTransform: "uppercase",
+    fontFamily: "Inter-Bold",
+    textAlign: "center",
+    color: COLORS.dishcoveryNearBlack,
+    marginRight: 5,
+    marginLeft: 5,
+    marginVertical: 12,
+  },
+  heartButton: {
+    alignSelf: "flex-end",
+    //position: 'absolute',
+    bottom: 0,
+    borderRadius: 99,
+    height: 50,
+    width: 50,
+    marginRight: 7,
+    marginTop: "48%",
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 0,
     },
-    title: {
-      fontSize: 15,
-      letterSpacing: 1,
-      textTransform: "uppercase",
-      fontFamily: "Inter-Bold",
-      textAlign: "center",
-      color: COLORS.dishcoveryNearBlack,
-      marginRight: 5,
-      marginLeft: 5,
-      marginVertical: 12,
-    },
-    heartButton: {
-      alignSelf: "flex-end",
-      //position: 'absolute',
-      bottom: 0,
-      borderRadius: 99,
-      height: 50,
-      width: 50,
-      marginRight: 7,
-      marginTop: "48%",
-      backgroundColor: "white",
-      alignItems: "center",
-      justifyContent: "center",
-      shadowColor: "#000",
-      shadowOffset: {
-        width: 0,
-        height: 0,
-      },
-      shadowOpacity: 0.5,
-      shadowRadius: 10,
-    },
-    backbuttoncircle: {
-      position: "absolute",
-      alignItems: "center",
-      justifyContent: "center",
-      height: 35,
-      width: 35,
-      borderRadius: 18,
-      borderWidth: 1,
-      borderColor: COLORS.lightGray,
-      backgroundColor: "white",
-      color: "black",
-      margin: 20,
-    },
-    backbuttonarrow: {
-      position: "absolute",
-      width: 15,
-      height: 15,
-      tintColor: "black",
-      color: "black",
-    },
-    recipeImage: {
-      width: "100%",
-      height: 250,
-    },
-    buttonContainer: {
-      flexDirection: "row",
-      alignItems: "center",
-      justifyContent: "center",
-      backgroundColor: "#F0DDD6",
-      borderRadius: 30,
-      height: 45,
-      //width:200,
-      marginHorizontal: "6%",
-    },
-    recipeInfoButtonOn: {
-      width: 95,
-      height: 45,
-      flex: 0.95,
-      backgroundColor: "white",
-      alignItems: "center",
-      justifyContent: "center",
-      borderRadius: 30,
-      height: 38,
-    },
-    recipeInfoButtonOff: {
-      width: 95,
-      height: 45,
-      backgroundColor: "#F0DDD6",
-      borderRadius: 30,
-      alignItems: "center",
-      justifyContent: "center",
-    },
-    recipeInfoButtonText: {
-      textTransform: "uppercase",
-      fontSize: 10,
-      fontFamily: "Inter-SemiBold",
-      letterSpacing: 1,
-    },
-    // Toggle button settings:
-    toggleButton: {
-      flexDirection: "row",
-      justifyContent: "center",
-      alignItems: "center",
-      marginVertical: 10,
-    },
-    toggleText: {
-      fontSize: 18,
-      fontWeight: "bold",
-      color: COLORS.black,
-    },
-    toggleIndicator: {
-      position: "absolute",
-      top: 2,
-      width: "46%",
-      height: 36,
-      borderRadius: 20,
-      backgroundColor: COLORS.dishcoveryOrange,
-    },
-    servingsContainer: {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      paddingLeft: SIZES.padding * 1.5,
-      marginTop: SIZES.padding * 2,
-    },
-    servingsText: {
-      fontFamily: 'Inter-SemiBold',
-      fontSize: SIZES.body4,
-      color: '#DD6135',
-    },
-    servingsAdjustment: {
-      flexDirection: 'row',
-      justifyContent: 'flex-start',
-      alignItems: 'center',
-      marginLeft: SIZES.padding * 2,
-    },
-    servingsButton: {
-      width: 26,
-      height: 26,
-      borderRadius: 13,
-      borderWidth: 1,
-      borderColor: 'black',
-      justifyContent: 'center',
-      alignItems: 'center',
-    },
-    servingsButtonText: {
-      fontSize: SIZES.h4,
-      fontWeight: 'bold',
-      color: 'white',
-    },
-    servingsNumber: {
-      fontFamily: 'Inter-SemiBold',
-      fontSize: SIZES.body4,
-      color: '#000',
-      marginHorizontal: SIZES.padding,
-    },  
-  });
-  
-  
+    shadowOpacity: 0.5,
+    shadowRadius: 10,
+  },
+  backbuttoncircle: {
+    position: "absolute",
+    alignItems: "center",
+    justifyContent: "center",
+    height: 35,
+    width: 35,
+    borderRadius: 18,
+    borderWidth: 1,
+    borderColor: COLORS.lightGray,
+    backgroundColor: "white",
+    color: "black",
+    margin: 20,
+  },
+  backbuttonarrow: {
+    position: "absolute",
+    width: 15,
+    height: 15,
+    tintColor: "black",
+    color: "black",
+  },
+  recipeImage: {
+    width: "100%",
+    height: 250,
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: "#F0DDD6",
+    borderRadius: 30,
+    height: 45,
+    //width:200,
+    marginHorizontal: "6%",
+  },
+  recipeInfoButtonOn: {
+    width: 95,
+    height: 45,
+    flex: 0.95,
+    backgroundColor: "white",
+    alignItems: "center",
+    justifyContent: "center",
+    borderRadius: 30,
+    height: 38,
+  },
+  recipeInfoButtonOff: {
+    width: 95,
+    height: 45,
+    backgroundColor: "#F0DDD6",
+    borderRadius: 30,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  recipeInfoButtonText: {
+    textTransform: "uppercase",
+    fontSize: 10,
+    fontFamily: "Inter-SemiBold",
+    letterSpacing: 1,
+  },
+  // Toggle button settings:
+  toggleButton: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    marginVertical: 10,
+  },
+  toggleText: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: COLORS.black,
+  },
+  toggleIndicator: {
+    position: "absolute",
+    top: 2,
+    width: "46%",
+    height: 36,
+    borderRadius: 20,
+    backgroundColor: COLORS.dishcoveryOrange,
+  },
+  servingsContainer: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    paddingLeft: SIZES.padding * 1.5,
+    marginTop: SIZES.padding * 2,
+  },
+  servingsText: {
+    fontFamily: "Inter-SemiBold",
+    fontSize: SIZES.body4,
+    color: "#DD6135",
+  },
+  servingsAdjustment: {
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginLeft: SIZES.padding * 2,
+  },
+  servingsButton: {
+    width: 26,
+    height: 26,
+    borderRadius: 13,
+    borderWidth: 1,
+    borderColor: "black",
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  servingsButtonText: {
+    fontSize: SIZES.h4,
+    fontWeight: "bold",
+    color: "white",
+  },
+  servingsNumber: {
+    fontFamily: "Inter-SemiBold",
+    fontSize: SIZES.body4,
+    color: "#000",
+    marginHorizontal: SIZES.padding,
+  },
+});
