@@ -55,7 +55,7 @@ return (
           </View>
 
            
-
+        
       {/* </SafeAreaView> */}
         <View style={styles.title}>
             <Text style={styles.pageTitle}>Account Information</Text>
@@ -65,7 +65,7 @@ return (
         <View style={styles.imageStyle}>
                  {/* {image && <Image style={{width: '60%', height: '60%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image}}/>} */}
                 
-                 <Image style={{width: '80%', height: '80%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/>
+                 <Image style={{width: 200, height: 200, backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/>
                 <View>
                     <Pressable style={styles.editButton} onPress={pickImage}>
                         <Text style={styles.buttonText}>{image ? 'Edit' : 'Upload'} profile picture</Text>
@@ -111,10 +111,11 @@ const styles = StyleSheet.create({
         flex: 0.35,
         alignItems: 'center',
         justifyContent: 'center',
-        marginTop: '13%',
+        marginTop: '3%',
         marginBottom:'0.5%',
     },
     pageTitle: {
+        // flex: 1,
         alignSelf: 'center',
         fontSize: 36,
         // marginBottom: 12,
@@ -179,7 +180,7 @@ const styles = StyleSheet.create({
     editButton: {
         height:55,
         // marginBottom:0,
-        
+        // flex: 1,
         borderRadius:20,
         flexDirection:'column',
         backgroundColor: '#DD6135', 
@@ -187,6 +188,7 @@ const styles = StyleSheet.create({
         padding: 15,
         justifyContent:'center',
         // borderRadius: 10,
+        position: 'fixed',
         alignItems: 'center',
         marginTop: '5%',
         marginBottom: '8%',
