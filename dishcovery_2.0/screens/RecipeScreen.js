@@ -131,10 +131,11 @@ const RecipeScreen = ({ navigation, route }) => {
       <View style={commonStyles.outerView}>
         <ScrollView
           style={styles.container}
-          contentContainerStyle={{ paddingBottom: 90 }}
+          contentContainerStyle={{ paddingBottom: '10%' }}
         >
-          <View style={{ marginVertical: 5 }}>
+          <View style={{ marginBottom: '2%',  marginTop: '-2%'}}>
             <Text style={styles.title}> {selectedRecipe?.name} </Text>
+            <Text style={styles.subtitle}> {selectedRecipe?.duration}         {selectedRecipe?.country} </Text>
           </View>
           {/* Recipe Image Background */}
           {/* Toggle Recipe Info - 2 buttons :-) */}
@@ -179,7 +180,7 @@ const RecipeScreen = ({ navigation, route }) => {
           ) : null}
 
           {showRecipe ? (
-            <Text style={{ marginTop: SIZES.padding }}>
+            <Text style={{ marginTop: SIZES.padding, marginLeft: SIZES.padding }}>
               <Icon
                 name="numeric-1-circle"
                 color={COLORS.dishcoveryOrange}
@@ -262,7 +263,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   title: {
-    fontSize: 15,
+    fontSize:'19%',
     letterSpacing: 1,
     textTransform: "uppercase",
     fontFamily: "Inter-Bold",
@@ -271,6 +272,18 @@ const styles = StyleSheet.create({
     marginRight: 5,
     marginLeft: 5,
     marginVertical: 12,
+  },
+  subtitle: {
+    fontSize:'12%',
+    letterSpacing: '0.5%',
+    textTransform: "uppercase",
+    fontFamily: "Inter-SemiBold",
+    textAlign: "center",
+    color: COLORS.dishcoveryNearBlack,
+    marginRight: '10%',
+    marginLeft:'10%',
+    marginTop:'-1%',
+    marginBottom:'5%',
   },
   heartButton: {
     alignSelf: "flex-end",
@@ -321,33 +334,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#F0DDD6",
-    borderRadius: 30,
+    borderRadius: '20%',
     height: 45,
     //width:200,
     marginHorizontal: "6%",
   },
   recipeInfoButtonOn: {
-    width: 95,
+    width: '50%',
     height: 45,
     flex: 0.95,
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: 30,
-    height: 38,
+    borderRadius: '15%',
+    height: '80%',
   },
   recipeInfoButtonOff: {
-    width: 95,
-    height: 45,
+    width: '45%',
+    height: '100%',
     backgroundColor: "#F0DDD6",
-    borderRadius: 30,
+    borderRadius:'20%',
     alignItems: "center",
     justifyContent: "center",
   },
   recipeInfoButtonText: {
     textTransform: "uppercase",
-    fontSize: 10,
-    fontFamily: "Inter-SemiBold",
+    fontSize: '11.5%',
+    fontFamily: "Inter- SemiBold",
+    fontWeight: 'bold',
     letterSpacing: 1,
   },
   // Toggle button settings:
