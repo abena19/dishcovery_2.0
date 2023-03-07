@@ -171,7 +171,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     marginRight: likeCardBool ? (SIZES.base) : (SIZES.base + 15),
     marginTop: likeCardBool ? (SIZES.base) : (SIZES.base + 15),
-    opacity: 0.7,
+    opacity: 0.8,
     transform: [{ scale: likeCardBool ? 0.7 : 1.5 }],
   },
 });

@@ -1,100 +1,112 @@
-import React from "react";
-import { StyleSheet, View, Text } from "react-native";
-import Icon from "react-native-vector-icons/MaterialCommunityIcons";
-import { COLORS, SIZES } from "../constants";
+import React from 'react';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { SIZES, COLORS, FONTS, icons } from "../constants";
 
-const RecipeCard = () => {
+const RecipeCard = ({ instructions }) => {
+  const [currentStep, setCurrentStep] = React.useState(0);
+  const handleLeftPress = () => setCurrentStep(currentStep - 1);
+  const handleRightPress = () => setCurrentStep(currentStep + 1);
+  const isLastStep = currentStep === instructions.length - 1;
+  const isFirstStep = currentStep === 0;
+  const stepNumber = currentStep + 1;
+
   return (
-    <View style={styles.card}>
-      <Text style={styles.cardTitle}>Lamb Souvlaki</Text>
-      <Text style={styles.cardSubtitle}>Ingredients:</Text>
-      {/* Ingredient list goes here */}
-      <View style={styles.divider} />
-      <Text style={styles.cardSubtitle}>Instructions:</Text>
-      <View style={styles.instruction}>
-        <Icon
-          name="numeric-1-circle"
-          color={COLORS.dishcoveryOrange}
-          size={17}
-        />
-        <Text style={styles.instructionText}>
-          In a mixing bowl, combine the Greek yogurt, grated and drained cucumber, minced garlic, extra virgin olive oil, red wine vinegar, chopped fresh dill, salt, and pepper.
-        </Text>
+    <TouchableOpacity
+      onPress={isLastStep ? undefined : handleRightPress}
+      activeOpacity={0.8}
+      style={styles.container}
+    >
+      <View style={styles.card}>
+        <View style={styles.stepNumber}>
+          <Icon
+            name={`numeric-${stepNumber}-circle`}
+            color={COLORS.dishcoveryOrange}
+            size={40}
+          />
+        </View>
+        <Text style={styles.text}>{instructions[currentStep]}</Text>
       </View>
-      <View style={styles.instruction}>
-        <Icon
-          name="numeric-2-circle"
-          color={COLORS.dishcoveryOrange}
-          size={17}
-        />
-        <Text style={styles.instructionText}>
-          Mix the ingredients until they are fully combined and the texture is smooth.
-        </Text>
+      <TouchableOpacity
+        onPress={isFirstStep ? undefined : handleLeftPress}
+        activeOpacity={0.8}
+        style={[styles.half, styles.leftHalf]}
+      />
+      <TouchableOpacity
+        onPress={isLastStep ? undefined : handleRightPress}
+        activeOpacity={0.8}
+        style={[styles.half, styles.rightHalf]}
+      />
+      <View style={styles.progress}>
+        {instructions.map((_, index) => (
+          <View
+            key={index}
+            style={[
+              styles.progressIndicator,
+              currentStep === index ? styles.progressHighlight : styles.progressDefault
+            ]}
+          />
+        ))}
       </View>
-      <View style={styles.instruction}>
-        <Icon
-          name="numeric-3-circle"
-          color={COLORS.dishcoveryOrange}
-          size={17}
-        />
-        <Text style={styles.instructionText}>
-          Adjust the seasoning to taste, if needed.
-        </Text>
-      </View>
-      <View style={styles.instruction}>
-        <Icon
-          name="numeric-4-circle"
-          color={COLORS.dishcoveryOrange}
-          size={17}
-        />
-        <Text style={styles.instructionText}>
-          Cover the tzatziki and refrigerate it for at least an hour to let the flavors meld.
-        </Text>
-      </View>
-      <View style={styles.instruction}>
-        <Icon
-          name="numeric-5-circle"
-          color={COLORS.dishcoveryOrange}
-          size={17}
-        />
-        <Text style={styles.instructionText}>
-          Serve the tzatziki cold as a dip or condiment.
-        </Text>
-      </View>
-    </View>
+    </TouchableOpacity>
   );
 };
 
 const styles = StyleSheet.create({
+  container: {
+    height: 260,
+    backgroundColor: '#FFE7DF',
+    borderRadius: 15,
+    overflow: 'hidden',
+  },
   card: {
-    backgroundColor: "#FFE7DF",
-    borderRadius: 20,
-    marginHorizontal: 20,
-    padding: 20,
-  },
-  cardTitle: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginBottom: 10,
-  },
-  cardSubtitle: {
-    fontSize: 18,
-    fontWeight: "bold",
-    marginBottom: 10,
-    marginTop: 10,
-  },
-  instruction: {
-    flexDirection: "row",
-    marginBottom: 10,
-  },
-  instructionText: {
     flex: 1,
-    marginLeft: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 24,
   },
-  divider: {
-    borderBottomColor: "#EDCACA",
-    borderBottomWidth: 1,
-    marginVertical: 10,
+  stepNumber: {
+    position: 'absolute',
+    top: 16,
+    left: 16,
+  },
+  text: {
+    fontFamily: 'Inter-Regular',
+    fontSize: 24,
+    lineHeight: 32,
+    textAlign: 'center',
+  },
+  half: {
+    position: 'absolute',
+    top: 0,
+    bottom: 0,
+    width: '50%',
+  },
+  leftHalf: {
+    left: 0,
+  },
+  rightHalf: {
+    right: 0,
+  },
+  progress: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: 24,
+    paddingHorizontal: 16,
+  },
+  progressIndicator: {
+    flex: 1,
+    height: '20%',
+    marginHorizontal: 4,
+    marginBottom: 20,
+    borderRadius: 5,
+  },
+  progressDefault: {
+    backgroundColor: "#C1C1C1",
+  },
+  progressHighlight: {
+    backgroundColor: COLORS.dishcoveryOrange,
   },
 });
 

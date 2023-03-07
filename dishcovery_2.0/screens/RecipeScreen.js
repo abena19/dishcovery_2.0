@@ -2,7 +2,7 @@ RecipeScreen;
 import React, { useState, useRef } from "react";
 import IngredientCard from ".././components/IngredientCard";
 //import AboutScreen from "./AboutScreen";
-//import RecipeCard from "./RecipeCard";
+import RecipeCard from ".././components/RecipeCard";
 import {
   View,
   Image,
@@ -35,6 +35,19 @@ import {
 const marginInfoBox = 200;
 const gallerywidth = 280;
 const infoboxheight = 85;
+
+// Dummy recipe data
+const instructions = [
+  'Preheat oven to 350°F (180°C).',
+  'In a large bowl, whisk together flour, baking powder, and salt.',
+  'In a separate bowl, cream together butter and sugar until light and fluffy.',
+  'Add eggs one at a time, beating well after each addition.',
+  'Gradually mix in dry ingredients, alternating with milk and vanilla.',
+  'Pour batter into greased and floured baking pan.',
+  'Bake for 35-40 minutes or until a toothpick inserted in the center comes out clean.',
+  'Let cool before serving.',
+];
+
 
 const RecipeScreen = ({ navigation, route }) => {
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
@@ -182,57 +195,9 @@ const RecipeScreen = ({ navigation, route }) => {
           ) : null}
 
           {showRecipe ? (
-            <Text
-              style={{
-                marginTop: SIZES.padding,
-                marginHorizontal: SIZES.padding,
-                fontSize: "15.5%",
-              }}
-            >
-              <Icon
-                name="numeric-1-circle"
-                color={COLORS.dishcoveryOrange}
-                size={17}
-              />{" "}
-              In a mixing bowl, combine the Greek yogurt, grated and drained
-              cucumber, minced garlic, extra virgin olive oil, red wine vinegar,
-              chopped fresh dill, salt, and pepper.
-              {"\n"}
-              {"\n"}
-              <Icon
-                name="numeric-2-circle"
-                color={COLORS.dishcoveryOrange}
-                size={17}
-              />{" "}
-              Mix the ingredients until they are fully combined and the texture
-              is smooth.
-              {"\n"}
-              {"\n"}
-              <Icon
-                name="numeric-3-circle"
-                color={COLORS.dishcoveryOrange}
-                size={17}
-              />{" "}
-              Adjust the seasoning to taste, if needed.
-              {"\n"}
-              {"\n"}
-              <Icon
-                name="numeric-4-circle"
-                color={COLORS.dishcoveryOrange}
-                size={17}
-              />{" "}
-              Cover the tzatziki and refrigerate it for at least an hour to let
-              the flavors meld.
-              {"\n"}
-              {"\n"}
-              <Icon
-                name="numeric-5-circle"
-                color={COLORS.dishcoveryOrange}
-                size={17}
-              />{" "}
-              Serve the tzatziki cold as a dip or condiment.
-              {"\n"}
-            </Text>
+            <View style={{ marginVertical: 10, marginHorizontal: 20 }}>
+              <RecipeCard instructions={instructions} />
+            </View>
           ) : null}
           <View
             style={{
