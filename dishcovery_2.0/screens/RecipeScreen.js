@@ -100,42 +100,44 @@ const RecipeScreen = ({ navigation, route }) => {
 
   return (
     <SafeAreaView style={commonStyles.whiteBackground}>
-      <ImageBackground
-        style={styles.recipeImage}
-        resizeMode={"cover"}
-        source={selectedRecipe?.image}
-      >
-        {/* Back button TODO - doesn't go to right page if from Liked or Scan screen */}
-        <TouchableOpacity
-          style={styles.backbuttoncircle}
-          onPress={() => navigation.goBack()}
-        >
-          <Image source={icons.back} style={styles.backbuttonarrow} />
-        </TouchableOpacity>
-
-        {/* INGREDIENT BUTTON */}
-        <Pressable
-          style={styles.heartButton}
-          onPress={() => {
-            addLike(selectedRecipe);
-          }}
-        >
-          <Ionicons
-            name={isLiked ? "heart" : "heart-outline"}
-            size={25}
-            color={COLORS.dishcoveryOrange}
-          />
-        </Pressable>
-      </ImageBackground>
-
-      <View style={commonStyles.outerView}>
+      <View style={commonStyles.imageView}>
         <ScrollView
           style={styles.container}
-          contentContainerStyle={{ paddingBottom: '10%' }}
+          contentContainerStyle={{ paddingBottom: "10%" }}
         >
-          <View style={{ marginBottom: '2%',  marginTop: '-2%'}}>
+          <ImageBackground
+            style={styles.recipeImage}
+            resizeMode={"cover"}
+            source={selectedRecipe?.image}
+          >
+            {/* Back button TODO - doesn't go to right page if from Liked or Scan screen */}
+            <TouchableOpacity
+              style={styles.backbuttoncircle}
+              onPress={() => navigation.goBack()}
+            >
+              <Image source={icons.back} style={styles.backbuttonarrow} />
+            </TouchableOpacity>
+
+            {/* INGREDIENT BUTTON */}
+            <Pressable
+              style={styles.heartButton}
+              onPress={() => {
+                addLike(selectedRecipe);
+              }}
+            >
+              <Ionicons
+                name={isLiked ? "heart" : "heart-outline"}
+                size={25}
+                color={COLORS.dishcoveryOrange}
+              />
+            </Pressable>
+          </ImageBackground>
+          <View style={{ marginBottom: "2%", marginTop: "2%" }}>
             <Text style={styles.title}> {selectedRecipe?.name} </Text>
-            <Text style={styles.subtitle}> {selectedRecipe?.duration}         {selectedRecipe?.country} </Text>
+            <Text style={styles.subtitle}>
+              {" "}
+              {selectedRecipe?.duration} {selectedRecipe?.country}{" "}
+            </Text>
           </View>
           {/* Recipe Image Background */}
           {/* Toggle Recipe Info - 2 buttons :-) */}
@@ -180,7 +182,13 @@ const RecipeScreen = ({ navigation, route }) => {
           ) : null}
 
           {showRecipe ? (
-            <Text style={{ marginTop: SIZES.padding, marginHorizontal: SIZES.padding, fontSize:'15.5%' }}>
+            <Text
+              style={{
+                marginTop: SIZES.padding,
+                marginHorizontal: SIZES.padding,
+                fontSize: "15.5%",
+              }}
+            >
               <Icon
                 name="numeric-1-circle"
                 color={COLORS.dishcoveryOrange}
@@ -226,13 +234,19 @@ const RecipeScreen = ({ navigation, route }) => {
               {"\n"}
             </Text>
           ) : null}
-          <View style={{ alignItems: "center", marginTop: '5%', marginBottom: '20%' }}>
+          <View
+            style={{
+              alignItems: "center",
+              marginTop: "5%",
+              marginBottom: "20%",
+            }}
+          >
             <TouchableOpacity
               style={{
                 width: 307,
                 height: 56,
                 backgroundColor: "#DD6135",
-                borderRadius: '18%',
+                borderRadius: "18%",
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -243,7 +257,7 @@ const RecipeScreen = ({ navigation, route }) => {
                   color: "#FFFFFF",
                   fontWeight: "600",
                   // textTransform: "uppercase",
-                  fontSize: '18%',
+                  fontSize: "18%",
                 }}
               >
                 About This Dish
@@ -263,7 +277,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
   },
   title: {
-    fontSize:'19%',
+    fontSize: "19%",
     letterSpacing: 1,
     textTransform: "uppercase",
     fontFamily: "Inter-Bold",
@@ -274,16 +288,16 @@ const styles = StyleSheet.create({
     marginVertical: 12,
   },
   subtitle: {
-    fontSize:'12%',
-    letterSpacing: '0.5%',
+    fontSize: "12%",
+    letterSpacing: "0.5%",
     textTransform: "uppercase",
     fontFamily: "Inter-SemiBold",
     textAlign: "center",
     color: COLORS.dishcoveryNearBlack,
-    marginRight: '10%',
-    marginLeft:'10%',
-    marginTop:'-1%',
-    marginBottom:'5%',
+    marginRight: "10%",
+    marginLeft: "10%",
+    marginTop: "-1%",
+    marginBottom: "5%",
   },
   heartButton: {
     alignSelf: "flex-end",
@@ -334,34 +348,34 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: "#F0DDD6",
-    borderRadius: '20%',
+    borderRadius: "20%",
     height: 45,
     //width:200,
     marginHorizontal: "6%",
   },
   recipeInfoButtonOn: {
-    width: '50%',
+    width: "50%",
     height: 45,
     flex: 0.95,
     backgroundColor: "white",
     alignItems: "center",
     justifyContent: "center",
-    borderRadius: '15%',
-    height: '80%',
+    borderRadius: "15%",
+    height: "80%",
   },
   recipeInfoButtonOff: {
-    width: '45%',
-    height: '100%',
+    width: "45%",
+    height: "100%",
     backgroundColor: "#F0DDD6",
-    borderRadius:'20%',
+    borderRadius: "20%",
     alignItems: "center",
     justifyContent: "center",
   },
   recipeInfoButtonText: {
     textTransform: "uppercase",
-    fontSize: '12.5%',
+    fontSize: "12.5%",
     fontFamily: "Inter- SemiBold",
-    fontWeight: 'bold',
+    fontWeight: "bold",
     letterSpacing: 1,
   },
   // Toggle button settings:
@@ -392,7 +406,7 @@ const styles = StyleSheet.create({
     marginTop: SIZES.padding * 2,
   },
   servingsText: {
-    fontFamily: "Inter-SemiBold",
+    fontFamily: "Montserrat-Regular",
     fontSize: SIZES.body4,
     color: "#DD6135",
   },
@@ -417,7 +431,7 @@ const styles = StyleSheet.create({
     color: "white",
   },
   servingsNumber: {
-    fontFamily: "Inter-SemiBold",
+    fontFamily: "Montserrat-SemiBold",
     fontSize: SIZES.body4,
     color: "#000",
     marginHorizontal: SIZES.padding,

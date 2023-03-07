@@ -17,6 +17,16 @@ export default StyleSheet.create({
         paddingRight: '1%',
         paddingTop: '1%',
     },
+    imageView: {
+        flex: 1,
+        //backgroundColor: 'blue',
+        marginTop: '0%',
+        marginLeft: '0%',
+        marginRight: '0%',
+        paddingLeft: '0%',
+        paddingRight: '0%',
+        paddingTop: '0%',
+    },
     outerViewSearch: {
         flex: 1,
         //backgroundColor: 'blue',
