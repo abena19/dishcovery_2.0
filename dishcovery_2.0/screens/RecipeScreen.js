@@ -180,7 +180,7 @@ const RecipeScreen = ({ navigation, route }) => {
           ) : null}
 
           {showRecipe ? (
-            <Text style={{ marginTop: SIZES.padding, marginLeft: SIZES.padding }}>
+            <Text style={{ marginTop: SIZES.padding, marginHorizontal: SIZES.padding, fontSize:'15.5%' }}>
               <Icon
                 name="numeric-1-circle"
                 color={COLORS.dishcoveryOrange}
@@ -226,13 +226,13 @@ const RecipeScreen = ({ navigation, route }) => {
               {"\n"}
             </Text>
           ) : null}
-          <View style={{ alignItems: "center", marginTop: 20 }}>
+          <View style={{ alignItems: "center", marginTop: '5%', marginBottom: '20%' }}>
             <TouchableOpacity
               style={{
                 width: 307,
                 height: 56,
                 backgroundColor: "#DD6135",
-                borderRadius: 10,
+                borderRadius: '18%',
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -242,11 +242,11 @@ const RecipeScreen = ({ navigation, route }) => {
                 style={{
                   color: "#FFFFFF",
                   fontWeight: "600",
-                  textTransform: "uppercase",
-                  fontSize: 16,
+                  // textTransform: "uppercase",
+                  fontSize: '18%',
                 }}
               >
-                About this dish
+                About This Dish
               </Text>
             </TouchableOpacity>
           </View>
@@ -359,7 +359,7 @@ const styles = StyleSheet.create({
   },
   recipeInfoButtonText: {
     textTransform: "uppercase",
-    fontSize: '11.5%',
+    fontSize: '12.5%',
     fontFamily: "Inter- SemiBold",
     fontWeight: 'bold',
     letterSpacing: 1,

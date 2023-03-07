@@ -170,7 +170,7 @@ export default class App extends React.Component {
                       style={styles.buttonContainer} activeOpacity = { .5 }
                       onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
                     >
-                      <Text style={styles.ButtonTextStyle}>Scan Ingredient</Text>
+                      <Text style={styles.ButtonTextStyle}>Begin Scan</Text>
                     </TouchableOpacity> 
                   }
                   {this.state.ingredientRecognized ?
