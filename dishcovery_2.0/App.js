@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Ionicons } from '@expo/vector-icons';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { SearchScreen, ExploreScreen, ScanScreen, ScanIntroScreen, LikedScreen , AdditionalContextScreen,ProfileScreen, RecipeScreen, AccountCreationScreen, ContextTutorialScreen, CookingTutorialScreen, ScanTutorialScreen, WelcomeScreen, LoginScreen} from "./screens";
+import AboutScreen from './screens/AboutScreen';
 import { createStackNavigator } from '@react-navigation/stack';
 import {COLORS } from "./constants";
 import { useFonts } from 'expo-font';
@@ -78,6 +79,7 @@ const ExploreStack = ({route}) => {
          {/* <Stack.Screen name="Login or Sign Up" component={LoginScreen} options={{ headerShown: false}}/> */}
          <Stack.Screen name="Explore Screen" component={ExploreScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Recipe Screen" component={RecipeScreen} options={{ headerShown: false }}/>
+         <Stack.Screen name="About Screen" component={AboutScreen} options={{ headerShown: false }}/>
          <Stack.Screen name="Search Results" component={SearchScreen} />
       </Stack.Navigator>
     )
