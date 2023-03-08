@@ -1,8 +1,25 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+//import { View, Text, StyleSheet } from 'react-native';
+import {
+  View,
+  Image,
+  TouchableOpacity,
+  StyleSheet,
+  ImageBackground,
+  Button,
+  ScrollView,
+  Text,
+  SafeAreaView,
+  Animated,
+  Pressable,
+} from "react-native";
+import commonStyles from "../assets/styles/CommonStyles.styles";
+
+
+import { icons, COLORS, SIZES } from "../constants";
 
 const AboutScreen = ({ navigation, route }) => {
-    const { recipe } = route.params;
+    //const { recipe } = route.params;
     return (
       <SafeAreaView style={commonStyles.whiteBackground}>
         {/* Header */}

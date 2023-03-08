@@ -34,54 +34,73 @@ export default function DietaryPreferencesScreen({ navigation}) {
             setImage(result.uri);
         }
     };
-
+    const [recipes, setRecipes] = useState([]);
     const getRecipes  = async () => {
+        // const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
+        // const querySnapshot = await getDocs(q);
+        // if (querySnapshot.length > 0) {
+        //     querySnapshot.forEach((doc) => {
+
+        //     })
+        // }
+        console.log("before")
         const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
         const querySnapshot = await getDocs(q);
-        if (querySnapshot.length > 0) {
+        //console.log(querySnapshot);
+        //if (querySnapshot.length > 0) {
+            console.log("after");
+
             querySnapshot.forEach((doc) => {
+                console.log(doc.data());
 
+                setRecipes([...recipes, doc.data()]);
+
+            
             })
-        }
+       // }
+        //console.log(recipes);
+        //console.log("after if statement2");
+
+        // console.log("Mediterranean");
+        // const recipeRef = db.collection('Recipes').get();
+        // const snapshot = await recipeRef.where('region', '==', 'Mediterranean').get();
 
 
+        // if (snapshot.empty) {
+        //     console.log('No matching documents.');
+        //     return;
+        //   }  
+          
+        //   snapshot.forEach(doc => {
+        //     console.log(doc.id, '=>', doc.data());
+        //   });
 
+        }   
 
+      //  console.log(recipes);
 
 
         //const db = firebase.firestore();
 
-        console.log("before");
-        const recRef = doc(db, "Recipes", "Chiles en Nogada");
-        const docSnap = await getDoc(recRef);
-        //const recipeRef = db.collection('Recipes').doc('Chiles en Nogada');
-        console.log("after")
-        //const doc = await recipeRef.get();
-        if (!docSnap.exists) {
-        console.log('No such document!');
-        } else {
-        console.log('Document data:', docSnap.data());
+        // console.log("before");
+        // const recRef = doc(db, "Recipes", "Chiles en Nogada");
+        // const docSnap = await getDoc(recRef);
+        // //const recipeRef = db.collection('Recipes').doc('Chiles en Nogada');
+        // console.log("after")
+        // //const doc = await recipeRef.get();
+        // if (!docSnap.exists) {
+        // console.log('No such document!');
+        // } else {
+        // console.log('Document data:', docSnap.data());
 
 
-        console.log("Mediterranean");
-        const recipeRef = db.collection('Recipes').get();
-        const Snapshot = await recipeRef.where('region', '==', 'Mediterranean').get();
-
-        if (snapshot.empty) {
-            console.log('No matching documents.');
-            return;
-          }  
-          
-          snapshot.forEach(doc => {
-            console.log(doc.id, '=>', doc.data());
-          });
-
-        }   
+        
+       
 
         //navigation.navigate("Explore");
         // const recipes = await firestore().collection('Recipes').doc('Origins').collection('Greece').get();
         // console.log(recipes);
-        }
+        //}
 
 
     const [name, onChangeName] = useState("");
@@ -180,6 +199,7 @@ export default function DietaryPreferencesScreen({ navigation}) {
     const onPressHandler20 = () => {
         setSelected20(!selected20);
     }
+   // console.log("HEY THIS IS THE ONE " + recipes);
 
 
 return (
@@ -388,7 +408,8 @@ return (
 
         <View style={styles.buttonContainer}>
             <TouchableOpacity
-                onPress={() => navigation.navigate("Explore") }
+                onPressIn={getRecipes}
+                onPress={() => navigation.navigate("Explore", {screen: "Explore Screen", params: {recipes: "passedRecipes"}}) }
                 
                 style={styles.button}
             >

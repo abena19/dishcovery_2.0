@@ -207,6 +207,7 @@ const RecipeScreen = ({ navigation, route }) => {
             }}
           >
             <TouchableOpacity
+              onPress={() => navigation.navigate("About Screen")}
               style={{
                 width: 307,
                 height: 56,
@@ -215,7 +216,7 @@ const RecipeScreen = ({ navigation, route }) => {
                 alignItems: "center",
                 justifyContent: "center",
               }}
-              onPress={() => navigation.navigate(AboutScreen)}
+              
             >
               <Text
                 style={{

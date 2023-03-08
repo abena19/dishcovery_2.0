@@ -32,6 +32,7 @@ const LikedScreen = ({ navigation }) => {
     const user = auth.currentUser.email;
     const q = query(collection(db, "users"), where("email", "==", user));
     const querySnapshot = await getDocs(q);
+    console.log(doc.data())
     let doc = querySnapshot.docs[0];
     setUserLikes(doc.get("likes"));
   }

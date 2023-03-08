@@ -27,7 +27,10 @@ import {
 
 // console.log(dummyData.trendingRecipes)
 
-const ExploreScreen = ({ navigation }) => {
+const ExploreScreen = ({ navigation, route }) => {
+
+    console.log(route);
+    const [recipes, setRecipes] = useState([]);
 
     const {
         showToast,
