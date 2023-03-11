@@ -49,7 +49,7 @@ const ExploreScreen = ({ navigation, route }) => {
             // console.log(doc.data());
 
            // [...tempList, doc.data()];
-           tempList.push(doc.data())
+           tempList.push(doc.data());
 
         
         })
@@ -240,7 +240,7 @@ const ExploreScreen = ({ navigation, route }) => {
                     }}
                     >
                     <Text style={[styles2.subheading, {marginLeft: '5%', paddingLeft: '1%'}]}>
-                            Based On Your Scans
+                            Mediterranean Cuisine
                         </Text>
                         <FlatList 
                         //data={dummyData.scannedIngredientRecipes}
