@@ -128,8 +128,10 @@ const DishCard = ({ containerStyle, recipeItem, onPress, likeCard }) => {
             <Text
               style={{
                 fontFamily: "Inter-SemiBold",
-                fontSize: likeCard ? (recipeItem.name.length > 12 ? 15 : 16): (recipeItem.name.length > 12 ? 20 : 25),
-                lineHeight: recipeItem.name.length > 12 ? 20 : 25,
+                fontSize: 18,
+                //fontSize: likeCard ? (recipeItem.name.length > 12 ? 15 : 16): (recipeItem.name.length > 12 ? 20 : 25),
+                //lineHeight: recipeItem.name.length > 12 ? 20 : 25,
+                lineHeight: 20,
                 color: "white",
                 // Move text up by 30.
                 //marginBottom: 30,

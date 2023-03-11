@@ -34,7 +34,13 @@ const LikedScreen = ({ navigation }) => {
     const querySnapshot = await getDocs(q);
     console.log(doc.data())
     let doc = querySnapshot.docs[0];
+
     setUserLikes(doc.get("likes"));
+    // let liked;
+    //   querySnapshot.forEach((doc) => {
+    //     liked = doc.data["likes"];
+    //   })
+    //   setUserLikes(liked);
   }
 
   getLiked();

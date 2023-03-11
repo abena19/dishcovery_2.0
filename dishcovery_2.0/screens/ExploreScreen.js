@@ -23,14 +23,63 @@ import {
     POPUP_DIRECTION,
   } from 'react-native-popup-view'; 
   import filterStyles from '../assets/styles/ExploreFilter.style';
-
+  import {
+    updateDoc,
+    where,
+    query,
+    collection,
+    getDocs,
+    arrayUnion,
+  } from "firebase/firestore";
+  import { db } from "../constants/Firebase";
 
 // console.log(dummyData.trendingRecipes)
-
+//console.log(JSON.stringify(route));
 const ExploreScreen = ({ navigation, route }) => {
 
-    console.log(route);
-    const [recipes, setRecipes] = useState([]);
+    const [recipesList, setRecipesList] = useState([]);
+
+   // try { 
+        const getRecipes = async() => {
+        const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
+        const querySnapshot = await getDocs(q);
+        //console.log(doc.data());
+        let tempList = [];
+        querySnapshot.forEach((doc) => {
+            // console.log(doc.data());
+
+           // [...tempList, doc.data()];
+           tempList.push(doc.data())
+
+        
+        })
+        setRecipesList(tempList);
+        console.log(recipesList);
+    }
+//}
+    // catch(err) {
+    //     Alert.alert(
+    //         "Error",
+    //         err.code,
+    //         [
+    //             {
+    //                 text: "Ok",
+    //                 onPress: () => console.log(err.code),
+    //             }
+    //         ]
+    //     )
+    // }
+    
+
+    getRecipes();
+    console.log(recipesList);
+   
+    // console.log("This is the " + JSON.stringify(route));
+    // console.log(route);
+    // const [retrievedRecipes, setRetrievedRecipes] = useState([]);
+    // const params = route.params;
+    // setRetrievedRecipes(params);
+    //setRetrievedRecipes(route.params.recipes);
 
     const {
         showToast,
@@ -194,7 +243,8 @@ const ExploreScreen = ({ navigation, route }) => {
                             Based On Your Scans
                         </Text>
                         <FlatList 
-                        data={dummyData.scannedIngredientRecipes}
+                        //data={dummyData.scannedIngredientRecipes}
+                        data={recipesList}
                         horizontal
                         showsHorizontalScrollIndicator={false}
                         keyExtractor={item => `${item.id}`}

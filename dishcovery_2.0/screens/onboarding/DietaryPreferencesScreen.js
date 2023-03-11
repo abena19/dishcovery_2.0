@@ -43,15 +43,15 @@ export default function DietaryPreferencesScreen({ navigation}) {
 
         //     })
         // }
-        console.log("before")
+        // console.log("before")
         const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
         const querySnapshot = await getDocs(q);
         //console.log(querySnapshot);
         //if (querySnapshot.length > 0) {
-            console.log("after");
+            // console.log("after");
 
             querySnapshot.forEach((doc) => {
-                console.log(doc.data());
+                // console.log(doc.data());
 
                 setRecipes([...recipes, doc.data()]);
 
@@ -410,7 +410,7 @@ return (
             <TouchableOpacity
                 onPressIn={getRecipes}
                 onPress={() => navigation.navigate("Explore", {screen: "Explore Screen", params: {recipes: "passedRecipes"}}) }
-                
+                //onPressOut={console.log("THIS IS THE PARAM: " + JSON.stringify(recipes))}
                 style={styles.button}
             >
                 <Text style={styles.buttonText}>Next  →</Text>
