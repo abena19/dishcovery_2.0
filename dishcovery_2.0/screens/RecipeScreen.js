@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import IngredientCard from ".././components/IngredientCard";
 //import AboutScreen from "./AboutScreen";
 import RecipeCard from ".././components/RecipeCard";
+import {ExpandableListView} from 'react-native-expandable-listview';
 import {
   View,
   Image,
@@ -54,8 +55,10 @@ const RecipeScreen = ({ navigation, route }) => {
   const [showContext, setShowContext] = useState(true);
   const [showRecipe, setShowRecipe] = useState(false);
   const [showIngredients, setShowIngredients] = useState(true);
+  const [showAbout, setShowAbout] = useState(false);
+  
 
-  console.log(selectedRecipe?.country);
+  // console.log(selectedRecipe?.country);
   React.useEffect(() => {
     let { recipe } = route.params;
     setSelectedRecipe(recipe);
@@ -207,7 +210,8 @@ const RecipeScreen = ({ navigation, route }) => {
             }}
           >
             <TouchableOpacity
-              onPress={() => navigation.navigate("About Screen")}
+              // onPress={() => navigation.navigate("About Screen")}
+              onPress={() => {this.setState({showAbout: !showAbout});}}
               style={{
                 width: 307,
                 height: 56,
@@ -229,6 +233,14 @@ const RecipeScreen = ({ navigation, route }) => {
                 About This Dish
               </Text>
             </TouchableOpacity>
+
+            <ExpandableListView
+                data={CONTENT}
+                ExpandableListViewStyles={styles.container}
+                itemContainerStyle={styles.outerExpandBox}
+                innerItemContainerStyle={styles.innerExpandBox}
+                customChevron={require('../assets/icons/chevron.jpeg')}
+              /> 
           </View>
         </ScrollView>
       </View>
