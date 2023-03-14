@@ -24,7 +24,7 @@ export default class App extends React.Component {
   state = {
     hasCameraPermission: null,
     predictions: [],
-    scanPressed: false,
+    scanPressed: true,
     ingredientRecognized: false,
     ingredientNotRecognized: false,
     scanComplete: false,
@@ -43,6 +43,9 @@ export default class App extends React.Component {
   async componentDidMount() {
     const { status } = await Camera.requestCameraPermissionsAsync();
     this.setState({ hasCameraPermission: status === 'granted' });
+    if (status === 'granted') {
+      this.objectDetection();
+    }
   }
 
   capturePhoto = async () => {
@@ -166,12 +169,14 @@ export default class App extends React.Component {
                 >
                   {this.state.scanPressed ? 
                     null :
-                    <TouchableOpacity
-                      style={styles.buttonContainer} activeOpacity = { .5 }
-                      onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
-                    >
-                      <Text style={styles.ButtonTextStyle}>Begin Scan</Text>
-                    </TouchableOpacity> 
+                    // <TouchableOpacity
+                    //   style={styles.buttonContainer} activeOpacity = { .5 }
+                    //   onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
+                    // >
+                    //   <Text style={styles.ButtonTextStyle}>Begin Scan</Text>
+                    //   {/* <Image source={require('../../assets/icons/camera-icon-round-filled')} /> */}
+                    // </TouchableOpacity> 
+                    null
                   }
                   {this.state.ingredientRecognized ?
                     <TouchableOpacity
