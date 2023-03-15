@@ -3,10 +3,6 @@ import React, { useState, useRef } from "react";
 import IngredientCard from ".././components/IngredientCard";
 //import AboutScreen from "./AboutScreen";
 import RecipeCard from ".././components/RecipeCard";
-import {ExpandableListView} from 'react-native-expandable-listview';
-import contextStyles from '../assets/styles/ContextFlow.style';
-import ingredientContext from '../assets/ingredientContext';
-import bittermelon_origins from "../assets/images/bittermelon_origins.png";
 import {
   View,
   Image,
@@ -53,133 +49,13 @@ const instructions = [
 ];
 
 
-
-
 const RecipeScreen = ({ navigation, route, }) => {
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
   const [showContext, setShowContext] = useState(true);
   const [showRecipe, setShowRecipe] = useState(false);
   const [showIngredients, setShowIngredients] = useState(true);
-  const [showAbout, setShowAbout] = useState(false);  // bool for expandable view
-  
 
-  const ingredientContexttest = ingredientContext
-// const { itemKey } = route.params;
-//     const itemKeySplit = itemKey.split(" Accuracy");     // ['bitter melon, ' Accuracy 0.99...'] This is not a good way to do it because it requires Accuracy be in that string but i was confused how to send filteredPredictions to params and so i sent item.key instead
-    const itemName = 'bitter melon';
-const CONTENT = [  //conytent for the expandable view
-  {
-    id: '97',
-    categoryName: 'Flavor/Texture Profile',
-    subCategory: [
-      {
-        id: '1',
-        name: '',
-        customInnerItem: (
-          <View style={contextStyles.innerExpandBox}>
-            {/* <View style={styles.expandImageBox}>
-              <Image source={imageName} style={styles.expandImage}></Image>
-            </View> */}
-            <View style={contextStyles.textContainerStyle}>
-              <Text style={contextStyles.TextStyle}>{ingredientContexttest[itemName]["flavor profile/texture"]}</Text>
-            </View>
-          </View> 
-        ),
-      },
-    ],
-  },
-  {
-    id: '96',
-    categoryName: 'Alternate Names',
-    subCategory: [
-      {
-        id: '1',
-        name: '',
-        customInnerItem: (
-          <View style={contextStyles.innerExpandBox}>
-            {/* <View style={styles.expandImageBox}>
-              <Image source={innerImageName} style={styles.expandImage}></Image>
-            </View> */}
-            <View style={contextStyles.textContainerStyle}>
-              {Object.entries(ingredientContexttest[itemName]["new alternate names"]).map(([key, value]) => (
-                  <Text style={{fontSize: 15, lineHeight: 25}}>
-                  <Text style={{fontWeight: 'bold', color: COLORS.dishcoveryOrange}}>{key}: </Text>
-                  <Text style={{fontWeight: 'normal'}}>{value}</Text>
-                  </Text>
-              ))}
-            </View>
-          </View> 
-        ),
-      },
-    ],
-  },
-  {
-    id: '95',
-    categoryName: 'Cultural Context',
-    subCategory: [
-      {
-        id: '1',
-        name: '',
-        customInnerItem: (
-          <View style={styles.innerExpandBox}>
-            <View style={styles.textContainerStyle}>
-              {Object.entries(ingredientContexttest[itemName]["new cultural context"]).map(([key, value]) => (
-                  <Text style={{fontSize: 15, lineHeight: 25}}>
-                  <Text style={{fontWeight: 'bold', color: COLORS.dishcoveryOrange}}>{key}: </Text>
-                  <Text style={{fontWeight: 'normal'}}>{value}</Text>
-                  </Text>
-              ))}
-            </View>
-          </View> 
-        ),
-      },
-    ],
-  },
-  {
-    id: '94',
-    categoryName: 'Origins and Geography',
-    subCategory: [
-      {
-        id: '1',
-        name: '',
-        customInnerItem: (
-          <View style={contextStyles.innerExpandBox}>
-            <View style={contextStyles.expandImageBox}>
-              <Image source={bittermelon_origins} style={contextStyles.expandImage}></Image>
-            </View>
-            <View style={contextStyles.textContainerStyle}>
-              <Text style={contextStyles.TextStyle}>{ingredientContexttest[itemName]["origins and geography"]}</Text>
-            </View>
-          </View> 
-        ),
-      },
-    ],
-  },
-  {
-    id: '93',
-    categoryName: 'Health Benefits',
-    subCategory: [
-      {
-        id: '1',
-        name: '',
-        customInnerItem: (
-          <View style={contextStyles.innerExpandBox}>
-            {/* <View style={styles.expandImageBox}>
-              <Image source={imageName} style={styles.expandImage}></Image>
-            </View> */}
-            <View style={contextStyles.textContainerStyle}>
-              <Text style={contextStyles.TextStyle}>{ingredientContexttest[itemName]["health benefits"]}</Text>
-            </View>
-          </View> 
-        ),
-      },
-    ],
-  },
-];
-
-
-
-  // console.log(selectedRecipe?.country);
+  console.log(selectedRecipe?.country);
   React.useEffect(() => {
     let { recipe } = route.params;
     setSelectedRecipe(recipe);
@@ -332,8 +208,7 @@ const CONTENT = [  //conytent for the expandable view
             }}
           >
             <TouchableOpacity
-              // onPress={() => navigation.navigate("About Screen")}
-              onPress={() => {setShowAbout(!showAbout);}}
+              onPress={() => navigation.navigate("About Screen")}
               style={{
                 width: 307,
                 height: 56,
@@ -355,16 +230,6 @@ const CONTENT = [  //conytent for the expandable view
                 About This Dish
               </Text>
             </TouchableOpacity>
-              {showAbout ? //conditionally render expandable view
-                <ExpandableListView
-                data={CONTENT}
-                ExpandableListViewStyles={contextStyles.container}
-                itemContainerStyle={contextStyles.outerExpandBox}
-                innerItemContainerStyle={contextStyles.innerExpandBox}
-                customChevron={require('../assets/icons/chevron.jpeg')}
-              /> 
-               :
-               null}
           </View>
         </ScrollView>
       </View>

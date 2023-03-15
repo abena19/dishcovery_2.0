@@ -63,9 +63,9 @@ return (
         </View>
 
         <View style={styles.imageStyle}>
-                 {image && <Image style={{width: '80%', height: '80%', borderRadius:'150%', alignSelf: 'center', resizeMode: 'cover'}} source={{uri : image}}/>}
+                 {/* {image && <Image style={{width: '60%', height: '60%', backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image}}/>} */}
                 
-                 {/* <Image style={{width: 200, height: 200, backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/> */}
+                 <Image style={{width: 200, height: 200, backgroundcolor:'green', borderColor: 'red', borderRadius:'100%', alignSelf: 'center'}} source={{uri : image ? image : (require('./../../lemongrass.png'))}}/>
                 <View>
                     <Pressable style={styles.editButton} onPress={pickImage}>
                         <Text style={styles.buttonText}>{image ? 'Edit' : 'Upload'} profile picture</Text>

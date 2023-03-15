@@ -209,14 +209,14 @@ export default class App extends React.Component {
               <View style={styles.imageBox}>
                 <Image source={imageName} style={styles.image}></Image>
               </View>
-              {/* <ExpandableListView
+              <ExpandableListView
                 data={CONTENT}
                 ExpandableListViewStyles={styles.container}
                 itemContainerStyle={styles.outerExpandBox}
                 innerItemContainerStyle={styles.innerExpandBox}
                 customChevron={require('../assets/icons/chevron.jpeg')}
-              />  */}
-              <TouchableOpacity style={[styles.buttonContainer, {marginTop: '10%'}]} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
+              /> 
+              <TouchableOpacity style={[styles.buttonContainer]} activeOpacity = { .5 } onPress={ () => this.props.navigation.navigate("Search Results")}>
                 <Text style={styles.ButtonTextStyle}> {this.capitalizeFirstLetters(`Explore ${itemName} Recipes`.toLowerCase())} </Text>
               </TouchableOpacity>
             </View>

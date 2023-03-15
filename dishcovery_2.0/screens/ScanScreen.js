@@ -19,7 +19,7 @@ export default class App extends React.Component {
   state = {
     hasCameraPermission: null,
     predictions: [],
-    scanPressed: true,
+    scanPressed: false,
     ingredientRecognized: false,
     ingredientNotRecognized: false,
     scanComplete: false,
@@ -155,7 +155,7 @@ export default class App extends React.Component {
                   onPress={() => {  
                     this.setState({
                     predictions: [],
-                    // scanPressed: false,
+                    scanPressed: false,
                     ingredientRecognized: false,
                     ingredientNotRecognized: false,
                     scanComplete: false,
