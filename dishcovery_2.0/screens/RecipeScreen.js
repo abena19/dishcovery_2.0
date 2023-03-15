@@ -49,7 +49,7 @@ const instructions = [
 ];
 
 
-const RecipeScreen = ({ navigation, route }) => {
+const RecipeScreen = ({ navigation, route, }) => {
   const [selectedRecipe, setSelectedRecipe] = React.useState(null);
   const [showContext, setShowContext] = useState(true);
   const [showRecipe, setShowRecipe] = useState(false);
@@ -189,14 +189,15 @@ const RecipeScreen = ({ navigation, route }) => {
           {showIngredients ? (
             <>
               <View style={{ marginVertical: 10 }}>
-                <IngredientCard ingredients={selectedRecipe?.ingredients} />
+                 <IngredientCard ingredients={selectedRecipe?.ingredients} ingredientDetails={selectedRecipe?.ingredientDetails} ingredientAmounts={selectedRecipe?.IngredientAmounts}/> 
               </View>
             </>
           ) : null}
 
           {showRecipe ? (
             <View style={{ marginVertical: 10, marginHorizontal: 20 }}>
-              <RecipeCard instructions={instructions} />
+              {/* <RecipeCard instructions={instructions} /> */}
+              <RecipeCard instructions={selectedRecipe?.recipe} />
             </View>
           ) : null}
           <View
@@ -403,3 +404,4 @@ const styles = StyleSheet.create({
     marginHorizontal: SIZES.padding,
   },
 });
+

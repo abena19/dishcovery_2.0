@@ -3,13 +3,22 @@ import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { SIZES, COLORS, FONTS, icons } from "../constants";
 
-const RecipeCard = ({ }) => {//instructions }) => {
+const RecipeCard = ({ instructions }) => {
+  // const instructions = [
+  //   "Step One",
+  //   "Step Two",
+  //   "Step Three",
+  //   "Step Four"
+  // ]
+
   const [currentStep, setCurrentStep] = React.useState(0);
   const handleLeftPress = () => setCurrentStep(currentStep - 1);
   const handleRightPress = () => setCurrentStep(currentStep + 1);
   const isLastStep = currentStep === instructions.length - 1;
   const isFirstStep = currentStep === 0;
   const stepNumber = currentStep + 1;
+
+
 
   return (
     <TouchableOpacity
@@ -23,8 +32,9 @@ const RecipeCard = ({ }) => {//instructions }) => {
             name={`numeric-${stepNumber}-circle`}
             color={COLORS.dishcoveryOrange}
             size={40}
-          />
+          /> 
         </View>
+        {/* <Text style={styles.text}>{instructions[currentStep]}</Text> */}
         <Text style={styles.text}>{instructions[currentStep]}</Text>
       </View>
       <TouchableOpacity
@@ -111,3 +121,4 @@ const styles = StyleSheet.create({
 });
 
 export default RecipeCard;
+
