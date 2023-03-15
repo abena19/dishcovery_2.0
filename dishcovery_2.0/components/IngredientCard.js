@@ -3,12 +3,11 @@ import { StyleSheet, View, Text } from "react-native";
 import codegenNativeCommands from "react-native/Libraries/Utilities/codegenNativeCommands";
 import { SIZES, COLORS, FONTS, icons } from "../constants";
 
-const IngredientCard = ({ingredients, ingredientDetails, ingredientAmounts}) => {//, ingredientDetails, IngredientAmounts}) => {
-   console.log(ingredients);
-  const [ingredientAssortment, setIngredientAssortment] = useState(ingredients);
-   const [ingredientDetailList, setIngredientDetailList] = useState(ingredientDetails);
-   const [ingredientAmountList, setIngredientAmountList] = useState(ingredientAmounts);
-
+const IngredientCard = (props) => {//{ingredients, ingredientDetails, ingredientAmounts}) => {//, ingredientDetails, IngredientAmounts}) => {
+  //  console.log(ingredients);
+  //  console.log(ingredientDetails);
+  //  console.log(ingredientAmounts);
+  
 
 //  setIngredientAssortment(ingredients);
 //  console.log(ingredientAssortment);
@@ -56,6 +55,7 @@ const ingredientArray = [
 
 ];
 
+
 const ingredientAmountArray = [
   "2lbs",
   "1/4 cup",
@@ -77,6 +77,41 @@ const ingredientDetailsArray = [
   "",
   "For serving"
 ];
+ const [ingredientAssortment, setIngredientAssortment] = useState([]);
+    const [ingredientDetailList, setIngredientDetailList] = useState([]);
+    const [ingredientAmountList, setIngredientAmountList] = useState([]);
+
+const {ingr, ingrDetails, ingrAmts} = props;
+const [loading, setLoading] = useState(true);
+
+let tempList = [];
+const getIngredients = async() => {
+try{
+
+  setIngredientAssortment(ingr);
+  setIngredientDetailList(ingrDetails);
+  setIngredientAmountList(ingrAmts);
+  setLoading(false);
+  }catch (err) {
+  console.log("Error" + err);
+  }
+
+}
+useEffect(() => {   
+getIngredients();
+// console.log(recipesList);
+}, [ingr] );
+
+
+ function renderDetails(){
+  return (
+    <View style={styles.row}>
+    {ingredientDetailList[i] === ""  ? null
+           : <Text style={styles.ingredientDetails}>{ingredientDetailList[i]}</Text>
+      }
+      </View>
+  );
+}
 
 let ingredientList = [];
 const ingredientNum = ingredientArray.length;
@@ -85,13 +120,19 @@ for (let i = 0; i < ingredientNum; i++){
     //<View style={styles.column}>
     <View style={styles.column}>
     <View style={styles.row}>
-    <Text style={styles.ingredientName}>{ingredientArray[i]}</Text>
+    {ingredientAssortment && (<Text style={styles.ingredientName}>
+      {ingredientAssortment[i]}</Text>)}
 
-      <Text style={styles.ingredientAmount}>{ingredientAmountArray[i]}</Text>
+     {ingredientAmountList && (<Text style={styles.ingredientAmount}>
+      {ingredientAmountList[i]}</Text>)}
      </View>
-     {ingredientDetailsArray[i] === ""  ? null
+     
+      {/* {ingredientDetailsArray[i] === ""  ? null
            : <Text style={styles.ingredientDetails}>{ingredientDetailsArray[i]}</Text>
-      }
+      } */}
+      {ingrDetails && (
+        renderDetails()
+      )}
         {/* <Text style={styles.ingredientDetails}>
             {ingredientDetailsArray[i]}
          </Text> */}

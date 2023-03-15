@@ -65,7 +65,7 @@ const ExploreScreen = ({ navigation, route }) => {
          let tempList = [];
         const getRecipes = async() => {
        try{
-        const q = query(collection(db, "recipes"), where("region", "==", "Mediterranean"));
+        const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
        
         const querySnapshot = await getDocs(q);
        
