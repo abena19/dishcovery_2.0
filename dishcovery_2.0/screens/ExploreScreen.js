@@ -1,4 +1,4 @@
-import React ,{useState, useRef, useEffect} from "react"
+import React ,{useState, useRef} from "react"
 import {
     View,
     Text,
@@ -38,71 +38,41 @@ import {
 const ExploreScreen = ({ navigation, route }) => {
 
     const [recipesList, setRecipesList] = useState([]);
-    const [fetchingRecipes, setFetchingRecipes] = useState(true);
 
-        // try {
-            // const getRecipes = async() => {
-                            
-            //             const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
-            //             const querySnapshot = await getDocs(q);
-            //             //console.log(doc.data());
-            //             let tempList = [];
-            //             querySnapshot.forEach((doc) => {
-            //                 // console.log(doc.data());
-                
-            //                // [...tempList, doc.data()];
-            //                tempList.push(doc.data());
-                
-                        
-            //             })
-            //             setRecipesList(tempList);
-                 
-            //     }
-            //     getRecipes();
-            //     console.log(recipesList)
-
-
-         let tempList = [];
+   // try { 
         const getRecipes = async() => {
-       try{
-        const q = query(collection(db, "recipes"), where("region", "==", "Mediterranean"));
-       // console.log("this works")
+        const q = query(collection(db, "Recipes"), where("region", "==", "Mediterranean"));
         const querySnapshot = await getDocs(q);
         //console.log(doc.data());
-    //    console.log(querySnapshot);
+        let tempList = [];
         querySnapshot.forEach((doc) => {
-             //console.log(doc.data());
+            // console.log(doc.data());
 
-            //tempList = [...tempList, doc.data()];
+           // [...tempList, doc.data()];
            tempList.push(doc.data());
-           console.log("this is the templist: " + tempList); 
-        });
 
+        
+        })
         setRecipesList(tempList);
-        setFetchingRecipes(false);
-    }catch (err) {
-        console.log("Error" + err);
+        console.log(recipesList);
     }
-   
-}
-useEffect(() => {   
+//}
+    // catch(err) {
+    //     Alert.alert(
+    //         "Error",
+    //         err.code,
+    //         [
+    //             {
+    //                 text: "Ok",
+    //                 onPress: () => console.log(err.code),
+    //             }
+    //         ]
+    //     )
+    // }
+    
+
     getRecipes();
     console.log(recipesList);
-}, [] );
-    
-        
-    //}
-   
-        // React.useEffect (() => {
-        //     setRecipesList(tempList);
-        // }, [])
-        // console.log(tempList);
-    
-//}
-   
-
-    // getRecipes();
-    //console.log(tempList);
    
     // console.log("This is the " + JSON.stringify(route));
     // console.log(route);

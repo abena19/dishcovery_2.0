@@ -11,13 +11,6 @@ const RecipeCard = ({ }) => {//instructions }) => {
   const isFirstStep = currentStep === 0;
   const stepNumber = currentStep + 1;
 
-  const instructions = [
-    "Step One",
-    "Step Two",
-    "Step Three",
-    "Step Four"
-  ]
-
   return (
     <TouchableOpacity
       onPress={isLastStep ? undefined : handleRightPress}
@@ -30,9 +23,8 @@ const RecipeCard = ({ }) => {//instructions }) => {
             name={`numeric-${stepNumber}-circle`}
             color={COLORS.dishcoveryOrange}
             size={40}
-          /> 
+          />
         </View>
-        {/* <Text style={styles.text}>{instructions[currentStep]}</Text> */}
         <Text style={styles.text}>{instructions[currentStep]}</Text>
       </View>
       <TouchableOpacity
