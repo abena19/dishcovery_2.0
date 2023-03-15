@@ -2,58 +2,140 @@ import React from "react";
 import { StyleSheet, View, Text } from "react-native";
 import { SIZES, COLORS, FONTS, icons } from "../constants";
 
-const IngredientCard = () => {
-  return (
-    <View style={styles.card}>
-      <View style={styles.column}>
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Lamb leg</Text>
-          <Text style={styles.ingredientAmount}>2 lbs.</Text>
-        </View>
-        <Text style={styles.ingredientDetails}>
-          Trimmed of excess fat and sliced into thin strips
-        </Text>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Olive oil</Text>
-          <Text style={styles.ingredientAmount}>1/4 Cup</Text>
-        </View>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Red wine vinegar</Text>
-          <Text style={styles.ingredientAmount}>1/4 Cup</Text>
-        </View>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Garlic</Text>
-          <Text style={styles.ingredientAmount}>3 cloves</Text>
-        </View>
-        <Text style={styles.ingredientDetails}>Minced</Text>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Dried oregano</Text>
-          <Text style={styles.ingredientAmount}>1 tbsp</Text>
-        </View>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Salt and pepper</Text>
-          <Text style={styles.ingredientAmount}>As desired</Text>
-        </View>
-        <Text style={styles.ingredientDetails}>To taste</Text>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Tzatziki sauce</Text>
-          <Text style={styles.ingredientAmount}>As desired</Text>
-        </View>
-        <View style={styles.divider} />
-        <View style={styles.row}>
-          <Text style={styles.ingredientName}>Pita bread</Text>
-          <Text style={styles.ingredientAmount}>For serving</Text>
-        </View>
-        <Text style={styles.ingredientDetails}>For serving</Text>
-      </View>
+const IngredientCard = ({ingredientOne}) => {//, ingredientDetails, IngredientAmounts}) => {
+  
+  // let ingredientArray = [
+
+  // ];
+  // const [currentIngredient, setCurrentIngredient] = React.useState(0);
+  // const handleLeftPress = () => setCurrentIngredient(currentIngredient - 1);
+  // const handleRightPress = () => setCurrentIngredient(currentIngredient + 1);
+  // const isLastStep = currentIngredient === ingredients.length - 1;
+  // const isFirstStep = currentIngredient === 0;
+  // const ingredientNumber = currentIngredient + 1;
+  // const ingredientNum = ingredients.length;
+const ingredientArray = [
+  "Lamb leg",
+  "Olive oil",
+  "Red wine vinegar",
+  "Garlic",
+  "Dried oregano",
+  "Salt and pepper",
+  "Tzatziki sauce",
+  "Pita bread",
+
+
+];
+
+const ingredientAmountArray = [
+  "2lbs",
+  "1/4 cup",
+  "1/4 cup",
+  "3 cloves",
+  "1 tbsp",
+  "As desired", 
+  "As desired",
+  "For serving"
+]
+
+const ingredientDetailsArray = [
+  "Trimmed of excess fat and sliced into thin strips",
+  "",
+  "",
+  "Minced",
+  "",
+  "To taste",
+  "",
+  "For serving"
+];
+
+let ingredientList = [];
+const ingredientNum = ingredientArray.length ;
+for (let i = 0; i < ingredientNum; i++){
+  ingredientList.push(
+    //<View style={styles.column}>
+    <View style={styles.column}>
+    <View style={styles.row}>
+    <Text style={styles.ingredientName}>{ingredientArray[i]}</Text>
+
+      <Text style={styles.ingredientAmount}>{ingredientAmountArray[i]}</Text>
+     </View>
+     {ingredientDetailsArray[i] === ""  ? null
+           : <Text style={styles.ingredientDetails}>{ingredientDetailsArray[i]}</Text>
+      }
+        {/* <Text style={styles.ingredientDetails}>
+            {ingredientDetailsArray[i]}
+         </Text> */}
+      <View style={styles.divider} />
+
+    {/* </View> */}
+    {/* <View style={styles.divider} /> */}
     </View>
-  );
+    )
+    // console.log(ingredientList);
+}
+
+
+return(
+  <View  style={styles.card}>
+    <View style={styles.column}>
+
+      {ingredientList}
+    </View>
+
+  </View>
+);
+  // return (
+  //   <View style={styles.card}>
+  //     <View style={styles.column}>
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Lamb leg</Text>
+  //         <Text style={styles.ingredientAmount}>2 lbs.</Text>
+  //       </View>
+  //       <Text style={styles.ingredientDetails}>
+  //         Trimmed of excess fat and sliced into thin strips
+  //       </Text>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Olive oil</Text>
+  //         <Text style={styles.ingredientAmount}>1/4 Cup</Text>
+  //       </View>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Red wine vinegar</Text>
+  //         <Text style={styles.ingredientAmount}>1/4 Cup</Text>
+  //       </View>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Garlic</Text>
+  //         <Text style={styles.ingredientAmount}>3 cloves</Text>
+  //       </View>
+  //       <Text style={styles.ingredientDetails}>Minced</Text>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Dried oregano</Text>
+  //         <Text style={styles.ingredientAmount}>1 tbsp</Text>
+  //       </View>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Salt and pepper</Text>
+  //         <Text style={styles.ingredientAmount}>As desired</Text>
+  //       </View>
+  //       <Text style={styles.ingredientDetails}>To taste</Text>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Tzatziki sauce</Text>
+  //         <Text style={styles.ingredientAmount}>As desired</Text>
+  //       </View>
+  //       <View style={styles.divider} />
+  //       <View style={styles.row}>
+  //         <Text style={styles.ingredientName}>Pita bread</Text>
+  //         <Text style={styles.ingredientAmount}>For serving</Text>
+  //       </View>
+  //       <Text style={styles.ingredientDetails}>For serving</Text>
+  //     </View>
+  //   </View>
+  // );
 };
 
 const styles = StyleSheet.create({
