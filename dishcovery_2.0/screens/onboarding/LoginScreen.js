@@ -3,7 +3,7 @@ import {useState} from "react"
 import { StyleSheet, Text, View, SafeAreaView, Pressable, TextInput, Alert, Image } from 'react-native';
 import { db } from '../../constants/Firebase';
 import { auth } from '../../constants/Firebase';
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, createUserWithEmailAndPassword } from 'firebase/auth';
 import React from 'react'
 import { KeyboardAvoidingView, TouchableOpacity, ScrollView} from 'react-native'
 import { getStorage, ref, uploadBytes, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
@@ -14,23 +14,41 @@ import CommonStylesStyles from "../../assets/styles/CommonStyles.styles";
 import commonStyles from "../../assets/styles/CommonStyles.styles";
 import { addDoc, collection, getFirestore } from "firebase/firestore";
 
+
+
+
+const storage = getStorage();
+
 export default function LoginScreen({ navigation }) {
     
+
     const [email, onChangeEmail] = useState("");
     const [password, onChangePassword] = useState("");
+    const [username, onChangeUID] = useState("");
 
-    const LoginUser = async () => {
+    const signUpUser = async () => {
+        //const auth = getAuth();
         if (email.length === 0 || password.length === 0) {
             return;
         } try {
-            await signInWithEmailAndPassword(auth, email, password);
+            let userCredential = await createUserWithEmailAndPassword(auth, email, password);
+            // await addDoc(collection(db, 'users'), {
+            //     name: username, 
+            //     email: userCredential.user.email,
+            //     picture: image
+            // })
             await addDoc(collection(db, 'users'), {
                 uid: username,
+
                 name: username, 
                 email: email,
                 password: password,
-            });
-            navigation.navigate('Explore');
+                //picture: image
+            })
+            console.log(email);
+            //userCredential.user.displayName = username;
+            //userCredential.user.photoURL = image;
+            navigation.navigate('Account Picture and Name');
         } catch(err) {
             Alert.alert(
                 "Error",
@@ -57,21 +75,41 @@ export default function LoginScreen({ navigation }) {
             <KeyboardAvoidingView
             style={styles.container}
             behavior="padding"
+            // keyboardVerticalOffset={100}
         >
-                <Text style={styles.pageCaption}>Sign in to your account.</Text>
+          {/* <View style={styles.backButtonContainer}> */}
+         
+          {/* </View> */}
+
+            {/* <View style={styles.title}> */}
+                <Text style={styles.pageTitle}>Account Information</Text>
+                <Text style={styles.pageCaption}>Let's create your unique login.</Text>
+            {/* </View> */}
+
+        
+            {/* <View style={styles.inputContainer}> */}
+
+                    <Text style={styles.caption}>Username</Text>
+                    <TextInput 
+                        placeholder="E.g. dishlover123..."
+                        value={username}
+                        onChangeText={text => onChangeUID(text)}
+                        style={styles.input}
+                    />
+          
                     <Text style={styles.caption}>Email</Text>
                     <TextInput 
                         placeholder="E.g. dishlover@dish.com"
                         value={email}
                         onChangeText={text => onChangeEmail(text)}
                         style={styles.input}
-                    />   
-
+                    />         
+            
                     <Text style={styles.caption}>Password</Text>
                     <TextInput 
                         placeholder="Enter your password here."
-                        value={password}
-                        onChangeText={text => onChangePassword(text)}
+                        //value={}
+                        // onChangeText={text => }
                         style={styles.input}
                         secureTextEntry
                     />
@@ -84,14 +122,19 @@ export default function LoginScreen({ navigation }) {
                         style={styles.input}
                         secureTextEntry
                     />
+                {/* </KeyboardAwareScrollView> */}
+            {/* </View> */}
 
+            {/* <View style={styles.buttonContainer}> */}
                 <TouchableOpacity
-                    onPress={() => navigation.navigate("Explore") }
-                    onPressIn={LoginUser}
+                    onPress={() => navigation.navigate("Account Picture and Name") }
+                    onPressIn={signUpUser}
                     style={styles.button}
                 >
+                    <Text style={styles.buttonText}>Next  →</Text>
                 </TouchableOpacity>
-
+            {/* </View> */}
+  
         </KeyboardAvoidingView>
         </ScrollView>
         </SafeAreaView>
