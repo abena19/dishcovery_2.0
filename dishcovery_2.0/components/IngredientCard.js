@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from "react-native";
 import codegenNativeCommands from "react-native/Libraries/Utilities/codegenNativeCommands";
 import { SIZES, COLORS, FONTS, icons } from "../constants";
 
-const IngredientCard = (props) => {//{ingredients, ingredientDetails, ingredientAmounts}) => {//, ingredientDetails, IngredientAmounts}) => {
+const IngredientCard =  ({ingredients, ingredientDetails, ingredientAmounts}) => {//(props) => {//{ingredients, ingredientDetails, ingredientAmounts}) => {//, ingredientDetails, IngredientAmounts}) => {
   //  console.log(ingredients);
   //  console.log(ingredientDetails);
   //  console.log(ingredientAmounts);
@@ -81,16 +81,16 @@ const ingredientDetailsArray = [
     const [ingredientDetailList, setIngredientDetailList] = useState([]);
     const [ingredientAmountList, setIngredientAmountList] = useState([]);
 
-const {ingr, ingrDetails, ingrAmts} = props;
-const [loading, setLoading] = useState(true);
+// const {ingr, ingrDetails, ingrAmts} = props;
+ const [loading, setLoading] = useState(true);
 
 let tempList = [];
 const getIngredients = async() => {
 try{
 
-  setIngredientAssortment(ingr);
-  setIngredientDetailList(ingrDetails);
-  setIngredientAmountList(ingrAmts);
+  setIngredientAssortment(ingredients);
+  setIngredientDetailList(ingredientDetails);
+  setIngredientAmountList(ingredientAmounts);
   setLoading(false);
   }catch (err) {
   console.log("Error" + err);
@@ -99,11 +99,11 @@ try{
 }
 useEffect(() => {   
 getIngredients();
-// console.log(recipesList);
-}, [ingr] );
+//console.log(recipesList);
+}, [ingredients, ingredientDetails, ingredientAmounts] );
 
 
- function renderDetails(){
+ function renderDetails(i){
   return (
     <View style={styles.row}>
     {ingredientDetailList[i] === ""  ? null
@@ -112,6 +112,8 @@ getIngredients();
       </View>
   );
 }
+
+console.log()
 
 let ingredientList = [];
 const ingredientNum = ingredientArray.length;
@@ -130,8 +132,8 @@ for (let i = 0; i < ingredientNum; i++){
       {/* {ingredientDetailsArray[i] === ""  ? null
            : <Text style={styles.ingredientDetails}>{ingredientDetailsArray[i]}</Text>
       } */}
-      {ingrDetails && (
-        renderDetails()
+      {ingredientDetailList && (
+        renderDetails(i)
       )}
         {/* <Text style={styles.ingredientDetails}>
             {ingredientDetailsArray[i]}

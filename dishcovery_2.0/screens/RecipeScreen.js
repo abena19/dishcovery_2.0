@@ -110,6 +110,10 @@ const RecipeScreen = ({ navigation, route, }) => {
       likes: arrayUnion(recipe),
     });
   };
+  console.log(selectedRecipe?.ingredients);
+  console.log(selectedRecipe?.IngredientAmounts);
+  console.log(selectedRecipe?.ingredientDetails);
+
 
   return (
     <SafeAreaView style={commonStyles.whiteBackground}>
