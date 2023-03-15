@@ -43,6 +43,9 @@ export default class App extends React.Component {
   async componentDidMount() {
     const { status } = await Camera.requestCameraPermissionsAsync();
     this.setState({ hasCameraPermission: status === 'granted' });
+    // if (status === 'granted') {
+    //   this.objectDetection();
+    // }
   }
 
   capturePhoto = async () => {
@@ -171,7 +174,9 @@ export default class App extends React.Component {
                       onPress={() => {this.setState({scanPressed: true}); this.objectDetection()}}
                     >
                       <Text style={styles.ButtonTextStyle}>Begin Scan</Text>
+                      {/* <Image source={require('../../assets/icons/camera-icon-round-filled')} /> */}
                     </TouchableOpacity> 
+                    // null
                   }
                   {this.state.ingredientRecognized ?
                     <TouchableOpacity
