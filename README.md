@@ -23,10 +23,13 @@ See the course website here: http://web.stanford.edu/class/cs194h/projects/Dishc
 See demo video here: https://youtube.com/watch?v=A-7xRLSfNqs&si=EnSIkaIECMiOmarE
 
 
-<img src="https://user-images.githubusercontent.com/105185472/226522179-77949ef5-30d7-420b-ba7b-2ca7f320fe65.png" width=25% height=25%> <img src="https://user-images.githubusercontent.com/105185472/226521998-25bfa44b-711f-4126-adaa-b6cba13524b7.png" width=25% height=25%>
+<img src="https://user-images.githubusercontent.com/105185472/226522179-77949ef5-30d7-420b-ba7b-2ca7f320fe65.png" width=25% height=25%> 
+<img src="https://user-images.githubusercontent.com/105185472/226521998-25bfa44b-711f-4126-adaa-b6cba13524b7.png" width=25% height=25%>
 <img src="https://user-images.githubusercontent.com/105185472/226522669-69e80325-db9e-475e-9c37-16e50dcde6d0.png" width=25% height=25%> 
 
-<img src="https://user-images.githubusercontent.com/105185472/226522578-d6380563-dc64-4fe8-8fb3-fc98aa157bd6.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/105185472/226524428-c4329117-5611-4de0-82e5-4f326731c914.png" width=25% height=25%>
+<img src="https://user-images.githubusercontent.com/105185472/226522578-d6380563-dc64-4fe8-8fb3-fc98aa157bd6.png" width=25% height=25%>  
+<img src="https://user-images.githubusercontent.com/105185472/226524428-c4329117-5611-4de0-82e5-4f326731c914.png" width=25% height=25%>
+<img src="https://user-images.githubusercontent.com/105185472/226524566-8b4d3f85-d3f9-4b1c-88dd-bc3c9e9a00f1.png" width=25% height=25%> 
 
 
 
