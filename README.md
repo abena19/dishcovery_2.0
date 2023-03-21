@@ -19,12 +19,18 @@ We anticipate that individuals may leverage this app in the grocery store or far
 ## Demo Video / Screenshots
 
 See the course website here: http://web.stanford.edu/class/cs194h/projects/Dishcovery/
+
 See demo video here: https://youtube.com/watch?v=A-7xRLSfNqs&si=EnSIkaIECMiOmarE
 
-<img src="https://user-images.githubusercontent.com/91340575/206837532-1a584855-9c58-4649-be38-848d5eba4ee3.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/91340575/206837538-bd2536ed-774f-40c1-8ca6-b070f5e05de3.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/91340575/206837539-aade6105-9afb-4c84-a541-3c3006281a30.png" width=25% height=25%> <img src="https://user-images.githubusercontent.com/91340575/206837540-2ebc0b91-9390-416d-9611-f38322b9576d.png" width=25% height=25%> <img src="https://user-
-<img src="https://user-images.githubusercontent.com/105185472/226521998-25bfa44b-711f-4126-adaa-b6cba13524b7.png" width=25% height=25%>
-## Limitations/ Hard-coded features
 
+<img src="https://user-images.githubusercontent.com/105185472/226522669-69e80325-db9e-475e-9c37-16e50dcde6d0.png" width=25% height=25%> 
+<img src="https://user-images.githubusercontent.com/105185472/226522578-d6380563-dc64-4fe8-8fb3-fc98aa157bd6.png" width=25% height=25%>
+
+<img src="https://user-images.githubusercontent.com/105185472/226522179-77949ef5-30d7-420b-ba7b-2ca7f320fe65.png" width=25% height=25%> 
+<img src="https://user-images.githubusercontent.com/105185472/226521998-25bfa44b-711f-4126-adaa-b6cba13524b7.png" width=25% height=25%>
+
+
+## Limitations/ Hard-coded features
 * The cultural context for the ingredients is manually sourced from our database
 * The image recognition is fully functional with Clarifai AI's food recognition library (~500 food items) but we have limited the results to those available in our cultural context database. 
 * The filter feature is not yet functional
