@@ -1,7 +1,7 @@
-# CS47 Dishcovery
+# CS194H Dishcovery
 
 
-Fall quarter 2022 CS147 project by Amrita, Defne, Kyla, Janet
+Winter quarter 2023 CS147 project by Abena Ofosu, Defne Genç, Sharon Wambu, Kayla Kelly
 
 
 ## What is Dishcovery and When Would You Use It?
@@ -18,26 +18,17 @@ We anticipate that individuals may leverage this app in the grocery store or far
 
 ## Demo Video / Screenshots
 
-See the course website here: https://web.stanford.edu/class/cs147/projects/KeepingCultureAlive/Dishcovery/
-See demo video here: https://www.youtube.com/watch?v=DagL9r_Kp08
+See the course website here: http://web.stanford.edu/class/cs194h/projects/Dishcovery/
+See demo video here: https://youtube.com/watch?v=A-7xRLSfNqs&si=EnSIkaIECMiOmarE
 
-<img src="https://user-images.githubusercontent.com/91340575/206837532-1a584855-9c58-4649-be38-848d5eba4ee3.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/91340575/206837538-bd2536ed-774f-40c1-8ca6-b070f5e05de3.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/91340575/206837539-aade6105-9afb-4c84-a541-3c3006281a30.png" width=25% height=25%> <img src="https://user-images.githubusercontent.com/91340575/206837540-2ebc0b91-9390-416d-9611-f38322b9576d.png" width=25% height=25%> <img src="https://user-images.githubusercontent.com/91340575/206837542-e1a7b489-7f85-4bfd-b323-1fc3c5b99f07.png" width=25% height=25%> <img src="https://user-images.githubusercontent.com/91340575/206837546-bb71e86c-2ffb-4629-ac8c-ef963af8150d.png" width=25% height=25%>
-
+<img src="https://user-images.githubusercontent.com/91340575/206837532-1a584855-9c58-4649-be38-848d5eba4ee3.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/91340575/206837538-bd2536ed-774f-40c1-8ca6-b070f5e05de3.png" width=25% height=25%>  <img src="https://user-images.githubusercontent.com/91340575/206837539-aade6105-9afb-4c84-a541-3c3006281a30.png" width=25% height=25%> <img src="https://user-images.githubusercontent.com/91340575/206837540-2ebc0b91-9390-416d-9611-f38322b9576d.png" width=25% height=25%> <img src="https://user-
+<img src="https://user-images.githubusercontent.com/105185472/226521998-25bfa44b-711f-4126-adaa-b6cba13524b7.png" width=25% height=25%>
 ## Limitations/ Hard-coded features
 
-This is a hi-fi prototype and not all features are complete. 
-* The list of recipes are hard-coded
-* The cultural context for the ingredients is manually sourced
-* The liked feature is not yet functional
-* Not all recipe information has been added
-* The image recognition is fully functional with Clarifai AI's food recognition library (~500 food items) but we have limited the results to those available in our cultural context dictionary (bitter melon, cardamom and lemongrass) for demo purposes. Ideally one could train a model specifically for ethnic ingredients
-* The dietary preferences in the profile, filter and search features are not yet functional
+* The cultural context for the ingredients is manually sourced from our database
+* The image recognition is fully functional with Clarifai AI's food recognition library (~500 food items) but we have limited the results to those available in our cultural context database. 
+* The filter feature is not yet functional
 
-## Tutorials used
-
-https://medium.com/@danielsimandl/easy-object-detection-with-react-native-7c2e3f1b56a6 
-https://www.youtube.com/watch?v=W-Oqe8Ph_eM 
-https://github.com/instamobile/recipes-app-react-native
 
 ## Try it on the Expo Go app
 
