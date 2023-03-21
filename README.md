@@ -1,7 +1,7 @@
 # CS194H Dishcovery
 
 
-Winter quarter 2023 CS147 project by Abena Ofosu, Defne Genç, Sharon Wambu, Kayla Kelly
+Winter Quarter 2023 CS147 Project by Abena Ofosu, Defne Genç, Sharon Wambu, Kayla Kelly
 
 
 ## What is Dishcovery and When Would You Use It?
@@ -31,7 +31,6 @@ See demo video here: https://youtube.com/watch?v=A-7xRLSfNqs&si=EnSIkaIECMiOmarE
 
 
 ## Limitations/ Hard-coded features
-* The cultural context for the ingredients is manually sourced from our database
 * The image recognition is fully functional with Clarifai AI's food recognition library (~500 food items) but we have limited the results to those available in our cultural context database. 
 * The filter feature is not yet functional
 
