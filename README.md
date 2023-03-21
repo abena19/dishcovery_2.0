@@ -37,7 +37,5 @@ See demo video here: https://youtube.com/watch?v=A-7xRLSfNqs&si=EnSIkaIECMiOmarE
 
 
 ## Try it on the Expo Go app
-
-<img src="https://user-images.githubusercontent.com/91340575/206837958-316c8849-38a9-4499-8266-2d3b75fdd8b9.png" width=25% height=25%> 
-
+<img width="195" alt="Screen Shot 2023-03-20 at 10 23 46 PM" src="https://user-images.githubusercontent.com/105185472/226525284-7d269e8f-f76d-412d-b27d-a75d01db33bd.png">
 
